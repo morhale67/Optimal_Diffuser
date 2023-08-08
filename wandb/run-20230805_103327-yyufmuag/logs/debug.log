@@ -1,0 +1,28 @@
+2023-08-05 10:33:27,791 INFO    Thread-9  :14254 [wandb_setup.py:_flush():76] Current SDK version is 0.15.8
+2023-08-05 10:33:27,792 INFO    Thread-9  :14254 [wandb_setup.py:_flush():76] Configure stats pid to 14254
+2023-08-05 10:33:27,792 INFO    Thread-9  :14254 [wandb_setup.py:_flush():76] Loading settings from /home/eng/chalamo/.config/wandb/settings
+2023-08-05 10:33:27,792 INFO    Thread-9  :14254 [wandb_setup.py:_flush():76] Loading settings from /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/settings
+2023-08-05 10:33:27,792 INFO    Thread-9  :14254 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'root_dir': '/home/dsi/chalamo/PycharmProjects/Optimal_Diffuser', 'sweep_id': 'ks5k7jhc', 'project': 'Optimal Diffuser', 'run_id': 'yyufmuag', 'sweep_param_path': '/home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/sweep-ks5k7jhc/config-yyufmuag.yaml'}
+2023-08-05 10:33:27,792 INFO    Thread-9  :14254 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-08-05 10:33:27,793 WARNING Thread-9  :14254 [wandb_setup.py:_flush():76] Could not save program above cwd: /home/eng/chalamo/PycharmProjects/Optimal_Diffuser/main.py
+2023-08-05 10:33:27,793 INFO    Thread-9  :14254 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': None, 'program': '/home/eng/chalamo/PycharmProjects/Optimal_Diffuser/main.py'}
+2023-08-05 10:33:27,793 INFO    Thread-9  :14254 [wandb_init.py:_log_setup():507] Logging user logs to /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230805_103327-yyufmuag/logs/debug.log
+2023-08-05 10:33:27,794 INFO    Thread-9  :14254 [wandb_init.py:_log_setup():508] Logging internal logs to /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230805_103327-yyufmuag/logs/debug-internal.log
+2023-08-05 10:33:27,795 INFO    Thread-9  :14254 [wandb_init.py:init():547] calling init triggers
+2023-08-05 10:33:27,795 INFO    Thread-9  :14254 [wandb_init.py:init():554] wandb.init called with sweep_config: {'batch_size': 64, 'cr': 10, 'data_root': '/content/drive/My Drive/Work/data/mnist', 'epochs': 13, 'img_dim': 784, 'lr': 0.0005, 'ngpu': 1, 'num_workers': 2, 'optimizer': 'adam', 'z_dim': 100}
+config: {}
+2023-08-05 10:33:27,796 INFO    Thread-9  :14254 [wandb_init.py:init():596] starting backend
+2023-08-05 10:33:27,796 INFO    Thread-9  :14254 [wandb_init.py:init():600] setting up manager
+2023-08-05 10:33:27,807 INFO    Thread-9  :14254 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-08-05 10:33:27,815 INFO    Thread-9  :14254 [wandb_init.py:init():606] backend started and connected
+2023-08-05 10:33:27,838 INFO    Thread-9  :14254 [wandb_run.py:_config_callback():1282] config_cb None None {'batch_size': 64, 'cr': 10, 'data_root': '/content/drive/My Drive/Work/data/mnist', 'epochs': 13, 'img_dim': 784, 'lr': 0.0005, 'ngpu': 1, 'num_workers': 2, 'optimizer': 'adam', 'z_dim': 100}
+2023-08-05 10:33:27,842 INFO    Thread-9  :14254 [wandb_init.py:init():697] updated telemetry
+2023-08-05 10:33:27,844 INFO    Thread-9  :14254 [wandb_init.py:init():730] communicating run to backend with 60.0 second timeout
+2023-08-05 10:33:28,716 INFO    Thread-9  :14254 [wandb_run.py:_on_init():2180] communicating current version
+2023-08-05 10:33:29,055 INFO    Thread-9  :14254 [wandb_run.py:_on_init():2189] got version response 
+2023-08-05 10:33:29,056 INFO    Thread-9  :14254 [wandb_init.py:init():781] starting run threads in backend
+2023-08-05 10:33:39,705 INFO    Thread-9  :14254 [wandb_run.py:_console_start():2159] atexit reg
+2023-08-05 10:33:39,709 INFO    Thread-9  :14254 [wandb_run.py:_redirect():2014] redirect: wrap_raw
+2023-08-05 10:33:39,709 INFO    Thread-9  :14254 [wandb_run.py:_redirect():2079] Wrapping output streams.
+2023-08-05 10:33:39,710 INFO    Thread-9  :14254 [wandb_run.py:_redirect():2104] Redirects installed.
+2023-08-05 10:33:39,712 INFO    Thread-9  :14254 [wandb_init.py:init():822] run started, returning control to user process

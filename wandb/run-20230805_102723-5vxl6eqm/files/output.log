@@ -1,0 +1,18 @@
+PyDev console: starting.
+2
+Traceback (most recent call last):
+  File "/home/dsi/chalamo/pycharm-community-2021.2.3/plugins/python-ce/helpers/pydev/_pydevd_bundle/pydevd_exec2.py", line 3, in Exec
+    exec(exp, global_vars, local_vars)
+  File "<input>", line 1, in <module>
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/site-packages/torchvision/datasets/mnist.py", line 79, in __init__
+    self.download()
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/site-packages/torchvision/datasets/mnist.py", line 140, in download
+    os.makedirs(self.raw_folder, exist_ok=True)
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/os.py", line 215, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/os.py", line 215, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/os.py", line 215, in makedirs
+    makedirs(head, exist_ok=exist_ok)
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/os.py", line 225, in makedirs
+    mkdir(name, mode)

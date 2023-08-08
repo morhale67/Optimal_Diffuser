@@ -1,0 +1,28 @@
+2023-08-05 10:27:23,804 INFO    Thread-9  :13482 [wandb_setup.py:_flush():76] Current SDK version is 0.15.8
+2023-08-05 10:27:23,804 INFO    Thread-9  :13482 [wandb_setup.py:_flush():76] Configure stats pid to 13482
+2023-08-05 10:27:23,804 INFO    Thread-9  :13482 [wandb_setup.py:_flush():76] Loading settings from /home/eng/chalamo/.config/wandb/settings
+2023-08-05 10:27:23,804 INFO    Thread-9  :13482 [wandb_setup.py:_flush():76] Loading settings from /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/settings
+2023-08-05 10:27:23,805 INFO    Thread-9  :13482 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'root_dir': '/home/dsi/chalamo/PycharmProjects/Optimal_Diffuser', 'sweep_id': 'ks5k7jhc', 'project': 'Optimal Diffuser', 'run_id': '5vxl6eqm', 'sweep_param_path': '/home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/sweep-ks5k7jhc/config-5vxl6eqm.yaml'}
+2023-08-05 10:27:23,805 INFO    Thread-9  :13482 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-08-05 10:27:23,805 WARNING Thread-9  :13482 [wandb_setup.py:_flush():76] Could not save program above cwd: /home/eng/chalamo/PycharmProjects/Optimal_Diffuser/main.py
+2023-08-05 10:27:23,805 INFO    Thread-9  :13482 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': None, 'program': '/home/eng/chalamo/PycharmProjects/Optimal_Diffuser/main.py'}
+2023-08-05 10:27:23,805 INFO    Thread-9  :13482 [wandb_init.py:_log_setup():507] Logging user logs to /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230805_102723-5vxl6eqm/logs/debug.log
+2023-08-05 10:27:23,806 INFO    Thread-9  :13482 [wandb_init.py:_log_setup():508] Logging internal logs to /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230805_102723-5vxl6eqm/logs/debug-internal.log
+2023-08-05 10:27:23,807 INFO    Thread-9  :13482 [wandb_init.py:init():547] calling init triggers
+2023-08-05 10:27:23,807 INFO    Thread-9  :13482 [wandb_init.py:init():554] wandb.init called with sweep_config: {'batch_size': 4, 'cr': 20, 'data_root': '/content/drive/My Drive/Work/data/mnist', 'epochs': 81, 'img_dim': 784, 'lr': 0.05, 'ngpu': 1, 'num_workers': 2, 'optimizer': 'adam', 'z_dim': 100}
+config: {}
+2023-08-05 10:27:23,808 INFO    Thread-9  :13482 [wandb_init.py:init():596] starting backend
+2023-08-05 10:27:23,809 INFO    Thread-9  :13482 [wandb_init.py:init():600] setting up manager
+2023-08-05 10:27:23,818 INFO    Thread-9  :13482 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-08-05 10:27:23,827 INFO    Thread-9  :13482 [wandb_init.py:init():606] backend started and connected
+2023-08-05 10:27:23,848 INFO    Thread-9  :13482 [wandb_run.py:_config_callback():1282] config_cb None None {'batch_size': 4, 'cr': 20, 'data_root': '/content/drive/My Drive/Work/data/mnist', 'epochs': 81, 'img_dim': 784, 'lr': 0.05, 'ngpu': 1, 'num_workers': 2, 'optimizer': 'adam', 'z_dim': 100}
+2023-08-05 10:27:23,852 INFO    Thread-9  :13482 [wandb_init.py:init():697] updated telemetry
+2023-08-05 10:27:23,854 INFO    Thread-9  :13482 [wandb_init.py:init():730] communicating run to backend with 60.0 second timeout
+2023-08-05 10:27:24,737 INFO    Thread-9  :13482 [wandb_run.py:_on_init():2180] communicating current version
+2023-08-05 10:27:25,075 INFO    Thread-9  :13482 [wandb_run.py:_on_init():2189] got version response 
+2023-08-05 10:27:25,075 INFO    Thread-9  :13482 [wandb_init.py:init():781] starting run threads in backend
+2023-08-05 10:27:35,488 INFO    Thread-9  :13482 [wandb_run.py:_console_start():2159] atexit reg
+2023-08-05 10:27:35,491 INFO    Thread-9  :13482 [wandb_run.py:_redirect():2014] redirect: wrap_raw
+2023-08-05 10:27:35,491 INFO    Thread-9  :13482 [wandb_run.py:_redirect():2079] Wrapping output streams.
+2023-08-05 10:27:35,492 INFO    Thread-9  :13482 [wandb_run.py:_redirect():2104] Redirects installed.
+2023-08-05 10:27:35,495 INFO    Thread-9  :13482 [wandb_init.py:init():822] run started, returning control to user process

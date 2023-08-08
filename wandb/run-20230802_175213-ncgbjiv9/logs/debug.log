@@ -1,0 +1,32 @@
+2023-08-02 17:52:13,826 INFO    Thread-11 :16245 [wandb_setup.py:_flush():76] Current SDK version is 0.15.8
+2023-08-02 17:52:13,827 INFO    Thread-11 :16245 [wandb_setup.py:_flush():76] Configure stats pid to 16245
+2023-08-02 17:52:13,827 INFO    Thread-11 :16245 [wandb_setup.py:_flush():76] Loading settings from /home/eng/chalamo/.config/wandb/settings
+2023-08-02 17:52:13,827 INFO    Thread-11 :16245 [wandb_setup.py:_flush():76] Loading settings from /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/settings
+2023-08-02 17:52:13,827 INFO    Thread-11 :16245 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'root_dir': '/home/dsi/chalamo/PycharmProjects/Optimal_Diffuser', 'project': 'Optimal Diffuser', 'run_id': 'ncgbjiv9', 'sweep_param_path': '/home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/sweep-ks5k7jhc/config-ncgbjiv9.yaml', 'sweep_id': 'ks5k7jhc'}
+2023-08-02 17:52:13,827 INFO    Thread-11 :16245 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-08-02 17:52:13,827 WARNING Thread-11 :16245 [wandb_setup.py:_flush():76] Could not save program above cwd: /home/eng/chalamo/PycharmProjects/Optimal_Diffuser/main.py
+2023-08-02 17:52:13,827 INFO    Thread-11 :16245 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': None, 'program': '/home/eng/chalamo/PycharmProjects/Optimal_Diffuser/main.py'}
+2023-08-02 17:52:13,827 INFO    Thread-11 :16245 [wandb_init.py:_log_setup():507] Logging user logs to /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_175213-ncgbjiv9/logs/debug.log
+2023-08-02 17:52:13,827 INFO    Thread-11 :16245 [wandb_init.py:_log_setup():508] Logging internal logs to /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_175213-ncgbjiv9/logs/debug-internal.log
+2023-08-02 17:52:13,828 INFO    Thread-11 :16245 [wandb_init.py:init():547] calling init triggers
+2023-08-02 17:52:13,828 INFO    Thread-11 :16245 [wandb_init.py:init():554] wandb.init called with sweep_config: {'batch_size': 8, 'cr': 80, 'data_root': '/content/drive/My Drive/Work/data/mnist', 'epochs': 42, 'img_dim': 784, 'lr': 0.0005, 'ngpu': 1, 'num_workers': 2, 'optimizer': 'adam', 'z_dim': 100}
+config: {}
+2023-08-02 17:52:13,828 INFO    Thread-11 :16245 [wandb_init.py:init():596] starting backend
+2023-08-02 17:52:13,829 INFO    Thread-11 :16245 [wandb_init.py:init():600] setting up manager
+2023-08-02 17:52:13,833 INFO    Thread-11 :16245 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-08-02 17:52:13,833 INFO    Thread-11 :16245 [wandb_init.py:init():606] backend started and connected
+2023-08-02 17:52:13,842 INFO    Thread-11 :16245 [wandb_run.py:_config_callback():1282] config_cb None None {'batch_size': 8, 'cr': 80, 'data_root': '/content/drive/My Drive/Work/data/mnist', 'epochs': 42, 'img_dim': 784, 'lr': 0.0005, 'ngpu': 1, 'num_workers': 2, 'optimizer': 'adam', 'z_dim': 100}
+2023-08-02 17:52:13,845 INFO    Thread-11 :16245 [wandb_init.py:init():697] updated telemetry
+2023-08-02 17:52:13,846 INFO    Thread-11 :16245 [wandb_init.py:init():730] communicating run to backend with 60.0 second timeout
+2023-08-02 17:52:14,621 INFO    Thread-11 :16245 [wandb_run.py:_on_init():2180] communicating current version
+2023-08-02 17:52:14,968 INFO    Thread-11 :16245 [wandb_run.py:_on_init():2189] got version response 
+2023-08-02 17:52:14,968 INFO    Thread-11 :16245 [wandb_init.py:init():781] starting run threads in backend
+2023-08-02 17:52:27,431 INFO    Thread-11 :16245 [wandb_run.py:_console_start():2159] atexit reg
+2023-08-02 17:52:27,433 INFO    Thread-11 :16245 [wandb_run.py:_redirect():2014] redirect: wrap_raw
+2023-08-02 17:52:27,433 INFO    Thread-11 :16245 [wandb_run.py:_redirect():2079] Wrapping output streams.
+2023-08-02 17:52:27,433 INFO    Thread-11 :16245 [wandb_run.py:_redirect():2104] Redirects installed.
+2023-08-02 17:52:27,436 INFO    Thread-11 :16245 [wandb_init.py:init():822] run started, returning control to user process
+2023-08-02 17:52:27,436 INFO    Thread-11 :16245 [wandb_run.py:_finish():1894] finishing run gi/Optimal Diffuser/ncgbjiv9
+2023-08-02 17:52:27,436 INFO    Thread-11 :16245 [wandb_run.py:_atexit_cleanup():2128] got exitcode: 1
+2023-08-02 17:52:27,437 INFO    Thread-11 :16245 [wandb_run.py:_restore():2111] restore
+2023-08-02 17:52:27,437 INFO    Thread-11 :16245 [wandb_run.py:_restore():2117] restore done

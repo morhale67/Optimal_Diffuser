@@ -1,0 +1,45 @@
+PyDev console: starting.
+2
+Traceback (most recent call last):
+  File "/home/dsi/chalamo/pycharm-community-2021.2.3/plugins/python-ce/helpers/pydev/_pydevd_bundle/pydevd_exec2.py", line 3, in Exec
+    exec(exp, global_vars, local_vars)
+  File "<input>", line 1, in <module>
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/site-packages/torchvision/datasets/mnist.py", line 82, in __init__
+    raise RuntimeError('Dataset not found.' +
+RuntimeError: Dataset not found. You can use download=True to download it
+'home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/data/MNIST'
+Traceback (most recent call last):
+  File "/home/dsi/chalamo/pycharm-community-2021.2.3/plugins/python-ce/helpers/pydev/_pydevd_bundle/pydevd_exec2.py", line 3, in Exec
+    exec(exp, global_vars, local_vars)
+  File "<input>", line 1, in <module>
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/site-packages/torchvision/datasets/mnist.py", line 82, in __init__
+    raise RuntimeError('Dataset not found.' +
+RuntimeError: Dataset not found. You can use download=True to download it
+Traceback (most recent call last):
+'home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/data/MNIST'
+  File "/home/dsi/chalamo/pycharm-community-2021.2.3/plugins/python-ce/helpers/pydev/_pydevd_bundle/pydevd_exec2.py", line 3, in Exec
+    exec(exp, global_vars, local_vars)
+  File "<input>", line 1, in <module>
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/site-packages/torchvision/datasets/mnist.py", line 82, in __init__
+    raise RuntimeError('Dataset not found.' +
+RuntimeError: Dataset not found. You can use download=True to download it
+Traceback (most recent call last):
+  File "/home/dsi/chalamo/pycharm-community-2021.2.3/plugins/python-ce/helpers/pydev/_pydevd_bundle/pydevd_exec2.py", line 3, in Exec
+    exec(exp, global_vars, local_vars)
+  File "<input>", line 1, in <module>
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/site-packages/torchvision/datasets/mnist.py", line 82, in __init__
+    raise RuntimeError('Dataset not found.' +
+RuntimeError: Dataset not found. You can use download=True to download it
+Traceback (most recent call last):
+  File "/home/dsi/chalamo/pycharm-community-2021.2.3/plugins/python-ce/helpers/pydev/_pydevd_bundle/pydevd_exec2.py", line 3, in Exec
+    exec(exp, global_vars, local_vars)
+  File "<input>", line 1, in <module>
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/site-packages/torchvision/datasets/mnist.py", line 82, in __init__
+    raise RuntimeError('Dataset not found.' +
+RuntimeError: Dataset not found. You can use download=True to download it
+Traceback (most recent call last):
+  File "/home/dsi/chalamo/pycharm-community-2021.2.3/plugins/python-ce/helpers/pydev/_pydevd_bundle/pydevd_exec2.py", line 3, in Exec
+    exec(exp, global_vars, local_vars)
+  File "<input>", line 1, in <module>
+  File "/home/eng/chalamo/anaconda3/envs/pytorch_env/lib/python3.9/site-packages/torchvision/datasets/mnist.py", line 82, in __init__
+    raise RuntimeError('Dataset not found.' +

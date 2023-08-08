@@ -1,0 +1,184 @@
+2023-08-02 17:41:09,416 INFO    StreamThr :3792 [internal.py:wandb_internal():86] W&B internal server running at pid: 3792, started at: 2023-08-02 17:41:09.408579
+2023-08-02 17:41:09,419 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: status
+2023-08-02 17:41:09,421 INFO    WriterThread:3792 [datastore.py:open_for_write():85] open: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/run-ef9dawns.wandb
+2023-08-02 17:41:09,433 DEBUG   SenderThread:3792 [sender.py:send():379] send: header
+2023-08-02 17:41:09,433 DEBUG   SenderThread:3792 [sender.py:send():379] send: run
+2023-08-02 17:41:10,351 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: check_version
+2023-08-02 17:41:10,360 INFO    SenderThread:3792 [dir_watcher.py:__init__():211] watching files in: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files
+2023-08-02 17:41:10,360 INFO    SenderThread:3792 [sender.py:_start_run_threads():1121] run started: ef9dawns with start time 1690987269.407548
+2023-08-02 17:41:10,360 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: summary_record
+2023-08-02 17:41:10,364 INFO    SenderThread:3792 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-02 17:41:10,369 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: check_version
+2023-08-02 17:41:10,718 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: run_start
+2023-08-02 17:41:10,740 DEBUG   HandlerThread:3792 [system_info.py:__init__():31] System info init
+2023-08-02 17:41:10,740 DEBUG   HandlerThread:3792 [system_info.py:__init__():46] System info init done
+2023-08-02 17:41:10,740 INFO    HandlerThread:3792 [system_monitor.py:start():181] Starting system monitor
+2023-08-02 17:41:10,740 INFO    SystemMonitor:3792 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2023-08-02 17:41:10,742 INFO    HandlerThread:3792 [system_monitor.py:probe():201] Collecting system info
+2023-08-02 17:41:10,742 INFO    SystemMonitor:3792 [interfaces.py:start():190] Started cpu monitoring
+2023-08-02 17:41:10,743 INFO    SystemMonitor:3792 [interfaces.py:start():190] Started disk monitoring
+2023-08-02 17:41:10,745 INFO    SystemMonitor:3792 [interfaces.py:start():190] Started gpu monitoring
+2023-08-02 17:41:10,746 INFO    SystemMonitor:3792 [interfaces.py:start():190] Started memory monitoring
+2023-08-02 17:41:10,747 INFO    SystemMonitor:3792 [interfaces.py:start():190] Started network monitoring
+2023-08-02 17:41:10,785 DEBUG   HandlerThread:3792 [system_info.py:probe():195] Probing system
+2023-08-02 17:41:10,794 DEBUG   HandlerThread:3792 [gitlib.py:_init_repo():53] git repository is invalid
+2023-08-02 17:41:10,794 DEBUG   HandlerThread:3792 [system_info.py:probe():240] Probing system done
+2023-08-02 17:41:10,794 DEBUG   HandlerThread:3792 [system_monitor.py:probe():210] {'os': 'Linux-3.10.0-1160.92.1.el7.x86_64-x86_64-with-glibc2.17', 'python': '3.9.12', 'heartbeatAt': '2023-08-02T14:41:10.785518', 'startedAt': '2023-08-02T14:41:09.266905', 'docker': None, 'cuda': '10.1.105', 'args': (), 'state': 'running', 'program': '/home/eng/chalamo/PycharmProjects/Optimal_Diffuser/main.py', 'host': 'dsigpu01', 'username': 'chalamo', 'executable': '/home/eng/chalamo/anaconda3/envs/pytorch_env/bin/python', 'cpu_count': 24, 'cpu_count_logical': 48, 'cpu_freq': {'current': 1240.2858333333334, 'min': 1200.0, 'max': 2900.0}, 'cpu_freq_per_core': [{'current': 1667.724, 'min': 1200.0, 'max': 2900.0}, {'current': 1199.902, 'min': 1200.0, 'max': 2900.0}, {'current': 1463.354, 'min': 1200.0, 'max': 2900.0}, {'current': 1585.144, 'min': 1200.0, 'max': 2900.0}, {'current': 1296.447, 'min': 1200.0, 'max': 2900.0}, {'current': 1292.419, 'min': 1200.0, 'max': 2900.0}, {'current': 1246.63, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1291.882, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.573, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1199.902, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.708, 'min': 1200.0, 'max': 2900.0}, {'current': 1269.189, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1199.902, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.573, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.036, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.573, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.439, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1697.534, 'min': 1200.0, 'max': 2900.0}, {'current': 1371.911, 'min': 1200.0, 'max': 2900.0}, {'current': 1201.513, 'min': 1200.0, 'max': 2900.0}, {'current': 1454.492, 'min': 1200.0, 'max': 2900.0}, {'current': 1234.008, 'min': 1200.0, 'max': 2900.0}, {'current': 1222.729, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.036, 'min': 1200.0, 'max': 2900.0}, {'current': 1201.513, 'min': 1200.0, 'max': 2900.0}, {'current': 1223.669, 'min': 1200.0, 'max': 2900.0}, {'current': 1229.577, 'min': 1200.0, 'max': 2900.0}, {'current': 1232.263, 'min': 1200.0, 'max': 2900.0}, {'current': 1223.535, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.976, 'min': 1200.0, 'max': 2900.0}, {'current': 1199.902, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.842, 'min': 1200.0, 'max': 2900.0}, {'current': 1201.513, 'min': 1200.0, 'max': 2900.0}, {'current': 1207.287, 'min': 1200.0, 'max': 2900.0}, {'current': 1201.379, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.439, 'min': 1200.0, 'max': 2900.0}, {'current': 1200.305, 'min': 1200.0, 'max': 2900.0}, {'current': 1215.209, 'min': 1200.0, 'max': 2900.0}, {'current': 1201.11, 'min': 1200.0, 'max': 2900.0}, {'current': 1208.764, 'min': 1200.0, 'max': 2900.0}], 'disk': {'total': 443.9276657104492, 'used': 86.21775817871094}, 'gpu': 'NVIDIA GeForce GTX 1080 Ti', 'gpu_count': 4, 'gpu_devices': [{'name': 'NVIDIA GeForce GTX 1080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce GTX 1080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce GTX 1080 Ti', 'memory_total': 11811160064}, {'name': 'NVIDIA GeForce GTX 1080 Ti', 'memory_total': 11811160064}], 'memory': {'total': 125.64115524291992}}
+2023-08-02 17:41:10,794 INFO    HandlerThread:3792 [system_monitor.py:probe():211] Finished collecting system info
+2023-08-02 17:41:10,794 INFO    HandlerThread:3792 [system_monitor.py:probe():214] Publishing system info
+2023-08-02 17:41:10,795 DEBUG   HandlerThread:3792 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2023-08-02 17:41:10,799 DEBUG   HandlerThread:3792 [system_info.py:_save_pip():67] Saving pip packages done
+2023-08-02 17:41:10,799 DEBUG   HandlerThread:3792 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2023-08-02 17:41:11,373 INFO    Thread-12 :3792 [dir_watcher.py:_on_file_created():271] file/dir created: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/requirements.txt
+2023-08-02 17:41:11,374 INFO    Thread-12 :3792 [dir_watcher.py:_on_file_created():271] file/dir created: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/conda-environment.yaml
+2023-08-02 17:41:11,375 INFO    Thread-12 :3792 [dir_watcher.py:_on_file_created():271] file/dir created: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/wandb-summary.json
+2023-08-02 17:41:26,919 DEBUG   HandlerThread:3792 [system_info.py:_save_conda():86] Saving conda packages done
+2023-08-02 17:41:26,926 INFO    HandlerThread:3792 [system_monitor.py:probe():216] Finished publishing system info
+2023-08-02 17:41:26,945 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: status_report
+2023-08-02 17:41:26,946 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: keepalive
+2023-08-02 17:41:26,946 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: status_report
+2023-08-02 17:41:26,947 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: keepalive
+2023-08-02 17:41:26,947 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: status_report
+2023-08-02 17:41:26,947 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: keepalive
+2023-08-02 17:41:26,948 DEBUG   SenderThread:3792 [sender.py:send():379] send: files
+2023-08-02 17:41:26,949 INFO    SenderThread:3792 [sender.py:_save_file():1375] saving file wandb-metadata.json with policy now
+2023-08-02 17:41:26,977 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: stop_status
+2023-08-02 17:41:26,978 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: stop_status
+2023-08-02 17:41:27,430 INFO    Thread-12 :3792 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/conda-environment.yaml
+2023-08-02 17:41:27,430 INFO    Thread-12 :3792 [dir_watcher.py:_on_file_created():271] file/dir created: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/wandb-metadata.json
+2023-08-02 17:41:27,481 DEBUG   SenderThread:3792 [sender.py:send():379] send: telemetry
+2023-08-02 17:41:27,481 DEBUG   SenderThread:3792 [sender.py:send():379] send: telemetry
+2023-08-02 17:41:27,481 DEBUG   SenderThread:3792 [sender.py:send():379] send: exit
+2023-08-02 17:41:27,482 INFO    SenderThread:3792 [sender.py:send_exit():584] handling exit code: 1
+2023-08-02 17:41:27,482 INFO    SenderThread:3792 [sender.py:send_exit():586] handling runtime: 16
+2023-08-02 17:41:27,488 INFO    SenderThread:3792 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-02 17:41:27,496 INFO    SenderThread:3792 [sender.py:send_exit():592] send defer
+2023-08-02 17:41:27,496 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:27,496 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 0
+2023-08-02 17:41:27,497 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:27,497 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 0
+2023-08-02 17:41:27,497 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 1
+2023-08-02 17:41:27,497 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:27,498 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 1
+2023-08-02 17:41:27,498 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:27,498 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 1
+2023-08-02 17:41:27,498 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 2
+2023-08-02 17:41:27,499 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:27,499 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 2
+2023-08-02 17:41:27,499 INFO    HandlerThread:3792 [system_monitor.py:finish():190] Stopping system monitor
+2023-08-02 17:41:27,500 DEBUG   SystemMonitor:3792 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2023-08-02 17:41:27,500 DEBUG   SystemMonitor:3792 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2023-08-02 17:41:27,500 DEBUG   SystemMonitor:3792 [system_monitor.py:_start():170] Publishing last batch of metrics
+2023-08-02 17:41:27,502 INFO    HandlerThread:3792 [interfaces.py:finish():202] Joined cpu monitor
+2023-08-02 17:41:27,503 INFO    HandlerThread:3792 [interfaces.py:finish():202] Joined disk monitor
+2023-08-02 17:41:27,842 INFO    wandb-upload_0:3792 [upload_job.py:push():131] Uploaded file /tmp/tmpe_iqt1y4wandb/rf87h6g8-wandb-metadata.json
+2023-08-02 17:41:27,889 INFO    HandlerThread:3792 [interfaces.py:finish():202] Joined gpu monitor
+2023-08-02 17:41:27,889 INFO    HandlerThread:3792 [interfaces.py:finish():202] Joined memory monitor
+2023-08-02 17:41:27,889 INFO    HandlerThread:3792 [interfaces.py:finish():202] Joined network monitor
+2023-08-02 17:41:27,890 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:27,890 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 2
+2023-08-02 17:41:27,890 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 3
+2023-08-02 17:41:27,891 DEBUG   SenderThread:3792 [sender.py:send():379] send: stats
+2023-08-02 17:41:27,891 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:27,891 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 3
+2023-08-02 17:41:27,892 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:27,892 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 3
+2023-08-02 17:41:27,892 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 4
+2023-08-02 17:41:27,892 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:27,892 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 4
+2023-08-02 17:41:27,893 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:27,893 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 4
+2023-08-02 17:41:27,893 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 5
+2023-08-02 17:41:27,893 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:27,893 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 5
+2023-08-02 17:41:27,894 DEBUG   SenderThread:3792 [sender.py:send():379] send: summary
+2023-08-02 17:41:27,898 INFO    SenderThread:3792 [sender.py:_save_file():1375] saving file wandb-summary.json with policy end
+2023-08-02 17:41:27,900 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:27,900 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 5
+2023-08-02 17:41:27,901 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 6
+2023-08-02 17:41:27,901 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:27,901 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 6
+2023-08-02 17:41:27,901 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:27,902 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 6
+2023-08-02 17:41:27,907 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: status_report
+2023-08-02 17:41:27,986 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-02 17:41:28,432 INFO    Thread-12 :3792 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/wandb-summary.json
+2023-08-02 17:41:28,498 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 7
+2023-08-02 17:41:28,499 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: poll_exit
+2023-08-02 17:41:28,499 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:28,500 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 7
+2023-08-02 17:41:28,500 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:28,500 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 7
+2023-08-02 17:41:28,501 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 8
+2023-08-02 17:41:28,501 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:28,501 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 8
+2023-08-02 17:41:28,502 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:28,502 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 8
+2023-08-02 17:41:28,502 INFO    SenderThread:3792 [job_builder.py:build():281] Attempting to build job artifact
+2023-08-02 17:41:28,503 INFO    SenderThread:3792 [job_builder.py:_get_source_type():411] no source found
+2023-08-02 17:41:28,503 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 9
+2023-08-02 17:41:28,503 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:28,503 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 9
+2023-08-02 17:41:28,504 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:28,504 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 9
+2023-08-02 17:41:28,504 INFO    SenderThread:3792 [dir_watcher.py:finish():358] shutting down directory watcher
+2023-08-02 17:41:28,987 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-02 17:41:29,438 INFO    SenderThread:3792 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/config.yaml
+2023-08-02 17:41:29,438 INFO    SenderThread:3792 [dir_watcher.py:finish():388] scan: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files
+2023-08-02 17:41:29,441 INFO    SenderThread:3792 [dir_watcher.py:finish():402] scan save: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/conda-environment.yaml conda-environment.yaml
+2023-08-02 17:41:29,441 INFO    SenderThread:3792 [dir_watcher.py:finish():402] scan save: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/wandb-summary.json wandb-summary.json
+2023-08-02 17:41:29,446 INFO    SenderThread:3792 [dir_watcher.py:finish():402] scan save: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/wandb-metadata.json wandb-metadata.json
+2023-08-02 17:41:29,446 INFO    SenderThread:3792 [dir_watcher.py:finish():402] scan save: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/config.yaml config.yaml
+2023-08-02 17:41:29,447 INFO    SenderThread:3792 [dir_watcher.py:finish():402] scan save: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/requirements.txt requirements.txt
+2023-08-02 17:41:29,458 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 10
+2023-08-02 17:41:29,458 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: poll_exit
+2023-08-02 17:41:29,459 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:29,459 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 10
+2023-08-02 17:41:29,460 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:29,461 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 10
+2023-08-02 17:41:29,461 INFO    SenderThread:3792 [file_pusher.py:finish():159] shutting down file pusher
+2023-08-02 17:41:29,938 INFO    wandb-upload_0:3792 [upload_job.py:push():131] Uploaded file /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/conda-environment.yaml
+2023-08-02 17:41:29,988 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-02 17:41:29,988 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: poll_exit
+2023-08-02 17:41:30,264 INFO    wandb-upload_2:3792 [upload_job.py:push():131] Uploaded file /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/config.yaml
+2023-08-02 17:41:30,338 INFO    wandb-upload_3:3792 [upload_job.py:push():131] Uploaded file /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/requirements.txt
+2023-08-02 17:41:30,352 INFO    wandb-upload_1:3792 [upload_job.py:push():131] Uploaded file /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/files/wandb-summary.json
+2023-08-02 17:41:30,552 INFO    Thread-11 :3792 [sender.py:transition_state():612] send defer: 11
+2023-08-02 17:41:30,553 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:30,553 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 11
+2023-08-02 17:41:30,554 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:30,554 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 11
+2023-08-02 17:41:30,554 INFO    SenderThread:3792 [file_pusher.py:join():164] waiting for file pusher
+2023-08-02 17:41:30,554 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 12
+2023-08-02 17:41:30,555 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:30,555 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 12
+2023-08-02 17:41:30,555 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:30,556 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 12
+2023-08-02 17:41:30,556 INFO    SenderThread:3792 [file_stream.py:finish():593] file stream finish called
+2023-08-02 17:41:30,812 INFO    SenderThread:3792 [file_stream.py:finish():597] file stream finish is done
+2023-08-02 17:41:30,813 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 13
+2023-08-02 17:41:30,813 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:30,813 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 13
+2023-08-02 17:41:30,814 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:30,814 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 13
+2023-08-02 17:41:30,814 INFO    SenderThread:3792 [sender.py:transition_state():612] send defer: 14
+2023-08-02 17:41:30,815 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: defer
+2023-08-02 17:41:30,815 INFO    HandlerThread:3792 [handler.py:handle_request_defer():170] handle defer: 14
+2023-08-02 17:41:30,816 DEBUG   SenderThread:3792 [sender.py:send():379] send: final
+2023-08-02 17:41:30,816 DEBUG   SenderThread:3792 [sender.py:send():379] send: footer
+2023-08-02 17:41:30,816 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: defer
+2023-08-02 17:41:30,816 INFO    SenderThread:3792 [sender.py:send_request_defer():608] handle sender defer: 14
+2023-08-02 17:41:30,818 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: poll_exit
+2023-08-02 17:41:30,819 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: poll_exit
+2023-08-02 17:41:30,820 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: server_info
+2023-08-02 17:41:30,820 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: get_summary
+2023-08-02 17:41:30,821 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: sampled_history
+2023-08-02 17:41:30,821 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: job_info
+2023-08-02 17:41:30,822 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: server_info
+2023-08-02 17:41:31,017 DEBUG   SenderThread:3792 [sender.py:send_request():406] send_request: job_info
+2023-08-02 17:41:31,019 DEBUG   HandlerThread:3792 [handler.py:handle_request():144] handle_request: shutdown
+2023-08-02 17:41:31,019 INFO    HandlerThread:3792 [handler.py:finish():857] shutting down handler
+2023-08-02 17:41:31,821 INFO    WriterThread:3792 [datastore.py:close():294] close: /home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/wandb/run-20230802_174109-ef9dawns/run-ef9dawns.wandb
+2023-08-02 17:41:32,018 INFO    SenderThread:3792 [sender.py:finish():1552] shutting down sender
+2023-08-02 17:41:32,018 INFO    SenderThread:3792 [file_pusher.py:finish():159] shutting down file pusher
+2023-08-02 17:41:32,018 INFO    SenderThread:3792 [file_pusher.py:join():164] waiting for file pusher
