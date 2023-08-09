@@ -1,3 +1,5 @@
+import math
+
 
 def get_run_parameters():
     # p = {'batch_size': 32, 'pic_width': 32, 'prc_patterns': 10, 'n_gray_levels': 16}  # batch size is 5 in paper
@@ -15,5 +17,9 @@ def get_run_parameters():
     # p['data_sets'] = ['mnist'] #, 'coco', 'div2k']
     # p['model'] = 'Sparse_Encoder'  # 'ResHolo' or 'Sparse_ResHolo' or 'Sparse_Encoder'
     #
-    p = {'epochs': 50, 'n_fc': 1, 'batch_size': 32, 'num_workers': 4, 'z_dim': 100, 'img_dim': 28, 'lr': 0.001, 'optimizer': 'adam', 'cr': 5}
+    p = {'epochs': 4, 'n_fc': 1, 'batch_size': 32, 'num_workers': 4, 'z_dim': 100, 'pic_width': 28, 'lr': 0.001, 'optimizer': 'adam', 'cr': 5}
+    p['img_dim'] = p['pic_width']*p['pic_width']
+    p['n_masks'] = math.floor(p['img_dim'] / p['cr']) * p['img_dim']
+
+
     return p

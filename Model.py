@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 import math
-from pytorch_lasso.lasso.linear import sparse_encode
+from Lasso import sparse_encode
 
 
 def breg_rec(diffuser_batch, bucket_batch, batch_size):
@@ -21,7 +21,7 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size):
 
 
 class Gen(nn.Module):
-    def __init__(self, z_dim, img_dim, cr):
+    def __init__(self, z_dim, img_dim, n_masks):
         super().__init__()
 
         self.linear1 = nn.Linear(z_dim, 128)
@@ -31,9 +31,8 @@ class Gen(nn.Module):
         self.linear2 = nn.Linear(128, 256)
         self.bn2 = nn.BatchNorm1d(256)
         self.relu2 = nn.ReLU()
-
-        self.linear3 = nn.Linear(256, math.floor(img_dim / cr) * img_dim)
-        self.bn3 = nn.BatchNorm1d(math.floor(img_dim / cr) * img_dim)
+        self.linear3 = nn.Linear(256, n_masks)
+        self.bn3 = nn.BatchNorm1d(n_masks)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):

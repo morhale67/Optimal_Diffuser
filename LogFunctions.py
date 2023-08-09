@@ -1,7 +1,6 @@
 import logging
 import time
 from datetime import datetime
-import os
 
 
 def print_run_info_to_log(p, folder_path='Logs/'):
@@ -48,11 +47,3 @@ def print_training_messages(epoch, train_loss, avg_psnr, start, log_path):
     print_and_log_message(f"Time for epoch {epoch + 1} : {round(end - start)} sec", log_path)
     print_and_log_message(f'Average PSNR for epoch {epoch + 1} on training set is {avg_psnr:.6f}', log_path)
 
-
-def make_folder(net_name, p):
-    folder_name = f"{net_name}_bs_{p['batch_size']}_cr_{p['cr']}"
-    print(folder_name)
-    folder_path = 'Results/' + folder_name
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-    return folder_path
