@@ -15,7 +15,6 @@ from LogFunctions import print_and_log_message
 from Testing import test_net
 from OutputHandler import save_loss_figure
 from OutputHandler import save_outputs
-import multiprocessing
 
 
 def train_local(params, log_path, folder_path):
@@ -40,20 +39,18 @@ def train_local(params, log_path, folder_path):
 
 
 def train(config=None):
-    # Initialize a new wandb run
     with wandb.init(config=config):
-        # If called by wandb.agent, as below,
-        # this config will be set by Sweep Controller
         config = wandb.config
         data_root = 'home/dsi/chalamo/PycharmProjects/Optimal_Diffuser/data/MNIST'
-        loader = build_dataset(config.batch_size, config.num_workers, data_root)
+        n_masks = math.floor(config.img_dim / config.cr)
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
-        network = build_network(config.z_dim, config.img_dim, config.cr, device)
-        optimizer = build_optimizer(network, config.optimizer, config.lr)
 
+        train_loader, test_loader = build_dataset(config.batch_size, config.num_workers, data_root)
+        network = build_network(config.z_dim, config.img_dim, n_masks, device)
+        optimizer = build_optimizer(network, config.optimizer, config.lr)
         for epoch in range(config.epochs):
-            avg_loss = train_epoch(network, loader, optimizer, config.batch_size, config.z_dim, config.img_dim,
-                                   config.n_masks, device, '', '')
+            avg_loss = train_epoch(network, train_loader, optimizer, config.batch_size, config.z_dim, config.img_dim,
+                                   n_masks, device, '', '')
             wandb.log({"loss": avg_loss, "epoch": epoch})
 
 
