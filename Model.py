@@ -31,8 +31,8 @@ class Gen(nn.Module):
         self.linear2 = nn.Linear(128, 256)
         self.bn2 = nn.BatchNorm1d(256)
         self.relu2 = nn.ReLU()
-        self.linear3 = nn.Linear(256, n_masks)
-        self.bn3 = nn.BatchNorm1d(n_masks)
+        self.linear3 = nn.Linear(256, n_masks * img_dim)
+        self.bn3 = nn.BatchNorm1d(n_masks * img_dim)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
