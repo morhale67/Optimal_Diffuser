@@ -12,19 +12,21 @@ def print_run_info_to_log(p, folder_path='Logs/'):
     logging.basicConfig(filename=log_path, format='%(asctime)s %(message)s', filemode='w')
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
-
-    logger.info(f"This is a summery of the run:")
-    logger.info(f"Batch size for this run: {p['batch_size']}")
-    logger.info(f"Size of original image: {p['img_dim']}")
     # logger.info(f"Number of patterns: {p['m_patterns']} which is {p['prc_patterns']}% of {p['pic_width']}^2")
     # logger.info(f'Number of gray levels in output image: {n_gray_levels}')
     # logger.info(f"Initial lr: {p['initial_lr']}, Division factor: {p['div_factor_lr']}, {p['num_dif_lr']} divisions with {p['n_epochs']} epochs for each")
     # # logger.info(f"lr_vector {lr_vector}, epochs_vector{epochs_vector}")
     # print_and_log_message(f"Number of samples in train is {p['num_train_samples']}", log_path)
     # print_and_log_message(f"Number of samples in test is {p['num_test_samples']}", log_path)
+
+    logger.info(f"This is a summery of the run:")
+    logger.info(f"Batch size for this run: {p['batch_size']}")
+    logger.info(f"Size of original image: {p['pic_width']} X {p['pic_width']}")
+    logger.info(f'learning rate: {p["lr"]}')
+    logger.info(f'number of masks: {p["n_masks"]}')
     logger.info(f'Compression ratio: {p["cr"]}')
     logger.info(f'epochs : {p["epochs"]}')
-    logger.info(f'number of fully connected layers in model: {p["n_fc"]}')
+    # logger.info(f'number of fully connected layers in model: {p["n_fc"]}')
     logger.info('***************************************************************************\n\n')
     return log_path
 
