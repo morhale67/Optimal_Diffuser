@@ -23,16 +23,22 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size):
 class Gen(nn.Module):
     def __init__(self, z_dim, img_dim, n_masks):
         super().__init__()
-
-        self.linear1 = nn.Linear(z_dim, 128)
-        self.bn1 = nn.BatchNorm1d(128)
+        self.pic_width = int(math.sqrt(img_dim))
+        self.linear1 = nn.Linear(z_dim, img_dim)
+        self.bn1 = nn.BatchNorm1d(img_dim)
         self.relu1 = nn.ReLU()
+        #
+        # self.linear2 = nn.Linear(128, img_dim)
+        # self.bn2 = nn.BatchNorm1d(img_dim)
+        # self.relu2 = nn.ReLU()
 
-        self.linear2 = nn.Linear(128, 256)
-        self.bn2 = nn.BatchNorm1d(256)
-        self.relu2 = nn.ReLU()
-        self.linear3 = nn.Linear(256, n_masks * img_dim)
-        self.bn3 = nn.BatchNorm1d(n_masks * img_dim)
+        # self.linear3 = nn.Linear(img_dim, n_masks * img_dim)
+        # self.bn3 = nn.BatchNorm1d(n_masks * img_dim)
+        # self.sigmoid = nn.Sigmoid()
+
+        # Change the last linear layer to a convolutional layer
+        self.conv3 = nn.Conv2d(1, n_masks, kernel_size=3, padding='same')
+        self.bn3 = nn.BatchNorm2d(n_masks)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
@@ -40,11 +46,9 @@ class Gen(nn.Module):
         x = self.linear1(x)
         x = self.bn1(x)
         x = self.relu1(x)
-        x = self.linear2(x)
-        x = self.bn2(x)
-        x = self.relu2(x)
-        x = self.linear3(x)
+        x = x.view(-1, 1, self.pic_width, self.pic_width)
+        x = self.conv3(x)
         x = self.bn3(x)
-        # x = torch.sign(x)
         out = self.sigmoid(x)
         return out
+
