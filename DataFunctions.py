@@ -12,15 +12,16 @@ import time
 from torch.utils.data.sampler import SubsetRandomSampler
 
 
-def extract_mean_std(pic_width, data_root='data/Medical/part1', plot_image=False):
-    mean_std_dict = {28: (0.30109875, 0.18729387),
-                     64: (0.29853243, 0.188016),
-                     128: (0.2976776, 0.1878308)}
-    saved_pic_width = list(mean_std_dict.keys())
-    if pic_width in saved_pic_width:
-        mean, std = mean_std_dict[pic_width]
-        return mean, std
+def extract_mean_std(pic_width, data_root, plot_image=False):
+    # mean_std_dict = {28: (0.30109875, 0.18729387),
+    #                  64: (0.29853243, 0.188016),
+    #                  128: (0.2976776, 0.1878308)}
+    # saved_pic_width = list(mean_std_dict.keys())
+    # if pic_width in saved_pic_width:
+    #     mean, std = mean_std_dict[pic_width]
+    #     return mean, std
 
+    data_root = os.path.join(data_root, 'class_dir')
     start = time.time()
     image_paths = [os.path.join(data_root, filename) for filename in os.listdir(data_root)]
 
@@ -150,13 +151,13 @@ def chunk_middle_parts(input_folder, pic_width):
             cv2.imwrite(chunk_path, middle_part)
 
 
-def get_data(batch_size, pic_width, num_workers, data_root='data/Medical', test_size=0.2):
-    mean, std = extract_mean_std(pic_width, plot_image=False)
+def get_data(batch_size, pic_width, num_workers, data_root, test_size=0.2):
+    # mean, std = extract_mean_std(data_root, plot_image=False)
     data_transforms = transforms.Compose([
         transforms.ToTensor(),
         transforms.Grayscale(num_output_channels=1),
         transforms.Resize((pic_width, pic_width)),
-        transforms.Normalize(mean=[mean], std=[std])
+        # transforms.Normalize(mean=[mean], std=[std])
     ])
 
     dataset = ImageFolder(root=data_root, transform=data_transforms)
