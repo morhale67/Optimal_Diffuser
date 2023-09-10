@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 import math
-from pytorch_lasso.lasso.linear import sparse_encode
+from Lasso import sparse_encode
 from testers import experiment_berg_params
 from testers import plot_rec_image
 
@@ -28,7 +28,7 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size):
 
         rec = sparse_encode(bucket_batch[rec_ind], diffuser, maxiter=maxiter, niter_inner=niter_inner, alpha=alpha,
                             algorithm='split-bregman')
-        plot_rec_image(rec, maxiter, niter_inner, alpha)
+        # plot_rec_image(rec, maxiter, niter_inner, alpha)
         recs_container = recs_container.clone()
         recs_container[rec_ind] = rec
 
@@ -80,6 +80,7 @@ class Gen(nn.Module):
         self.relu2 = nn.ReLU()
 
         self.linear3 = nn.Linear(256, math.floor(img_dim / cr) * img_dim)
+        print(math.floor(img_dim/cr)*img_dim)
         self.bn3 = nn.BatchNorm1d(math.floor(img_dim / cr) * img_dim)
         self.sigmoid = nn.Sigmoid()
 

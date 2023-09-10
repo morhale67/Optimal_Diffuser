@@ -3,8 +3,8 @@ import numpy as np
 import math
 import os
 import torch
-from pytorch_lasso.lasso.linear import sparse_encode
-
+from Lasso import sparse_encode
+import time
 
 def check_diff(diffuser, sim_object):
     orj_image, pic_width = plot_orj_image(sim_object)

@@ -11,15 +11,15 @@ def make_folder(net_name, p):
     return folder_path
 
 
-def save_outputs(output, y_label, pic_width, folder_path, name_sub_folder):
+def save_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder):
     in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
-    images_dir = folder_path + '/' + name_sub_folder
+    images_dir = folder_path + '/' + name_sub_folder + '/epoch_' + str(epoch)
     if not os.path.exists(images_dir):
         os.makedirs(images_dir)
     for i, (out_image, orig_image) in enumerate(in_out_images):
-        plt.imsave(images_dir + f'/test_image_{i}_out.jpg', out_image.detach().numpy())
-        plt.imsave(images_dir + f'/test_image_{i}_orig.jpg', orig_image.cpu().detach().numpy())
-        if i > 18:
+        plt.imsave(images_dir + f'/{name_sub_folder}_{i}_out.jpg', out_image.detach().numpy())
+        plt.imsave(images_dir + f'/{name_sub_folder}_{i}_orig.jpg', orig_image.cpu().detach().numpy())
+        if i == 9:
             break
 
 

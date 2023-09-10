@@ -25,12 +25,12 @@ def build_dataset(batch_size, num_workers, pic_width, data_root, Medical=False):
     else:
         transform = tr.Compose([
             tr.ToTensor(),
-            tr.Resize((pic_width, pic_width))
+            tr.Resize((pic_width, pic_width), antialias=True)
         ])
 
         train_dataset = dset.MNIST(data_root, train=True, download=True, transform=transform)
 
-        indices = torch.arange(20000)
+        indices = torch.arange(10)
         mnist_20k = data.Subset(train_dataset, indices)
 
         train_dataset_size = int(len(mnist_20k) * 0.8)
@@ -45,12 +45,14 @@ def build_dataset(batch_size, num_workers, pic_width, data_root, Medical=False):
 
 
 def build_network(z_dim, img_dim, n_masks, device, ac_stride=5):
-    network = Model.Gen_big_diff(z_dim, img_dim, n_masks, ac_stride)
+    # network = Model.Gen_big_diff(z_dim, img_dim, n_masks, ac_stride)
+    network = Model.Gen(z_dim, img_dim, 1)
     # # Use DataParallel to wrap your model for multi-GPU training
     # if torch.cuda.device_count() > 1:
     #     print("Using", torch.cuda.device_count(), "GPUs!")
     #     network = nn.DataParallel(network)
     torch.cuda.empty_cache()  # Before starting a new forward/backward pass
+    print('Build Model Successfully')
     return network.to(device)
 
 
@@ -75,7 +77,7 @@ def make_masks_from_big_diff(diffuser, ac_stride):
 
 
 def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n_masks, device, log_path, folder_path,
-                ac_stride=5, save_img=False, big_diffuser=True):
+                ac_stride=5, save_img=False, big_diffuser=False):
     cumu_loss = 0
     network.train()
 
@@ -88,16 +90,19 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
             pic_width = int(math.sqrt(img_dim))
             noise = torch.randn(int(batch_size), int(z_dim), requires_grad=True).to(device)
             diffuser = network(noise)
+#            print('Forward Net Successfully') 
             diffuser = diffuser.reshape(batch_size, pic_width, -1)
             diffuser = make_masks_from_big_diff(diffuser, ac_stride)
         else:
             noise = torch.randn(int(batch_size), int(z_dim), requires_grad=True).to(device)
             diffuser = network(noise)
+#            print('Forward Net Successfully') 
+            print(f'bs {batch_size} n_masks {n_masks}  img_dim {img_dim}')
             diffuser = diffuser.reshape(batch_size, n_masks, img_dim)
             # diffuser = diffuser.unsqueeze(0).expand(batch_size, -1, -1)  # new tensor that contains repeated copies of the original tensor's data
 
 
-        check_diff(diffuser, sim_object)
+        # check_diff(diffuser, sim_object)
 
         sim_object = sim_object.transpose(1, 2)
         sim_bucket = torch.matmul(diffuser, sim_object)
@@ -109,10 +114,12 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         sim_object = torch.squeeze(sim_object)
         criterion = nn.MSELoss()
         loss = criterion(reconstruct_imgs_batch, sim_object)
-
+#        print('Loss Has Been Calculated')
         optimizer.zero_grad()
         loss.backward()
+#        print('Loss Backward')
         optimizer.step()
+#        print('Optimizer step')
         cumu_loss += loss.item()
         torch.cuda.empty_cache()  # Before starting a new forward/backward pass
         try:
@@ -127,18 +134,18 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
     except Exception as e:
         pass
 
-    if save_img and epoch % 5 == 0:
-        try:
-            num_images = reconstruct_imgs_batch.shape[0]  # most of the time = batch_size
-            pic_width = int(math.sqrt(img_dim))
-            image_reconstructions = [wandb.Image(i.reshape(pic_width, pic_width)) for i in reconstruct_imgs_batch]
-            sim_object_images = [wandb.Image(i.reshape(pic_width, pic_width)) for i in sim_object]
+    if save_img: # and epoch % 5 == 0:
+#        try:
+ #           num_images = reconstruct_imgs_batch.shape[0]  # most of the time = batch_size
+  #          pic_width = int(math.sqrt(img_dim))
+   #         image_reconstructions = [wandb.Image(i.reshape(pic_width, pic_width)) for i in reconstruct_imgs_batch]
+    #        sim_object_images = [wandb.Image(i.reshape(pic_width, pic_width)) for i in sim_object]
 
-            wandb.log({'sim_diffuser': [wandb.Image(i) for i in diffuser]})
-            wandb.log({'train image reconstructions': image_reconstructions})
-            wandb.log({'train original images': sim_object_images})
-        except:
-            save_outputs(reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path,
+     #       wandb.log({'sim_diffuser': [wandb.Image(i) for i in diffuser]})
+      #      wandb.log({'train image reconstructions': image_reconstructions})
+       #     wandb.log({'train original images': sim_object_images})
+       # except:
+        save_outputs(epoch, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path,
                          'train_images')
 
     return train_loss

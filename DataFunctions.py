@@ -152,18 +152,19 @@ def chunk_middle_parts(input_folder, pic_width):
 
 
 def get_data(batch_size, pic_width, num_workers, data_root, test_size=0.2):
+    print(data_root)
     # mean, std = extract_mean_std(data_root, plot_image=False)
     data_transforms = transforms.Compose([
         transforms.ToTensor(),
         transforms.Grayscale(num_output_channels=1),
-        transforms.Resize((pic_width, pic_width)),
+        transforms.Resize((pic_width, pic_width), antialias=True),
         # transforms.Normalize(mean=[mean], std=[std])
     ])
 
     dataset = ImageFolder(root=data_root, transform=data_transforms)
-
     # Split the dataset into train and test sets
-    train_indices, test_indices = train_test_split(list(range(len(dataset))), test_size=test_size, random_state=42)
+    number_samples = 10 #len(dataset)
+    train_indices, test_indices = train_test_split(list(range(number_samples)), test_size=test_size, random_state=42)
     train_indices = adjust_list_length_same_bs(train_indices, batch_size)
     test_indices = adjust_list_length_same_bs(test_indices, batch_size)
 

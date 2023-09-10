@@ -5,10 +5,10 @@ def get_run_parameters():
     p = {'cr': 1,
          'batch_size': 2,
          'lr': 0.001,
-         'epochs': 4,
+         'epochs': 50,
          'num_workers': 4,
          'z_dim': 100,
-         'pic_width': 32,
+         'pic_width': 64,
          'optimizer': 'adam',
          'ac_stride': 7}
     p['img_dim'] = p['pic_width']*p['pic_width']

@@ -7,12 +7,16 @@ import torch
 from Training import train_epoch
 from Testing import test_net
 from LogFunctions import print_and_log_message
+from LogFunctions import print_training_messages
+from OutputHandler import save_loss_figure
 import wandb
 import math
+import time
 
 
 def train_local(params, log_path, folder_path, Medical=False):
-    data_root = 'data/Medical/chunked_128'
+    # data_root = '/data'
+    data_root = 'data/medical/chunked_256'
     train_loader, test_loader = build_dataset(params['batch_size'], params['num_workers'], params['pic_width'],
                                               data_root, Medical)
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -23,7 +27,7 @@ def train_local(params, log_path, folder_path, Medical=False):
         start_epoch = time.time()
         train_loss_epoch = train_epoch(epoch, network, train_loader, optimizer, params['batch_size'], params['z_dim'],
                                        params['img_dim'], params['n_masks'], device, log_path, folder_path,
-                                       ac_stride=params['ac_stride'])
+                                       ac_stride=params['ac_stride'], save_img=True)
         print_training_messages(epoch, train_loss_epoch, 0, start_epoch, log_path)
         test_loss_epoch = test_net(epoch, network, test_loader, device, log_path, folder_path, params['batch_size'],
                                    params['z_dim'], params['img_dim'], params['cr'], params['epochs'], save_img=True)
@@ -68,6 +72,9 @@ def train(config=None):
 
 def save_img_train_test(epoch, train_loader, test_loader, network, params, optimizer, device, folder_path, log_path):
     _ = train_epoch(epoch, network, train_loader, optimizer, params['batch_size'], params['z_dim'],
-                    params['img_dim'], params['cr'], device, log_path, folder_path, save_img=True)
-    _ = test_net(epoch, network, test_loader, device, log_path, folder_path, params['batch_size'], params['z_dim'],
-                 params['img_dim'], params['cr'], params['epochs'], save_img=True)
+                                       params['img_dim'], params['n_masks'], device, log_path, folder_path,
+                                       ac_stride=params['ac_stride'], save_img=True)
+    _ = test_loss_epoch = test_net(epoch, network, test_loader, device, log_path, folder_path, params['batch_size'],
+                                   params['z_dim'], params['img_dim'], params['cr'], params['epochs'], save_img=True)
+
+
