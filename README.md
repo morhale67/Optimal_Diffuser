@@ -1,2 +1,2 @@
 # Optimal_Diffuser
-Research in order to find the optimal diffusers for ghost imaging task, in different compression rates and data sets.
+The research focuses on finding the optimal diffusers for ghost imaging tasks, under different compression rates and datasets.
