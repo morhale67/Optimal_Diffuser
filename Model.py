@@ -36,7 +36,7 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size):
 
 
 class Gen_no_batch(nn.Module):
-    def __init__(self, z_dim, img_dim, cr):
+    def __init__(self, z_dim, img_dim, n_masks):
         super().__init__()
 
         self.linear1 = nn.Linear(z_dim, 128)
@@ -47,8 +47,8 @@ class Gen_no_batch(nn.Module):
         self.bn2 = nn.BatchNorm1d(256)
         self.relu2 = nn.ReLU()
 
-        self.linear3 = nn.Linear(256, math.floor(img_dim / cr) * img_dim// 2)
-        self.bn3 = nn.BatchNorm1d(math.floor(img_dim / cr) * img_dim // 2)
+        self.linear3 = nn.Linear(256, n_masks * img_dim// 2)
+        self.bn3 = nn.BatchNorm1d(n_masks * img_dim // 2)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
@@ -68,7 +68,7 @@ class Gen_no_batch(nn.Module):
 
 
 class Gen(nn.Module):
-    def __init__(self, z_dim, img_dim, cr):
+    def __init__(self, z_dim, img_dim, n_masks):
         super().__init__()
 
         self.linear1 = nn.Linear(z_dim, 128)
@@ -79,13 +79,11 @@ class Gen(nn.Module):
         self.bn2 = nn.BatchNorm1d(256)
         self.relu2 = nn.ReLU()
 
-        self.linear3 = nn.Linear(256, math.floor(img_dim / cr) * img_dim)
-        print(math.floor(img_dim/cr)*img_dim)
-        self.bn3 = nn.BatchNorm1d(math.floor(img_dim / cr) * img_dim)
+        self.linear3 = nn.Linear(256, n_masks * img_dim)
+        self.bn3 = nn.BatchNorm1d(n_masks * img_dim)
         self.sigmoid = nn.Sigmoid()
 
     def forward(self, x):
-
         x = self.linear1(x)
         x = self.bn1(x)
         x = self.relu1(x)
@@ -94,10 +92,8 @@ class Gen(nn.Module):
         x = self.relu2(x)
         x = self.linear3(x)
         x = self.bn3(x)
-        # x = torch.sign(x)
-        out = self.sigmoid(x)
-
-        return out
+        x = self.sigmoid(x)
+        return x
 
 
 class Gen_big_diff(nn.Module):

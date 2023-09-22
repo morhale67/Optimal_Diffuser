@@ -1,86 +1,26 @@
+import numpy as np
 import torch
 from torch import nn
 import wandb
 import math
 import torchvision.datasets as dset
 import torchvision.transforms as tr
-from torch.utils.data import DataLoader
-import torch.utils.data as data
-import torch.optim as optim
 from Model import Gen
 from Model import breg_rec
 from LogFunctions import print_and_log_message
 from OutputHandler import save_outputs
-from DataFunctions import get_data
 from testers import check_diff
 from testers import compare_buckets
 from Model import Gen_no_batch
 import Model
-
-
-def build_dataset(batch_size, num_workers, pic_width, data_root, Medical=False):
-    if Medical:
-        train_loader, test_loader = get_data(batch_size=batch_size, pic_width=pic_width, num_workers=num_workers,
-                                             data_root=data_root)
-    else:
-        transform = tr.Compose([
-            tr.ToTensor(),
-            tr.Resize((pic_width, pic_width), antialias=True)
-        ])
-
-        train_dataset = dset.MNIST(data_root, train=True, download=True, transform=transform)
-
-        indices = torch.arange(10)
-        mnist_20k = data.Subset(train_dataset, indices)
-
-        train_dataset_size = int(len(mnist_20k) * 0.8)
-        test_dataset_size = int(len(mnist_20k) * 0.2)
-        # val_dataset_size = int(len(mnist_20k) - train_dataset_size)
-        train_set, test_set = data.random_split(mnist_20k, [train_dataset_size, test_dataset_size])
-
-        train_loader = DataLoader(train_set, batch_size, shuffle=True, pin_memory=True, num_workers=num_workers)
-        test_loader = DataLoader(test_set, batch_size, shuffle=True, pin_memory=True, num_workers=num_workers)
-
-    return train_loader, test_loader
-
-
-def build_network(z_dim, img_dim, n_masks, device, ac_stride=5):
-    # network = Model.Gen_big_diff(z_dim, img_dim, n_masks, ac_stride)
-    network = Model.Gen(z_dim, img_dim, 1)
-    # # Use DataParallel to wrap your model for multi-GPU training
-    # if torch.cuda.device_count() > 1:
-    #     print("Using", torch.cuda.device_count(), "GPUs!")
-    #     network = nn.DataParallel(network)
-    torch.cuda.empty_cache()  # Before starting a new forward/backward pass
-    print('Build Model Successfully')
-    return network.to(device)
-
-
-def build_optimizer(network, optimizer, learning_rate):
-    if optimizer == "sgd":
-        optimizer = optim.SGD(network.parameters(),
-                              lr=learning_rate, momentum=0.9)
-    elif optimizer == "adam":
-        optimizer = optim.Adam(network.parameters(), lr=learning_rate)
-    return optimizer
-
-
-def make_masks_from_big_diff(diffuser, ac_stride):
-    """ diffuser shape: [pic_width, diff_width]"""
-    batch_size, pic_width, diff_width = diffuser.shape
-    img_dim = pic_width**2
-
-    mask_indices = torch.arange(0, diff_width-pic_width, ac_stride, dtype=torch.long).view(-1, 1)
-    diffuser_expanded = diffuser[:, :, mask_indices + torch.arange(pic_width)]
-    masks = diffuser_expanded.view(batch_size, -1, img_dim)
-    return masks
+from testers import check_diff_ac
 
 
 def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n_masks, device, log_path, folder_path,
                 ac_stride=5, save_img=False, big_diffuser=False):
     cumu_loss = 0
     network.train()
-
+    n_batchs = len(loader.batch_sampler)
     for batch_index, sim_bucket_tensor in enumerate(loader):
         # with torch.autograd.set_detect_anomaly(True):
         sim_object, _ = sim_bucket_tensor
@@ -92,12 +32,13 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
             diffuser = network(noise)
 #            print('Forward Net Successfully') 
             diffuser = diffuser.reshape(batch_size, pic_width, -1)
+            check_diff_ac(np.array(diffuser[0, :, :]))
             diffuser = make_masks_from_big_diff(diffuser, ac_stride)
         else:
             noise = torch.randn(int(batch_size), int(z_dim), requires_grad=True).to(device)
             diffuser = network(noise)
 #            print('Forward Net Successfully') 
-            print(f'bs {batch_size} n_masks {n_masks}  img_dim {img_dim}')
+#             print(f'bs {batch_size} n_masks {n_masks}  img_dim {img_dim}')
             diffuser = diffuser.reshape(batch_size, n_masks, img_dim)
             # diffuser = diffuser.unsqueeze(0).expand(batch_size, -1, -1)  # new tensor that contains repeated copies of the original tensor's data
 
@@ -124,9 +65,9 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         torch.cuda.empty_cache()  # Before starting a new forward/backward pass
         try:
             wandb.log({"batch loss": loss.item()})
-            print(f"batch loss {batch_index}/{len(loader.batch_sampler)}: {loss.item()}, epoch {epoch}")
+            print(f"batch loss {batch_index}/{n_batchs}: {loss.item()}, epoch {epoch}")
         except:
-            print_and_log_message(f"batch loss {batch_index}/{len(loader.batch_sampler)}: {loss.item()}", log_path)
+            print_and_log_message(f"Epoch number {epoch}, batch number {batch_index}/{n_batchs}:       batch loss {loss.item()}", log_path)
 
     train_loss = cumu_loss / len(loader)
     try:
@@ -150,3 +91,14 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
 
     return train_loss
 
+
+
+def make_masks_from_big_diff(diffuser, ac_stride):
+    """ diffuser shape: [pic_width, diff_width]"""
+    batch_size, pic_width, diff_width = diffuser.shape
+    img_dim = pic_width**2
+
+    mask_indices = torch.arange(0, diff_width-pic_width, ac_stride, dtype=torch.long).view(-1, 1)
+    diffuser_expanded = diffuser[:, :, mask_indices + torch.arange(pic_width)]
+    masks = diffuser_expanded.view(batch_size, -1, img_dim)
+    return masks

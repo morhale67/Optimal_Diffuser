@@ -6,6 +6,7 @@ import torch
 from Lasso import sparse_encode
 import time
 
+
 def check_diff(diffuser, sim_object):
     orj_image, pic_width = plot_orj_image(sim_object)
     masks_to_plot = plot_masks(diffuser)
@@ -100,3 +101,45 @@ def compare_buckets(bucket, diffuser, orj_img):
     if torch.all(my_bucket == bucket):
         return True
     return False
+
+
+def calculate_autocorrelation(image):
+    _, v_range = image.shape
+    u_range = 1
+    autocorr = np.zeros((u_range, v_range))
+
+    for u in range(u_range):
+        for v in range(v_range):
+            shifted_image = np.roll(np.roll(image, u, axis=0), v, axis=1)
+            autocorr[u, v] = np.sum(image * shifted_image)
+    return autocorr.resize(v_range)
+
+
+def check_diff_ac(diffuser, folder_path='temp'):
+    autocorr = calculate_autocorrelation(diffuser)
+    random_diffuser = torch.randn_like(diffuser)
+    rand_autocorr = calculate_autocorrelation(random_diffuser)
+    pic_size, _ = diffuser.shape
+    save_autocorr(autocorr, rand_autocorr, pic_size, folder_path)
+
+
+def save_autocorr(autocorr, rand_autocorr, pic_size, folder_path):
+
+    plt.rcParams['font.family'] = 'serif'
+    plt.rcParams['font.size'] = 16
+    plt.figure(figsize=(10, 7))
+
+    plt.plot(autocorr, label='ac output', color='red')
+    plt.plot(rand_autocorr, label='ac random', color='blue')
+
+
+    # Add labels and title
+    plt.xlabel('Stride', fontsize=22, fontname='Arial')
+    plt.ylabel(f'Autocorrelation_{pic_size}', fontsize=22, fontname='Arial')
+    plt.legend()
+
+    # Save the figure to the specified filename
+    full_file_path = os.path.join(folder_path, f'ac_{pic_size}')
+    plt.savefig(full_file_path)
+    plt.show()
+
