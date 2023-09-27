@@ -17,9 +17,9 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size):
         maxiter = 1  # 1, 50
         niter_inner = 1  # 1, 3
         # mu = 0.01  # 10
-        alpha = 0.3
+        alpha = 1  #0.3
 
-        # experiment_berg_params(bucket_batch[rec_ind], diffuser_batch[rec_ind])
+        experiment_berg_params(bucket_batch[rec_ind], diffuser_batch[rec_ind], folder_path='temp/Gan/new')
 
         if diffuser_batch.dim() == 3:
             diffuser = diffuser_batch[rec_ind]
@@ -33,6 +33,20 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size):
         recs_container[rec_ind] = rec
 
     return recs_container
+
+# Define the custom layer
+class ElementwiseMultiplyLayer(nn.Module):
+    def __init__(self, input_size, n_mask):
+        super(ElementwiseMultiplyLayer, self).__init__()
+        self.weights = nn.Parameter(torch.rand(n_mask, input_size))  # Define n_mask sets of learnable weights
+
+    def forward(self, input_vector):
+        # Perform element-wise multiplication for each set of weights
+        output_vectors = self.weights * input_vector.unsqueeze(0)  # Add a batch dimension
+        buckets = torch.sum(output_vectors, dim=1)  # Calculate the sum along dim=1
+        return buckets
+
+
 
 
 class Gen_no_batch(nn.Module):

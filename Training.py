@@ -43,7 +43,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
             # diffuser = diffuser.unsqueeze(0).expand(batch_size, -1, -1)  # new tensor that contains repeated copies of the original tensor's data
 
 
-        # check_diff(diffuser, sim_object)
+        check_diff(diffuser, sim_object, folder_path='temp/Gan/new')
 
         sim_object = sim_object.transpose(1, 2)
         sim_bucket = torch.matmul(diffuser, sim_object)

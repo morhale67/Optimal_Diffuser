@@ -4,27 +4,29 @@ import math
 import os
 import torch
 from Lasso import sparse_encode
+import matplotlib.pyplot as plt
+import cv2
 import time
 
 
-def check_diff(diffuser, sim_object):
-    orj_image, pic_width = plot_orj_image(sim_object)
-    masks_to_plot = plot_masks(diffuser)
-    plot_img_after_masks(masks_to_plot, orj_image, pic_width)
+def check_diff(diffuser, sim_object, folder_path):
+    orj_image, pic_width = plot_orj_image(sim_object, folder_path)
+    masks_to_plot = plot_masks(diffuser, folder_path)
+    plot_img_after_masks(masks_to_plot, orj_image, pic_width, folder_path)
 
 
-def plot_masks(diffuser):
+def plot_masks(diffuser, folder_path):
     """ diffuser is tensor with size (batch_size, n_masks, img_dim) """
     batch_size, n_masks, img_dim = diffuser.shape
     num_plots = min(n_masks, 6)
     masks_to_plot = diffuser[1, :num_plots, :]
     pic_width = int(math.sqrt(img_dim))
     masks_to_plot = masks_to_plot.view(num_plots, pic_width, pic_width)
-    plot_subplot(masks_to_plot, title="Masks")
+    plot_subplot(masks_to_plot, title="Masks", folder_path=folder_path)
     return masks_to_plot.cpu().detach().numpy()
 
 
-def plot_orj_image(sim_object):
+def plot_orj_image(sim_object, folder_path='temp/Gan'):
     """ sim_object.view(batch_size, 1, img_dim) """
     _, _, img_dim = sim_object.shape
     pic_width = int(math.sqrt(img_dim))
@@ -35,13 +37,13 @@ def plot_orj_image(sim_object):
     plt.imshow(orj_image, cmap='gray')
     plt.title('Original Image', fontsize=12)
     plt.axis('off')
-    save_path = os.path.join('temp', 'Original_Image')
+    save_path = os.path.join(folder_path, 'Original_Image')
     fig.savefig(save_path)
     plt.show()
     return orj_image, pic_width
 
 
-def plot_rec_image(rec_image, maxiter, niter_inner, alpha):
+def plot_rec_image(rec_image, maxiter, niter_inner, alpha, folder_path='temp/Gan'):
     """ rec_image.view(1, img_dim) """
     _, img_dim = rec_image.shape
     pic_width = int(math.sqrt(img_dim))
@@ -49,22 +51,24 @@ def plot_rec_image(rec_image, maxiter, niter_inner, alpha):
 
     fig = plt.figure(figsize=(4, 4))
     plt.imshow(rec_image, cmap='gray')
-    plt.title('Reconstructed Image', fontsize=12)
+    plt.title(f'Reconstructed Image : iter={maxiter},{niter_inner}, alpha={alpha}', fontsize=12)
     plt.axis('off')
-    save_path = os.path.join('temp', f'Reconstructed_Image_{maxiter}_{niter_inner}_{alpha}.png')
+    save_path = os.path.join(folder_path, f'Reconstructed_Image_{maxiter}_{niter_inner}_{alpha}.png')
     fig.savefig(save_path)
-    plt.show()
-    return plt.gcf()
+    # plt.show()
+    # time.sleep(1)
+    plt.close
+    # return plt.gcf()
 
 
-def plot_img_after_masks(masks_to_plot, orj_image, pic_width):
+def plot_img_after_masks(masks_to_plot, orj_image, pic_width, folder_path):
     orj_image = orj_image.reshape(1, 1, pic_width, pic_width)
     image_after_masks = masks_to_plot * orj_image
     image_after_masks = torch.tensor(image_after_masks).view(-1, pic_width, pic_width)
-    plot_subplot(image_after_masks, title="Image After Masks")
+    plot_subplot(image_after_masks, title="Image After Masks", folder_path=folder_path)
 
 
-def plot_subplot(img_tensor, title="Image Subplots", num_rows=2, num_cols=3):
+def plot_subplot(img_tensor, title="Image Subplots", num_rows=2, num_cols=3, folder_path='temp/Gan'):
     fig, axes = plt.subplots(num_rows, num_cols, figsize=(2, 2))
     num_plots = num_rows * num_cols
     for i in range(num_plots):
@@ -78,22 +82,20 @@ def plot_subplot(img_tensor, title="Image Subplots", num_rows=2, num_cols=3):
 
     plt.tight_layout()
     plt.suptitle(title, fontsize=16)  # Adding a title for the entire set of subplots
-    plt.savefig(os.path.join('temp', title))
+    plt.savefig(os.path.join(folder_path, title))
     plt.show()
 
 
-def experiment_berg_params(bucket, diffuser):
-    for maxiter in range(20, 50, 5):
-        for niter_inner in range(3, 10, 2):
-            for alpha in np.arange(0.1, 0.3, 0.5):
+def experiment_berg_params(bucket, diffuser, folder_path='temp/Gan'):
+    for maxiter in range(1, 10, 1):
+        for niter_inner in range(1, 10, 1):
+            for alpha in np.arange(0.1, 5, 0.5):
                 try:
                     rec = sparse_encode(bucket, diffuser, maxiter=maxiter,
                                         niter_inner=niter_inner, alpha=alpha, algorithm='split-bregman')
-                    figure = plot_rec_image(rec, maxiter, niter_inner, alpha)
+                    plot_rec_image(rec, maxiter, niter_inner, alpha, folder_path=folder_path)
                 except torch._C._LinAlgError as e:
                     print(f'params:{maxiter}, {niter_inner}, {alpha}')
-                    if 'figure' in locals():
-                        plt.close(figure)
 
 
 def compare_buckets(bucket, diffuser, orj_img):
@@ -115,7 +117,7 @@ def calculate_autocorrelation(image):
     return autocorr.resize(v_range)
 
 
-def check_diff_ac(diffuser, folder_path='temp'):
+def check_diff_ac(diffuser, folder_path='temp/Gan'):
     autocorr = calculate_autocorrelation(diffuser)
     random_diffuser = torch.randn_like(diffuser)
     rand_autocorr = calculate_autocorrelation(random_diffuser)
@@ -142,4 +144,67 @@ def save_autocorr(autocorr, rand_autocorr, pic_size, folder_path):
     full_file_path = os.path.join(folder_path, f'ac_{pic_size}')
     plt.savefig(full_file_path)
     plt.show()
+
+
+
+
+
+def rec_from_samples(cr, img_new_width):
+    xray_folder = 'data/medical/chunked_256/mock_class'
+    results_dir = 'temp/split_bregman_xray'
+    img_size = img_new_width**2
+    realizations_number = math.floor(img_size / cr)
+    image_names = get_image_names()
+
+    for i, img_name in enumerate(image_names):
+        knee_xray = cv2.imread(xray_folder + '/' + img_name, cv2.IMREAD_GRAYSCALE)
+        knee_xray = np.array(knee_xray)
+        plt.imshow(knee_xray)
+        plt.title(f"{i} ground truth cr={cr}")
+        plt.savefig(results_dir + "/" + f"xray-{i}_ground_truth_cr_{cr}.png")
+        plt.show()
+
+        knee_xray_resized = cv2.resize(knee_xray, (img_new_width, img_new_width))
+        plt.imshow(knee_xray_resized)
+        plt.title(f"resiezed {i} ground truth cr={cr}")
+        plt.savefig(results_dir + "/" + f"xray-{i}_resized_{img_new_width}_{img_new_width}_cr_{cr}.png")
+        plt.show()
+
+        sim_diffuser = create_diffuser(realizations_number, img_new_width**2)
+        sim_object = knee_xray_resized.reshape(1, img_size)
+        sim_object = sim_object.transpose(1, 0)
+        sim_bucket = np.matmul(sim_diffuser, sim_object)
+        sim_bucket = sim_bucket.transpose((1, 0))
+
+        sim_diffuser = torch.from_numpy(sim_diffuser)
+        sim_bucket = torch.from_numpy(sim_bucket)
+
+        rec = sparse_encode(sim_bucket, sim_diffuser, maxiter=1, niter_inner=1, alpha=1,
+                            algorithm='split-bregman')
+
+        plt.imshow(rec.reshape(img_new_width, img_new_width))
+        plt.title(f"reconstruction {i} cr={cr}")
+        plt.savefig(results_dir + "/" + f"rec_xray-{i}_cr_{cr}.png")
+        plt.show()
+
+
+def create_diffuser(M, N, diffuser_mean=0.5, diffuser_std=0.5):
+    diffuser_transmission = np.random.normal(diffuser_mean, diffuser_std, [M, N])
+    np.clip(diffuser_transmission, 0, 1, out=diffuser_transmission)  # ensure values within [0, 1]
+    return diffuser_transmission
+
+
+def get_image_names():
+    image_names = ['chunk_middle_part_0417_0697542589_01_WRI-R2_F008.png',
+                    'chunk_middle_part_0503_1018511008_01_WRI-L1_M012.png',
+                    'chunk_middle_part_0417_0727170640_02_WRI-R1_F009.png',
+                    'chunk_middle_part_0503_1018511068_01_WRI-L2_M012.png',
+                    'chunk_middle_part_0417_0727170681_02_WRI-R2_F009.png',
+                    'chunk_middle_part_0503_1020470848_02_WRI-L1_M012.png']
+    return image_names
+
+
+
+if __name__ == '__main__':
+    rec_from_samples(5, 64)
 
