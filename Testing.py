@@ -35,21 +35,21 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         cumu_loss += loss.item()
 
     test_loss = cumu_loss / len(loader)
-    try:
-        pic_width = int(math.sqrt(img_dim))
-        image_reconstructions = [wandb.Image(i.reshape(pic_width, pic_width)) for i in reconstruct_imgs_batch]
-        sim_object_images = [wandb.Image(i.reshape(pic_width, pic_width)) for i in sim_object]
+#    try:
+       # pic_width = int(math.sqrt(img_dim))
+       # image_reconstructions = [wandb.Image(i.reshape(pic_width, pic_width)) for i in reconstruct_imgs_batch]
+       # sim_object_images = [wandb.Image(i.reshape(pic_width, pic_width)) for i in sim_object]
 
-        wandb.log({'sim_diffuser': [wandb.Image(i) for i in sim_diffuser_reshaped]})
-        wandb.log({'image reconstructions': image_reconstructions})
-        wandb.log({'test original images': sim_object_images})
-        wandb.log({'Test_loss': test_loss})
+       # wandb.log({'sim_diffuser': [wandb.Image(i) for i in sim_diffuser_reshaped]})
+      #  wandb.log({'image reconstructions': image_reconstructions})
+     #   wandb.log({'test original images': sim_object_images})
+    #    wandb.log({'Test_loss': test_loss})
 
-        print(f"epoch [{epoch} / {epochs}] \ "
-              f"genValLoss: {test_loss:.4f}")
-    except:
-        print_and_log_message('Test Loss: {:.6f}\n'.format(test_loss), log_path)
-        if save_img:
-            save_outputs(reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path, 'test_images')
+   #     print(f"epoch [{epoch} / {epochs}] \ "
+  #            f"genValLoss: {test_loss:.4f}")
+ #   except:
+#        print_and_log_message('Test Loss: {:.6f}\n'.format(test_loss), log_path)
+    if save_img:
+        save_outputs(epoch, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path, 'test_images')
 
     return test_loss

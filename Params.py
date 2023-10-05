@@ -2,16 +2,19 @@ import math
 
 
 def get_run_parameters():
-    p = {'cr': 2,
+    p = {'data_medical': 'data\selected_images',
+         'data_name': 'medical',
+         'n_samples': 8,
+         'cr': 1,
          'batch_size': 2,
-         'lr': 0.001,
-         'epochs': 4,
-         'n_fc': 3,
-         'num_workers': 1,
-         'z_dim': 100,
+         'lr': 0.01,
+         'epochs': 50,
          'pic_width': 64,
-         'optimizer': 'adam'}
+         'optimizer': 'adam',
+         'big_diffuser': False,
+         'ac_stride': 7,
+         'num_workers': 4,
+         'z_dim': 100}
     p['img_dim'] = p['pic_width']*p['pic_width']
     p['n_masks'] = math.floor(p['img_dim'] / p['cr'])
-
     return p

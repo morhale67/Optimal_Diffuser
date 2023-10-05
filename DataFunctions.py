@@ -3,6 +3,7 @@ import os
 from torchvision import transforms
 from torchvision.datasets import ImageFolder
 from torch.utils.data import DataLoader
+from torch.utils import data
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
@@ -10,17 +11,58 @@ import random
 from sklearn.model_selection import train_test_split
 import time
 from torch.utils.data.sampler import SubsetRandomSampler
+import torchvision.datasets as dset
+import random
 
 
-def extract_mean_std(pic_width, data_root='data/Medical/part1', plot_image=False):
-    mean_std_dict = {28: (0.30109875, 0.18729387),
-                     64: (0.29853243, 0.188016),
-                     128: (0.2976776, 0.1878308)}
-    saved_pic_width = list(mean_std_dict.keys())
-    if pic_width in saved_pic_width:
-        mean, std = mean_std_dict[pic_width]
-        return mean, std
+def build_dataset(batch_size, num_workers, pic_width, n_samples, data_root_medical, data_name):
+    transform = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Resize((pic_width, pic_width)),
+        transforms.Grayscale(num_output_channels=1)
+    ])
+    if data_name.lower() == 'medical':
+        data_set = ImageFolder(root=data_root_medical, transform=transform)
+    elif data_name.lower() == 'cifar' or data_name.lower() == 'cifar10':
+        data_set = dset.CIFAR10(root='./data', train=True, transform=transform, download=True)
+    elif data_name.lower() == 'mnist':
+        transform = transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Resize((pic_width, pic_width))
+        ])
+        data_set = dset.MNIST(root='./data', train=True, transform=transform, download=True)
 
+    train_loader, test_loader = create_loader_from_data_set(data_set, n_samples, batch_size, num_workers)
+    # save_random_image_from_loader(train_loader, pic_width)
+    return train_loader, test_loader
+
+
+def create_loader_from_data_set(data_set, n_samples, batch_size, num_workers, test_size=0.2):
+    indices = list(range(len(data_set)))
+    selected_indices = random.sample(indices, n_samples)
+
+    train_indices, test_indices = train_test_split(selected_indices, test_size=test_size, random_state=42)
+    train_indices = adjust_list_length_same_bs(train_indices, batch_size)
+    test_indices = adjust_list_length_same_bs(test_indices, batch_size)
+
+    train_sampler = SubsetRandomSampler(train_indices)
+    test_sampler = SubsetRandomSampler(test_indices)
+
+    train_loader = DataLoader(data_set, batch_size=batch_size, num_workers=num_workers, sampler=train_sampler)
+    test_loader = DataLoader(data_set, batch_size=batch_size, num_workers=num_workers, sampler=test_sampler)
+    return train_loader, test_loader
+
+
+def extract_mean_std(pic_width, data_root, plot_image=False):
+    # mean_std_dict = {28: (0.30109875, 0.18729387),
+    #                  64: (0.29853243, 0.188016),
+    #                  128: (0.2976776, 0.1878308)}
+    # saved_pic_width = list(mean_std_dict.keys())
+    # if pic_width in saved_pic_width:
+    #     mean, std = mean_std_dict[pic_width]
+    #     return mean, std
+
+    data_root = os.path.join(data_root, 'class_dir')
     start = time.time()
     image_paths = [os.path.join(data_root, filename) for filename in os.listdir(data_root)]
 
@@ -148,30 +190,5 @@ def chunk_middle_parts(input_folder, pic_width):
             chunk_filename = f"chunk_middle_part_{filename}"
             chunk_path = os.path.join(output_folder, chunk_filename)
             cv2.imwrite(chunk_path, middle_part)
-
-
-def get_data(batch_size, pic_width, num_workers, data_root='data/Medical', test_size=0.2):
-    mean, std = extract_mean_std(pic_width, plot_image=False)
-    data_transforms = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Grayscale(num_output_channels=1),
-        transforms.Resize((pic_width, pic_width)),
-        transforms.Normalize(mean=[mean], std=[std])
-    ])
-
-    dataset = ImageFolder(root=data_root, transform=data_transforms)
-
-    # Split the dataset into train and test sets
-    train_indices, test_indices = train_test_split(list(range(len(dataset))), test_size=test_size, random_state=42)
-    train_indices = adjust_list_length_same_bs(train_indices, batch_size)
-    test_indices = adjust_list_length_same_bs(test_indices, batch_size)
-
-    train_sampler = SubsetRandomSampler(train_indices)
-    test_sampler = SubsetRandomSampler(test_indices)
-
-    train_loader = DataLoader(dataset, batch_size=batch_size, num_workers=num_workers, sampler=train_sampler)
-    test_loader = DataLoader(dataset, batch_size=batch_size, num_workers=num_workers, sampler=test_sampler)
-    # save_random_image_from_loader(train_loader, pic_width)
-    return train_loader, test_loader
 
 
