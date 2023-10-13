@@ -2,9 +2,9 @@ import math
 
 
 def get_run_parameters():
-    p = {'data_medical': 'data\selected_images',
+    p = {'data_medical': 'data_DSI/GCP_data',
          'data_name': 'medical',
-         'n_samples': 8,
+         'n_samples': 6,
          'cr': 1,
          'batch_size': 2,
          'lr': 0.01,

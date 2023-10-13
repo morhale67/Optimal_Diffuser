@@ -1,0 +1,15 @@
+2023-10-10 08:17:24,753 This is a summery of the run:
+2023-10-10 08:17:24,753 Batch size for this run: 2
+2023-10-10 08:17:24,753 Size of original image: 64 X 64
+2023-10-10 08:17:24,753 learning rate: 0.01
+2023-10-10 08:17:24,753 number of masks: 4096
+2023-10-10 08:17:24,753 Compression ratio: 1
+2023-10-10 08:17:24,753 epochs : 50
+2023-10-10 08:17:24,753 ***************************************************************************
+
+
+2023-10-10 08:17:24,753 learning rate: 0.01
+2023-10-10 08:18:07,544 Epoch number 0, batch number 0/1:       batch loss 0.09354452788829803
+2023-10-10 08:18:07,606 Epoch: 1 	Training Loss: 0.093545
+2023-10-10 08:18:07,606 Time for epoch 1 : 22 sec
+2023-10-10 08:18:07,606 Average PSNR for epoch 1 on training set is 0.000000
