@@ -1,0 +1,18 @@
+2023-10-15 02:09:00,859 This is a summery of the run:
+2023-10-15 02:09:00,859 Batch size for this run: 2
+2023-10-15 02:09:00,859 Size of original image: 64 X 64
+2023-10-15 02:09:00,859 learning rate: 0.003
+2023-10-15 02:09:00,859 number of masks: 2048
+2023-10-15 02:09:00,859 Compression ratio: 2
+2023-10-15 02:09:00,859 epochs : 20
+2023-10-15 02:09:00,859 ***************************************************************************
+
+
+2023-10-15 02:09:00,859 learning rate: 0.003
+2023-10-15 02:09:22,100 Epoch number 0, batch number 0/8000:       batch loss 0.1855200231075287
+2023-10-15 02:09:26,591 Epoch number 0, batch number 1/8000:       batch loss 0.08221731334924698
+2023-10-15 02:09:31,194 Epoch number 0, batch number 2/8000:       batch loss 0.11994686722755432
+2023-10-15 02:09:35,783 Epoch number 0, batch number 3/8000:       batch loss 0.30809256434440613
+2023-10-15 02:09:40,422 Epoch number 0, batch number 4/8000:       batch loss 0.041445791721343994
+2023-10-15 02:09:44,919 Epoch number 0, batch number 5/8000:       batch loss 0.0790000781416893
+2023-10-15 02:09:49,400 Epoch number 0, batch number 6/8000:       batch loss 0.09685204923152924
