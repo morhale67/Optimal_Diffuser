@@ -1,0 +1,278 @@
+2023-10-13 01:51:33,673 This is a summery of the run:
+2023-10-13 01:51:33,673 Batch size for this run: 2
+2023-10-13 01:51:33,673 Size of original image: 64 X 64
+2023-10-13 01:51:33,673 learning rate: 0.003
+2023-10-13 01:51:33,673 number of masks: 2048
+2023-10-13 01:51:33,673 Compression ratio: 2
+2023-10-13 01:51:33,673 epochs : 50
+2023-10-13 01:51:33,673 ***************************************************************************
+
+
+2023-10-13 01:51:33,673 learning rate: 0.003
+2023-10-13 01:51:54,826 Epoch number 0, batch number 0/2:       batch loss 0.4792669415473938
+2023-10-13 01:51:59,756 Epoch number 0, batch number 1/2:       batch loss 0.3748510181903839
+2023-10-13 01:51:59,801 Epoch: 1 	Training Loss: 0.427059
+2023-10-13 01:51:59,801 Time for epoch 1 : 16 sec
+2023-10-13 01:51:59,801 Average PSNR for epoch 1 on training set is 0.000000
+2023-10-13 01:52:24,867 Epoch number 1, batch number 0/2:       batch loss 0.4886128306388855
+2023-10-13 01:52:29,750 Epoch number 1, batch number 1/2:       batch loss 0.4044495224952698
+2023-10-13 01:52:30,417 Epoch: 2 	Training Loss: 0.446531
+2023-10-13 01:52:30,417 Time for epoch 2 : 29 sec
+2023-10-13 01:52:30,417 Average PSNR for epoch 2 on training set is 0.000000
+2023-10-13 01:52:56,197 Epoch number 2, batch number 0/2:       batch loss 0.3862282931804657
+2023-10-13 01:53:01,046 Epoch number 2, batch number 1/2:       batch loss 0.5166070461273193
+2023-10-13 01:53:02,695 Epoch: 3 	Training Loss: 0.451418
+2023-10-13 01:53:02,696 Time for epoch 3 : 30 sec
+2023-10-13 01:53:02,696 Average PSNR for epoch 3 on training set is 0.000000
+2023-10-13 01:53:28,472 Epoch number 3, batch number 0/2:       batch loss 0.3738248944282532
+2023-10-13 01:53:33,807 Epoch number 3, batch number 1/2:       batch loss 0.5097548961639404
+2023-10-13 01:53:36,015 Epoch: 4 	Training Loss: 0.441790
+2023-10-13 01:53:36,015 Time for epoch 4 : 31 sec
+2023-10-13 01:53:36,015 Average PSNR for epoch 4 on training set is 0.000000
+2023-10-13 01:54:03,673 Epoch number 4, batch number 0/2:       batch loss 0.41369807720184326
+2023-10-13 01:54:09,074 Epoch number 4, batch number 1/2:       batch loss 0.49754154682159424
+2023-10-13 01:54:11,317 Epoch: 5 	Training Loss: 0.455620
+2023-10-13 01:54:11,317 Time for epoch 5 : 32 sec
+2023-10-13 01:54:11,317 Average PSNR for epoch 5 on training set is 0.000000
+2023-10-13 01:54:39,534 Epoch number 5, batch number 0/2:       batch loss 0.5459362268447876
+2023-10-13 01:54:44,660 Epoch number 5, batch number 1/2:       batch loss 0.38941240310668945
+2023-10-13 01:54:46,309 Epoch: 6 	Training Loss: 0.467674
+2023-10-13 01:54:46,309 Time for epoch 6 : 31 sec
+2023-10-13 01:54:46,309 Average PSNR for epoch 6 on training set is 0.000000
+2023-10-13 01:55:12,322 Epoch number 6, batch number 0/2:       batch loss 0.4887658357620239
+2023-10-13 01:55:17,230 Epoch number 6, batch number 1/2:       batch loss 0.3919343948364258
+2023-10-13 01:55:18,896 Epoch: 7 	Training Loss: 0.440350
+2023-10-13 01:55:18,896 Time for epoch 7 : 30 sec
+2023-10-13 01:55:18,896 Average PSNR for epoch 7 on training set is 0.000000
+2023-10-13 01:55:44,969 Epoch number 7, batch number 0/2:       batch loss 0.3868551254272461
+2023-10-13 01:55:49,909 Epoch number 7, batch number 1/2:       batch loss 0.5197526812553406
+2023-10-13 01:55:52,139 Epoch: 8 	Training Loss: 0.453304
+2023-10-13 01:55:52,139 Time for epoch 8 : 31 sec
+2023-10-13 01:55:52,139 Average PSNR for epoch 8 on training set is 0.000000
+2023-10-13 01:56:20,229 Epoch number 8, batch number 0/2:       batch loss 0.3891355097293854
+2023-10-13 01:56:25,769 Epoch number 8, batch number 1/2:       batch loss 0.4849768579006195
+2023-10-13 01:56:27,967 Epoch: 9 	Training Loss: 0.437056
+2023-10-13 01:56:27,967 Time for epoch 9 : 32 sec
+2023-10-13 01:56:27,967 Average PSNR for epoch 9 on training set is 0.000000
+2023-10-13 01:56:55,935 Epoch number 9, batch number 0/2:       batch loss 0.3952963054180145
+2023-10-13 01:57:01,474 Epoch number 9, batch number 1/2:       batch loss 0.5074368119239807
+2023-10-13 01:57:03,670 Epoch: 10 	Training Loss: 0.451367
+2023-10-13 01:57:03,670 Time for epoch 10 : 32 sec
+2023-10-13 01:57:03,670 Average PSNR for epoch 10 on training set is 0.000000
+2023-10-13 01:57:31,391 Epoch number 10, batch number 0/2:       batch loss 0.5349133610725403
+2023-10-13 01:57:36,877 Epoch number 10, batch number 1/2:       batch loss 0.38357552886009216
+2023-10-13 01:57:39,111 Epoch: 11 	Training Loss: 0.459244
+2023-10-13 01:57:39,111 Time for epoch 11 : 32 sec
+2023-10-13 01:57:39,111 Average PSNR for epoch 11 on training set is 0.000000
+2023-10-13 01:58:07,028 Epoch number 11, batch number 0/2:       batch loss 0.5099697113037109
+2023-10-13 01:58:12,376 Epoch number 11, batch number 1/2:       batch loss 0.371256560087204
+2023-10-13 01:58:14,644 Epoch: 12 	Training Loss: 0.440613
+2023-10-13 01:58:14,644 Time for epoch 12 : 32 sec
+2023-10-13 01:58:14,644 Average PSNR for epoch 12 on training set is 0.000000
+2023-10-13 01:58:42,676 Epoch number 12, batch number 0/2:       batch loss 0.5801713466644287
+2023-10-13 01:58:47,638 Epoch number 12, batch number 1/2:       batch loss 0.3061865568161011
+2023-10-13 01:58:49,287 Epoch: 13 	Training Loss: 0.443179
+2023-10-13 01:58:49,287 Time for epoch 13 : 31 sec
+2023-10-13 01:58:49,287 Average PSNR for epoch 13 on training set is 0.000000
+2023-10-13 01:59:15,560 Epoch number 13, batch number 0/2:       batch loss 0.38435646891593933
+2023-10-13 01:59:20,457 Epoch number 13, batch number 1/2:       batch loss 0.5213252305984497
+2023-10-13 01:59:22,138 Epoch: 14 	Training Loss: 0.452841
+2023-10-13 01:59:22,138 Time for epoch 14 : 30 sec
+2023-10-13 01:59:22,138 Average PSNR for epoch 14 on training set is 0.000000
+2023-10-13 01:59:48,276 Epoch number 14, batch number 0/2:       batch loss 0.5920530557632446
+2023-10-13 01:59:53,323 Epoch number 14, batch number 1/2:       batch loss 0.30134347081184387
+2023-10-13 01:59:55,005 Epoch: 15 	Training Loss: 0.446698
+2023-10-13 01:59:55,005 Time for epoch 15 : 30 sec
+2023-10-13 01:59:55,006 Average PSNR for epoch 15 on training set is 0.000000
+2023-10-13 02:00:21,688 Epoch number 15, batch number 0/2:       batch loss 0.5036710500717163
+2023-10-13 02:00:26,725 Epoch number 15, batch number 1/2:       batch loss 0.4099297821521759
+2023-10-13 02:00:28,381 Epoch: 16 	Training Loss: 0.456800
+2023-10-13 02:00:28,382 Time for epoch 16 : 31 sec
+2023-10-13 02:00:28,382 Average PSNR for epoch 16 on training set is 0.000000
+2023-10-13 02:00:55,001 Epoch number 16, batch number 0/2:       batch loss 0.29463550448417664
+2023-10-13 02:00:59,969 Epoch number 16, batch number 1/2:       batch loss 0.6263650059700012
+2023-10-13 02:01:01,662 Epoch: 17 	Training Loss: 0.460500
+2023-10-13 02:01:01,662 Time for epoch 17 : 31 sec
+2023-10-13 02:01:01,662 Average PSNR for epoch 17 on training set is 0.000000
+2023-10-13 02:01:28,400 Epoch number 17, batch number 0/2:       batch loss 0.5099905729293823
+2023-10-13 02:01:33,957 Epoch number 17, batch number 1/2:       batch loss 0.39766326546669006
+2023-10-13 02:01:36,209 Epoch: 18 	Training Loss: 0.453827
+2023-10-13 02:01:36,209 Time for epoch 18 : 32 sec
+2023-10-13 02:01:36,209 Average PSNR for epoch 18 on training set is 0.000000
+2023-10-13 02:02:04,842 Epoch number 18, batch number 0/2:       batch loss 0.5343268513679504
+2023-10-13 02:02:10,305 Epoch number 18, batch number 1/2:       batch loss 0.3920174837112427
+2023-10-13 02:02:12,510 Epoch: 19 	Training Loss: 0.463172
+2023-10-13 02:02:12,510 Time for epoch 19 : 32 sec
+2023-10-13 02:02:12,510 Average PSNR for epoch 19 on training set is 0.000000
+2023-10-13 02:02:40,956 Epoch number 19, batch number 0/2:       batch loss 0.39031970500946045
+2023-10-13 02:02:46,020 Epoch number 19, batch number 1/2:       batch loss 0.5177701711654663
+2023-10-13 02:02:47,673 Epoch: 20 	Training Loss: 0.454045
+2023-10-13 02:02:47,673 Time for epoch 20 : 31 sec
+2023-10-13 02:02:47,673 Average PSNR for epoch 20 on training set is 0.000000
+2023-10-13 02:03:14,090 Epoch number 20, batch number 0/2:       batch loss 0.5230939388275146
+2023-10-13 02:03:19,078 Epoch number 20, batch number 1/2:       batch loss 0.39133381843566895
+2023-10-13 02:03:20,750 Epoch: 21 	Training Loss: 0.457214
+2023-10-13 02:03:20,750 Time for epoch 21 : 30 sec
+2023-10-13 02:03:20,750 Average PSNR for epoch 21 on training set is 0.000000
+2023-10-13 02:03:47,504 Epoch number 21, batch number 0/2:       batch loss 0.5212087631225586
+2023-10-13 02:03:52,430 Epoch number 21, batch number 1/2:       batch loss 0.40556421875953674
+2023-10-13 02:03:54,103 Epoch: 22 	Training Loss: 0.463386
+2023-10-13 02:03:54,104 Time for epoch 22 : 30 sec
+2023-10-13 02:03:54,104 Average PSNR for epoch 22 on training set is 0.000000
+2023-10-13 02:04:21,379 Epoch number 22, batch number 0/2:       batch loss 0.5751811861991882
+2023-10-13 02:04:26,520 Epoch number 22, batch number 1/2:       batch loss 0.3042829930782318
+2023-10-13 02:04:28,195 Epoch: 23 	Training Loss: 0.439732
+2023-10-13 02:04:28,195 Time for epoch 23 : 31 sec
+2023-10-13 02:04:28,195 Average PSNR for epoch 23 on training set is 0.000000
+2023-10-13 02:04:55,125 Epoch number 23, batch number 0/2:       batch loss 0.5972078442573547
+2023-10-13 02:05:00,239 Epoch number 23, batch number 1/2:       batch loss 0.2957761287689209
+2023-10-13 02:05:01,907 Epoch: 24 	Training Loss: 0.446492
+2023-10-13 02:05:01,907 Time for epoch 24 : 31 sec
+2023-10-13 02:05:01,907 Average PSNR for epoch 24 on training set is 0.000000
+2023-10-13 02:05:28,964 Epoch number 24, batch number 0/2:       batch loss 0.5061725378036499
+2023-10-13 02:05:34,048 Epoch number 24, batch number 1/2:       batch loss 0.3916105031967163
+2023-10-13 02:05:35,684 Epoch: 25 	Training Loss: 0.448892
+2023-10-13 02:05:35,685 Time for epoch 25 : 31 sec
+2023-10-13 02:05:35,685 Average PSNR for epoch 25 on training set is 0.000000
+2023-10-13 02:06:02,623 Epoch number 25, batch number 0/2:       batch loss 0.5085315108299255
+2023-10-13 02:06:07,704 Epoch number 25, batch number 1/2:       batch loss 0.36995023488998413
+2023-10-13 02:06:09,319 Epoch: 26 	Training Loss: 0.439241
+2023-10-13 02:06:09,320 Time for epoch 26 : 31 sec
+2023-10-13 02:06:09,320 Average PSNR for epoch 26 on training set is 0.000000
+2023-10-13 02:06:35,935 Epoch number 26, batch number 0/2:       batch loss 0.49206122756004333
+2023-10-13 02:06:40,899 Epoch number 26, batch number 1/2:       batch loss 0.3805730938911438
+2023-10-13 02:06:42,590 Epoch: 27 	Training Loss: 0.436317
+2023-10-13 02:06:42,590 Time for epoch 27 : 30 sec
+2023-10-13 02:06:42,590 Average PSNR for epoch 27 on training set is 0.000000
+2023-10-13 02:07:09,089 Epoch number 27, batch number 0/2:       batch loss 0.5124967098236084
+2023-10-13 02:07:14,098 Epoch number 27, batch number 1/2:       batch loss 0.4115026891231537
+2023-10-13 02:07:15,749 Epoch: 28 	Training Loss: 0.462000
+2023-10-13 02:07:15,749 Time for epoch 28 : 31 sec
+2023-10-13 02:07:15,749 Average PSNR for epoch 28 on training set is 0.000000
+2023-10-13 02:07:42,197 Epoch number 28, batch number 0/2:       batch loss 0.6025569438934326
+2023-10-13 02:07:47,284 Epoch number 28, batch number 1/2:       batch loss 0.3122008740901947
+2023-10-13 02:07:48,920 Epoch: 29 	Training Loss: 0.457379
+2023-10-13 02:07:48,920 Time for epoch 29 : 30 sec
+2023-10-13 02:07:48,921 Average PSNR for epoch 29 on training set is 0.000000
+2023-10-13 02:08:15,256 Epoch number 29, batch number 0/2:       batch loss 0.38975900411605835
+2023-10-13 02:08:20,912 Epoch number 29, batch number 1/2:       batch loss 0.5265581011772156
+2023-10-13 02:08:23,163 Epoch: 30 	Training Loss: 0.458159
+2023-10-13 02:08:23,163 Time for epoch 30 : 32 sec
+2023-10-13 02:08:23,163 Average PSNR for epoch 30 on training set is 0.000000
+2023-10-13 02:08:51,284 Epoch number 30, batch number 0/2:       batch loss 0.5163437128067017
+2023-10-13 02:08:56,704 Epoch number 30, batch number 1/2:       batch loss 0.3885120749473572
+2023-10-13 02:08:58,948 Epoch: 31 	Training Loss: 0.452428
+2023-10-13 02:08:58,948 Time for epoch 31 : 32 sec
+2023-10-13 02:08:58,948 Average PSNR for epoch 31 on training set is 0.000000
+2023-10-13 02:09:27,876 Epoch number 31, batch number 0/2:       batch loss 0.5018832683563232
+2023-10-13 02:09:32,813 Epoch number 31, batch number 1/2:       batch loss 0.39449089765548706
+2023-10-13 02:09:34,453 Epoch: 32 	Training Loss: 0.448187
+2023-10-13 02:09:34,453 Time for epoch 32 : 32 sec
+2023-10-13 02:09:34,453 Average PSNR for epoch 32 on training set is 0.000000
+2023-10-13 02:10:01,423 Epoch number 32, batch number 0/2:       batch loss 0.49863407015800476
+2023-10-13 02:10:06,457 Epoch number 32, batch number 1/2:       batch loss 0.40466511249542236
+2023-10-13 02:10:08,112 Epoch: 33 	Training Loss: 0.451650
+2023-10-13 02:10:08,112 Time for epoch 33 : 31 sec
+2023-10-13 02:10:08,112 Average PSNR for epoch 33 on training set is 0.000000
+2023-10-13 02:10:34,680 Epoch number 33, batch number 0/2:       batch loss 0.3018653392791748
+2023-10-13 02:10:39,754 Epoch number 33, batch number 1/2:       batch loss 0.5829883217811584
+2023-10-13 02:10:41,435 Epoch: 34 	Training Loss: 0.442427
+2023-10-13 02:10:41,435 Time for epoch 34 : 31 sec
+2023-10-13 02:10:41,435 Average PSNR for epoch 34 on training set is 0.000000
+2023-10-13 02:11:08,145 Epoch number 34, batch number 0/2:       batch loss 0.31136155128479004
+2023-10-13 02:11:13,286 Epoch number 34, batch number 1/2:       batch loss 0.5991532206535339
+2023-10-13 02:11:14,952 Epoch: 35 	Training Loss: 0.455257
+2023-10-13 02:11:14,952 Time for epoch 35 : 31 sec
+2023-10-13 02:11:14,952 Average PSNR for epoch 35 on training set is 0.000000
+2023-10-13 02:11:41,559 Epoch number 35, batch number 0/2:       batch loss 0.48557597398757935
+2023-10-13 02:11:46,529 Epoch number 35, batch number 1/2:       batch loss 0.3997339606285095
+2023-10-13 02:11:48,193 Epoch: 36 	Training Loss: 0.442655
+2023-10-13 02:11:48,193 Time for epoch 36 : 30 sec
+2023-10-13 02:11:48,193 Average PSNR for epoch 36 on training set is 0.000000
+2023-10-13 02:12:14,418 Epoch number 36, batch number 0/2:       batch loss 0.3814813792705536
+2023-10-13 02:12:19,898 Epoch number 36, batch number 1/2:       batch loss 0.5072839260101318
+2023-10-13 02:12:22,105 Epoch: 37 	Training Loss: 0.444383
+2023-10-13 02:12:22,105 Time for epoch 37 : 31 sec
+2023-10-13 02:12:22,105 Average PSNR for epoch 37 on training set is 0.000000
+2023-10-13 02:12:50,456 Epoch number 37, batch number 0/2:       batch loss 0.40019091963768005
+2023-10-13 02:12:55,930 Epoch number 37, batch number 1/2:       batch loss 0.4904603958129883
+2023-10-13 02:12:58,110 Epoch: 38 	Training Loss: 0.445326
+2023-10-13 02:12:58,110 Time for epoch 38 : 32 sec
+2023-10-13 02:12:58,110 Average PSNR for epoch 38 on training set is 0.000000
+2023-10-13 02:13:27,094 Epoch number 38, batch number 0/2:       batch loss 0.6093240976333618
+2023-10-13 02:13:32,077 Epoch number 38, batch number 1/2:       batch loss 0.31801432371139526
+2023-10-13 02:13:33,722 Epoch: 39 	Training Loss: 0.463669
+2023-10-13 02:13:33,722 Time for epoch 39 : 32 sec
+2023-10-13 02:13:33,722 Average PSNR for epoch 39 on training set is 0.000000
+2023-10-13 02:14:00,608 Epoch number 39, batch number 0/2:       batch loss 0.5918297171592712
+2023-10-13 02:14:05,762 Epoch number 39, batch number 1/2:       batch loss 0.3090876042842865
+2023-10-13 02:14:07,411 Epoch: 40 	Training Loss: 0.450459
+2023-10-13 02:14:07,411 Time for epoch 40 : 31 sec
+2023-10-13 02:14:07,411 Average PSNR for epoch 40 on training set is 0.000000
+2023-10-13 02:14:34,411 Epoch number 40, batch number 0/2:       batch loss 0.2960154414176941
+2023-10-13 02:14:39,406 Epoch number 40, batch number 1/2:       batch loss 0.5879677534103394
+2023-10-13 02:14:41,091 Epoch: 41 	Training Loss: 0.441992
+2023-10-13 02:14:41,092 Time for epoch 41 : 31 sec
+2023-10-13 02:14:41,092 Average PSNR for epoch 41 on training set is 0.000000
+2023-10-13 02:15:07,824 Epoch number 41, batch number 0/2:       batch loss 0.3825550675392151
+2023-10-13 02:15:12,793 Epoch number 41, batch number 1/2:       batch loss 0.5298723578453064
+2023-10-13 02:15:14,490 Epoch: 42 	Training Loss: 0.456214
+2023-10-13 02:15:14,490 Time for epoch 42 : 31 sec
+2023-10-13 02:15:14,490 Average PSNR for epoch 42 on training set is 0.000000
+2023-10-13 02:15:41,501 Epoch number 42, batch number 0/2:       batch loss 0.5042855739593506
+2023-10-13 02:15:46,426 Epoch number 42, batch number 1/2:       batch loss 0.3784642517566681
+2023-10-13 02:15:48,158 Epoch: 43 	Training Loss: 0.441375
+2023-10-13 02:15:48,158 Time for epoch 43 : 31 sec
+2023-10-13 02:15:48,159 Average PSNR for epoch 43 on training set is 0.000000
+2023-10-13 02:16:14,896 Epoch number 43, batch number 0/2:       batch loss 0.38154807686805725
+2023-10-13 02:16:19,924 Epoch number 43, batch number 1/2:       batch loss 0.5178041458129883
+2023-10-13 02:16:21,591 Epoch: 44 	Training Loss: 0.449676
+2023-10-13 02:16:21,591 Time for epoch 44 : 31 sec
+2023-10-13 02:16:21,591 Average PSNR for epoch 44 on training set is 0.000000
+2023-10-13 02:16:48,478 Epoch number 44, batch number 0/2:       batch loss 0.505493700504303
+2023-10-13 02:16:53,419 Epoch number 44, batch number 1/2:       batch loss 0.38103437423706055
+2023-10-13 02:16:55,097 Epoch: 45 	Training Loss: 0.443264
+2023-10-13 02:16:55,098 Time for epoch 45 : 30 sec
+2023-10-13 02:16:55,098 Average PSNR for epoch 45 on training set is 0.000000
+2023-10-13 02:17:21,973 Epoch number 45, batch number 0/2:       batch loss 0.5830831527709961
+2023-10-13 02:17:26,972 Epoch number 45, batch number 1/2:       batch loss 0.3159578740596771
+2023-10-13 02:17:28,681 Epoch: 46 	Training Loss: 0.449521
+2023-10-13 02:17:28,681 Time for epoch 46 : 31 sec
+2023-10-13 02:17:28,681 Average PSNR for epoch 46 on training set is 0.000000
+2023-10-13 02:17:55,640 Epoch number 46, batch number 0/2:       batch loss 0.5054063200950623
+2023-10-13 02:18:00,818 Epoch number 46, batch number 1/2:       batch loss 0.3920246958732605
+2023-10-13 02:18:02,485 Epoch: 47 	Training Loss: 0.448716
+2023-10-13 02:18:02,485 Time for epoch 47 : 31 sec
+2023-10-13 02:18:02,485 Average PSNR for epoch 47 on training set is 0.000000
+2023-10-13 02:18:29,308 Epoch number 47, batch number 0/2:       batch loss 0.38818660378456116
+2023-10-13 02:18:34,346 Epoch number 47, batch number 1/2:       batch loss 0.49776387214660645
+2023-10-13 02:18:36,000 Epoch: 48 	Training Loss: 0.442975
+2023-10-13 02:18:36,000 Time for epoch 48 : 31 sec
+2023-10-13 02:18:36,000 Average PSNR for epoch 48 on training set is 0.000000
+2023-10-13 02:19:02,084 Epoch number 48, batch number 0/2:       batch loss 0.3800470232963562
+2023-10-13 02:19:07,627 Epoch number 48, batch number 1/2:       batch loss 0.5335843563079834
+2023-10-13 02:19:09,837 Epoch: 49 	Training Loss: 0.456816
+2023-10-13 02:19:09,837 Time for epoch 49 : 31 sec
+2023-10-13 02:19:09,837 Average PSNR for epoch 49 on training set is 0.000000
+2023-10-13 02:19:38,315 Epoch number 49, batch number 0/2:       batch loss 0.527376651763916
+2023-10-13 02:19:43,867 Epoch number 49, batch number 1/2:       batch loss 0.3681749701499939
+2023-10-13 02:19:46,091 Epoch: 50 	Training Loss: 0.447776
+2023-10-13 02:19:46,091 Time for epoch 50 : 32 sec
+2023-10-13 02:19:46,091 Average PSNR for epoch 50 on training set is 0.000000
+2023-10-13 02:20:14,974 Epoch number 50, batch number 0/2:       batch loss 0.5930688977241516
+2023-10-13 02:20:19,941 Epoch number 50, batch number 1/2:       batch loss 0.31533974409103394
+2023-10-13 02:20:24,347 findfont: Font family 'Arial' not found.
+2023-10-13 02:20:24,348 findfont: Font family 'Arial' not found.
+2023-10-13 02:20:24,348 findfont: Font family 'Times New Roman' not found.
+2023-10-13 02:20:24,349 findfont: Font family 'Times New Roman' not found.
+2023-10-13 02:20:24,349 findfont: Font family 'Times New Roman' not found.
+2023-10-13 02:20:24,361 findfont: Font family 'Arial' not found.
+2023-10-13 02:20:24,361 findfont: Font family 'Arial' not found.
+2023-10-13 02:20:24,368 findfont: Font family 'Arial' not found.
+2023-10-13 02:20:24,370 findfont: Font family 'Times New Roman' not found.
+2023-10-13 02:20:24,371 findfont: Font family 'Times New Roman' not found.
+2023-10-13 02:20:24,428 findfont: Font family 'Arial' not found.
+2023-10-13 02:20:24,435 findfont: Font family 'Arial' not found.
+2023-10-13 02:20:24,437 findfont: Font family 'Times New Roman' not found.
+2023-10-13 02:20:24,437 findfont: Font family 'Times New Roman' not found.
+2023-10-13 02:20:24,443 Run Finished Successfully
