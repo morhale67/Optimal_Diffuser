@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 
 def make_folder(net_name, p):
-    folder_name = f"{p['data_name']}_{net_name}_bs_{p['batch_size']}_cr_{p['cr']}"
+    folder_name = f"{p['data_name']}_{net_name}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}"
     print(folder_name)
     folder_path = 'Results/' + folder_name
     if not os.path.exists(folder_path):
