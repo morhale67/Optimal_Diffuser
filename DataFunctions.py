@@ -24,7 +24,7 @@ def build_dataset(batch_size, num_workers, pic_width, n_samples, data_root_medic
     if data_name.lower() == 'medical':
         data_set = ImageFolder(root=data_root_medical, transform=transform)
     elif data_name.lower() == 'cifar' or data_name.lower() == 'cifar10':
-        data_set = dset.CIFAR10(root='./data', train=True, transform=transform, download=True)
+        data_set = dset.CIFAR10(root='./data/cifar10', train=True, transform=transform, download=True)
     elif data_name.lower() == 'mnist':
         transform = transforms.Compose([
             transforms.ToTensor(),
