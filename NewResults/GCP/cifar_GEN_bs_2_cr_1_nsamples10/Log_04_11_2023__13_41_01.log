@@ -1,0 +1,25 @@
+2023-11-04 13:41:01,944 This is a summery of the run:
+2023-11-04 13:41:01,944 Batch size for this run: 2
+2023-11-04 13:41:01,945 Size of original image: 64 X 64
+2023-11-04 13:41:01,945 learning rate: 0.01
+2023-11-04 13:41:01,945 number of masks: 4096
+2023-11-04 13:41:01,945 Compression ratio: 1
+2023-11-04 13:41:01,945 epochs : 50
+2023-11-04 13:41:01,945 ***************************************************************************
+
+
+2023-11-04 13:41:01,945 learning rate: 0.01
+2023-11-04 13:42:00,888 Epoch number 0, batch number 0/4:       batch loss 0.16143867373466492
+2023-11-04 13:42:08,370 Epoch number 0, batch number 1/4:       batch loss 0.1582915186882019
+2023-11-04 13:42:15,814 Epoch number 0, batch number 2/4:       batch loss 0.2281598299741745
+2023-11-04 13:42:23,246 Epoch number 0, batch number 3/4:       batch loss 0.365952730178833
+2023-11-04 13:42:23,305 Epoch: 1 	Training Loss: 0.228461
+2023-11-04 13:42:23,305 Time for epoch 1 : 44 sec
+2023-11-04 13:42:23,305 Average PSNR for epoch 1 on training set is 0.000000
+2023-11-04 13:43:12,259 Epoch number 1, batch number 0/4:       batch loss 0.2628237009048462
+2023-11-04 13:43:19,791 Epoch number 1, batch number 1/4:       batch loss 0.1615828424692154
+2023-11-04 13:43:27,184 Epoch number 1, batch number 2/4:       batch loss 0.32351332902908325
+2023-11-04 13:43:34,665 Epoch number 1, batch number 3/4:       batch loss 0.37318840622901917
+2023-11-04 13:43:35,290 Epoch: 2 	Training Loss: 0.280277
+2023-11-04 13:43:35,290 Time for epoch 2 : 70 sec
+2023-11-04 13:43:35,290 Average PSNR for epoch 2 on training set is 0.000000
