@@ -14,6 +14,7 @@ from testers import compare_buckets
 from Model import Gen_no_batch
 import Model
 from testers import check_diff_ac
+import matplotlib.pyplot as plt
 
 
 def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n_masks, device, log_path, folder_path,
@@ -25,6 +26,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         # with torch.autograd.set_detect_anomaly(True):
         sim_object, _ = sim_bucket_tensor
         sim_object = sim_object.view(-1, 1, img_dim).to(device)
+        first_image = sim_object[0, 0, :].view(-1, int(math.sqrt(img_dim)))
         sim_object = sim_object.to(device)
         if big_diffuser:
             pic_width = int(math.sqrt(img_dim))
@@ -88,7 +90,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
        # except:
         save_outputs(epoch, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path,
                          f'train_images')
-
+        plt.imsave(f'temp/epoch_{epoch}.jpg', first_image.cpu().detach().numpy())
     return train_loss
 
 
