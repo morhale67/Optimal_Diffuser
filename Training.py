@@ -87,7 +87,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
        #     wandb.log({'train original images': sim_object_images})
        # except:
         save_outputs(epoch, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path,
-                         f'train_images_batch_{batch_index}')
+                         f'train_images')
 
     return train_loss
 
