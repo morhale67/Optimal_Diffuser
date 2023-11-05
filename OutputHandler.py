@@ -1,5 +1,7 @@
 import os
 import matplotlib.pyplot as plt
+import torch
+import cv2
 
 
 def make_folder(net_name, p):
@@ -12,13 +14,21 @@ def make_folder(net_name, p):
 
 
 def save_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder):
+    if epoch == 0:
+        org_imgs = y_label.view(-1, pic_width, pic_width)
+        first_img = org_imgs[0, :, :]
+    else:
+        first_img = cv2.imread(os.join(folder_path, name_sub_folder, f'/{name_sub_folder}_0_out.jpg'))
+        first_img = torch.from_numpy(first_img)
     in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
     images_dir = folder_path + '/' + name_sub_folder + '/epoch_' + str(epoch)
     if not os.path.exists(images_dir):
         os.makedirs(images_dir)
     for i, (out_image, orig_image) in enumerate(in_out_images):
-        plt.imsave(images_dir + f'/{name_sub_folder}_{i}_out.jpg', out_image.detach().numpy())
-        plt.imsave(images_dir + f'/{name_sub_folder}_{i}_orig.jpg', orig_image.cpu().detach().numpy())
+        same_as_first = torch.equal(first_img, orig_image)
+        image_number = int(not same_as_first)
+        plt.imsave(images_dir + f'/{name_sub_folder}_{image_number}_out.jpg', out_image.detach().numpy())
+        plt.imsave(images_dir + f'/{name_sub_folder}_{image_number}_orig.jpg', orig_image.cpu().detach().numpy())
         if i == 9:
             break
 
