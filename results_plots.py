@@ -2,16 +2,21 @@ import math
 import os
 import matplotlib.pyplot as plt
 from matplotlib.image import imread
-base_directory = r'Results\cifar_GEN_bs_2_cr_4_nsamples4_picw_32\train_images'
+base_directory = r'Results\cifar_GEN_bs_2_cr_10_nsamples4_picw_32\train_images'
+n_in_batch = 1
 name_img = 'subplot'
 image_filenames = []
 names_subfolders = os.listdir(base_directory)
 n_images = min(len(names_subfolders) + 1, 100)
 
-for i in range(1, n_images+1):
+folder_path = os.path.join(base_directory, 'epoch_0')
+orig_image_filename = os.path.join(folder_path, f'train_images_{n_in_batch}_orig.jpg')
+image_filenames.append(orig_image_filename)
+
+for i in range(1, n_images):
     folder_name = f'epoch_{i}'
     folder_path = os.path.join(base_directory, folder_name)
-    image_filename = os.path.join(folder_path, 'train_images_0_out.jpg')  # Adjust the file extension as needed
+    image_filename = os.path.join(folder_path, f'train_images_{n_in_batch}_out.jpg')
     if os.path.exists(image_filename):
         image_filenames.append(image_filename)
 
@@ -44,5 +49,5 @@ for i, image_filename in enumerate(image_filenames):
 for j in range(i+1, len(axes)):
     fig.delaxes(axes[j])
 
-plt.savefig(rf'C:\Users\user\Desktop\Projects\research\Medical_Optimal_diffuser\Results\{name_img}.png')
+plt.savefig(rf'Results\{name_img}.png')
 plt.show()
