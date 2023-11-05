@@ -2,21 +2,22 @@ import math
 import os
 import matplotlib.pyplot as plt
 from matplotlib.image import imread
-base_directory = r'Results\cifar_GEN_bs_2_cr_4_nsamples4\train_images'
+base_directory = r'Results\cifar_GEN_bs_2_cr_4_nsamples4_picw_32\train_images'
+name_img = 'subplot'
 image_filenames = []
 names_subfolders = os.listdir(base_directory)
-n_images = min(len(names_subfolders) + 1, 50)
+n_images = min(len(names_subfolders) + 1, 100)
 
 for i in range(1, n_images+1):
     folder_name = f'epoch_{i}'
     folder_path = os.path.join(base_directory, folder_name)
-    image_filename = os.path.join(folder_path, 'train_images_1_out.jpg')  # Adjust the file extension as needed
+    image_filename = os.path.join(folder_path, 'train_images_0_out.jpg')  # Adjust the file extension as needed
     if os.path.exists(image_filename):
         image_filenames.append(image_filename)
 
 
 # Define the number of columns for subplots
-num_cols = 5  # Adjust this according to your preference
+num_cols = 10  # Adjust this according to your preference
 
 # Calculate the number of rows based on the number of images and columns
 num_images = len(image_filenames)
@@ -43,5 +44,5 @@ for i, image_filename in enumerate(image_filenames):
 for j in range(i+1, len(axes)):
     fig.delaxes(axes[j])
 
-plt.savefig('temp/output_subplot.png')
+plt.savefig(rf'C:\Users\user\Desktop\Projects\research\Medical_Optimal_diffuser\Results\{name_img}.png')
 plt.show()
