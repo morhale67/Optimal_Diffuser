@@ -9,7 +9,7 @@ def get_run_parameters():
          'batch_size': 2,
          'lr': 0.01,
          'epochs': 50,
-         'pic_width': 64,
+         'pic_width': 32,
          'optimizer': 'adam',
          'big_diffuser': False,
          'ac_stride': 7,

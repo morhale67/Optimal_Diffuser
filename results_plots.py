@@ -2,12 +2,12 @@ import math
 import os
 import matplotlib.pyplot as plt
 from matplotlib.image import imread
-base_directory = r'Results\cifar_GEN_bs_2_cr_1_nsamples4\train_images'
+base_directory = r'Results\cifar_GEN_bs_2_cr_4_nsamples4\train_images'
 image_filenames = []
 names_subfolders = os.listdir(base_directory)
-n_images = min(len(names_subfolders) + 1, 41)
+n_images = min(len(names_subfolders) + 1, 50)
 
-for i in range(1, n_images):
+for i in range(1, n_images+1):
     folder_name = f'epoch_{i}'
     folder_path = os.path.join(base_directory, folder_name)
     image_filename = os.path.join(folder_path, 'train_images_1_out.jpg')  # Adjust the file extension as needed
