@@ -42,6 +42,7 @@ def create_loader_from_data_set(data_set, n_samples, batch_size, num_workers, te
     selected_indices = random.sample(indices, n_samples)
 
     train_indices, test_indices = train_test_split(selected_indices, test_size=test_size, random_state=42)
+    test_indices = train_indices  # ToDo: delete this line
     train_indices = adjust_list_length_same_bs(train_indices, batch_size)
     test_indices = adjust_list_length_same_bs(test_indices, batch_size)
 
