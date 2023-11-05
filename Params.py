@@ -4,7 +4,7 @@ import math
 def get_run_parameters():
     p = {'data_medical': 'data_DSI/GCP_data',
          'data_name': 'cifar',
-         'n_samples': 10,
+         'n_samples': 4,
          'cr': 1,
          'batch_size': 2,
          'lr': 0.01,
