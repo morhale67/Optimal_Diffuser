@@ -14,12 +14,13 @@ def make_folder(net_name, p):
 
 
 def save_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder):
+    first_img_path = folder_path + '/' + name_sub_folder + f'first_image.pth'
     if epoch == 0:
         org_imgs = y_label.view(-1, pic_width, pic_width)
         first_img = org_imgs[0, :, :]
+        torch.save(first_img, first_img_path)
     else:
-        first_img = cv2.imread(os.join(folder_path, name_sub_folder, f'/{name_sub_folder}_0_out.jpg'))
-        first_img = torch.from_numpy(first_img)
+        first_img = torch.load(first_img_path)
     in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
     images_dir = folder_path + '/' + name_sub_folder + '/epoch_' + str(epoch)
     if not os.path.exists(images_dir):
