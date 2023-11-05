@@ -5,7 +5,7 @@ def get_run_parameters():
     p = {'data_medical': 'data_DSI/GCP_data',
          'data_name': 'cifar',
          'n_samples': 4,
-         'cr': 1,
+         'cr': 4,
          'batch_size': 2,
          'lr': 0.01,
          'epochs': 50,
