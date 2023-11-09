@@ -2,7 +2,7 @@ import math
 import os
 import matplotlib.pyplot as plt
 from matplotlib.image import imread
-base_directory = r'Results\cifar_GEN_bs_2_cr_10_nsamples4_picw_32\train_images'
+base_directory = r'Results\cifar_GEN_bs_2_cr_5_nsamples4_picw_32\train_images'
 n_in_batch = 1
 name_img = 'subplot'
 image_filenames = []

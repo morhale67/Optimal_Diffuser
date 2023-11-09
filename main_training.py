@@ -14,21 +14,30 @@ import time
 import Model
 
 
+def get_lr(epoch, lr_vec, cum_epochs):
+    for i, threshold in enumerate(cum_epochs):
+        if epoch < threshold:
+            return lr_vec[i]
+
+
 def train_local(params, log_path, folder_path):
     data_root_medical = params['data_medical']
     train_loader, test_loader = build_dataset(params['batch_size'], params['num_workers'], params['pic_width'],
                                               params['n_samples'], data_root_medical, params['data_name'])
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    network = build_network(params['z_dim'], params['img_dim'], params['n_masks'], device, ac_stride=params['ac_stride'])
+    network = build_network(params['z_dim'], params['img_dim'], params['n_masks'], device)
     optimizer = build_optimizer(network, params['optimizer'], params['lr'])
     train_loss, test_loss = [], []
+    lr = params['lr']
     for epoch in range(params['epochs']):
+        if params['learn_vec_lr']:
+            lr = get_lr(epoch, params['lr_vec'], params['cum_epochs'])
+            optimizer = build_optimizer(network, params['optimizer'], lr)
         start_epoch = time.time()
         train_loss_epoch = train_epoch(epoch, network, train_loader, optimizer, params['batch_size'], params['z_dim'],
                                        params['img_dim'], params['n_masks'], device, log_path, folder_path,
-                                       ac_stride=params['ac_stride'], save_img=True,
-                                       big_diffuser=params['big_diffuser'])
-        print_training_messages(epoch, train_loss_epoch, 0, start_epoch, log_path)
+                                       save_img=True)
+        print_training_messages(epoch, train_loss_epoch, lr, start_epoch, log_path)
         test_loss_epoch = test_net(epoch, network, test_loader, device, log_path, folder_path, params['batch_size'],
                                    params['z_dim'], params['img_dim'], params['cr'], params['epochs'], save_img=True)
         train_loss.append(train_loss_epoch)

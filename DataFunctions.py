@@ -23,6 +23,8 @@ def build_dataset(batch_size, num_workers, pic_width, n_samples, data_root_medic
     ])
     if data_name.lower() == 'medical':
         data_set = ImageFolder(root=data_root_medical, transform=transform)
+    if data_name.lower() == 'simple_cifar':
+        data_set = ImageFolder(root='./data_DSI/GCP_data/simple_cifar', transform=transform)
     elif data_name.lower() == 'cifar' or data_name.lower() == 'cifar10':
         data_set = dset.CIFAR10(root='./data/cifar10', train=True, transform=transform, download=True)
     elif data_name.lower() == 'mnist':
@@ -42,7 +44,6 @@ def create_loader_from_data_set(data_set, n_samples, batch_size, num_workers, te
     selected_indices = random.sample(indices, n_samples)
 
     train_indices, test_indices = train_test_split(selected_indices, test_size=test_size, random_state=42)
-    test_indices = train_indices  # ToDo: delete this line
     train_indices = adjust_list_length_same_bs(train_indices, batch_size)
     test_indices = adjust_list_length_same_bs(test_indices, batch_size)
 
