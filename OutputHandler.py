@@ -5,7 +5,8 @@ import cv2
 
 
 def make_folder(net_name, p):
-    folder_name = f"{p['data_name']}_{net_name}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}_picw_{p['pic_width']}"
+    folder_name = f"{p['data_name']}_{net_name}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}" \
+                  f"_picw_{p['pic_width']}_lr_{p['lr']}"
     print(folder_name)
     folder_path = 'Results/' + folder_name
     if not os.path.exists(folder_path):

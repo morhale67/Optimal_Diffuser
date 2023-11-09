@@ -43,9 +43,10 @@ def print_and_log_message(message, log_path):
         logger.exception(message)
 
 
-def print_training_messages(epoch, train_loss, avg_psnr, start, log_path):
+def print_training_messages(epoch, train_loss, lr, start, log_path):
     end = time.time()
     print_and_log_message(f'Epoch: {epoch + 1} \tTraining Loss: {train_loss:.6f}', log_path)
     print_and_log_message(f"Time for epoch {epoch + 1} : {round(end - start)} sec", log_path)
-    print_and_log_message(f'Average PSNR for epoch {epoch + 1} on training set is {avg_psnr:.6f}', log_path)
+    # print_and_log_message(f'Average PSNR for epoch {epoch + 1} on training set is {avg_psnr:.6f}', log_path)
+    print_and_log_message(f'lr for epoch {epoch + 1} is {lr:.5f}', log_path)
 
