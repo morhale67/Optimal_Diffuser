@@ -21,9 +21,7 @@ def build_dataset(batch_size, num_workers, pic_width, n_samples, data_root_medic
     if data_name.lower() == 'medical':
         data_set = ImageFolder(root=data_root_medical, transform=transform)
     if data_name.lower() == 'simple_cifar':
-        indices = get_simple_images_indices()
-        cifar_dataset = datasets.CIFAR10(root='./data/cifar10', train=True, transform=transform, download=True)
-        data_set = Subset(cifar_dataset, indices)
+        data_set = ImageFolder(root='./data_DSI/GCP_data/simple_cifar', transform=transform)
     elif data_name.lower() == 'cifar' or data_name.lower() == 'cifar10':
         data_set = dset.CIFAR10(root='./data/cifar10', train=True, transform=transform, download=True)
     elif data_name.lower() == 'mnist':
@@ -48,10 +46,11 @@ def create_loader_from_data_set(data_set, n_samples, batch_size, num_workers, te
 
     train_sampler = SubsetRandomSampler(train_indices)
     test_sampler = SubsetRandomSampler(test_indices)
-    gen = torch.Generator()
 
-    train_loader = DataLoader(data_set, batch_size=batch_size, num_workers=num_workers, sampler=train_sampler, generator=gen)
-    test_loader = DataLoader(data_set, batch_size=batch_size, num_workers=num_workers, sampler=test_sampler, generator=gen)
+    train_loader = DataLoader(data_set, batch_size=batch_size, num_workers=num_workers, sampler=train_sampler,
+                              shuffle=False)
+    test_loader = DataLoader(data_set, batch_size=batch_size, num_workers=num_workers, sampler=test_sampler,
+                             shuffle=False)
     return train_loader, test_loader
 
 
