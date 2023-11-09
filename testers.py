@@ -3,10 +3,13 @@ import numpy as np
 import math
 import os
 import torch
+from torchvision import datasets, transforms
 from Lasso import sparse_encode
 import matplotlib.pyplot as plt
 import cv2
 import time
+from DataFunctions import get_simple_images_indices
+from torch.utils.data import Subset, DataLoader
 
 
 def check_diff(diffuser, sim_object, folder_path):
@@ -203,6 +206,101 @@ def get_image_names():
                     'chunk_middle_part_0503_1020470848_02_WRI-L1_M012.png']
     return image_names
 
+
+
+def subplot_simple_images(data_dir, save_dir):
+    indices = get_simple_images_indices()
+    transform = transforms.Compose([transforms.Grayscale(num_output_channels=1), transforms.ToTensor()])
+    cifar_dataset = datasets.CIFAR10(root=data_dir, train=True, download=True, transform=transform)
+
+    custom_dataset = Subset(cifar_dataset, indices)
+    dataloader = iter(custom_dataset)
+
+    num_images = len(custom_dataset)
+    batch_size = 50
+
+    for batch_start in range(0, num_images, batch_size):
+        # Create a new figure for each batch of images
+        fig, axes = plt.subplots(5, 10, figsize=(10, 10))
+
+        for i in range(batch_size):
+            try:
+                image, label = next(dataloader)
+            except StopIteration:
+                break
+
+            # Convert the image tensor to a NumPy array
+            image = image.numpy()
+
+            # Get the corresponding axis for the subplot
+            row = i // 10
+            col = i % 10
+            ax = axes[row, col]
+
+            # Display the image and set the title
+            ax.imshow(np.transpose(image, (1, 2, 0)))
+            image_index = batch_start + i
+            ax.set_title(f"Idx: {image_index}")
+
+        # Remove axis labels and adjust layout
+        for ax in axes.flat:
+            ax.axis('off')
+        plt.tight_layout()
+
+        # Save or display the figure
+        if save_dir:
+            if not os.path.exists(save_dir):
+                os.makedirs(save_dir)
+            plt.savefig(f"{save_dir}/simple_cifar_images_part_{batch_start}.png")
+        else:
+            plt.show()
+        plt.close()
+
+def subplot_cifar_images(data_dir, save_dir):
+    # Define the CIFAR-10 dataset and dataloader
+    transform = transforms.Compose([transforms.Grayscale(num_output_channels=1), transforms.ToTensor()])
+    cifar_dataset = datasets.CIFAR10(root=data_dir, train=True, download=True, transform=transform)
+    dataloader = iter(cifar_dataset)
+
+    num_images = len(cifar_dataset)
+    batch_size = 50
+
+    for batch_start in range(0, num_images, batch_size):
+        # Create a new figure for each batch of images
+        fig, axes = plt.subplots(5, 10, figsize=(10, 10))
+
+        for i in range(batch_size):
+            try:
+                image, label = next(dataloader)
+            except StopIteration:
+                break
+
+            # Convert the image tensor to a NumPy array
+            image = image.numpy()
+
+            # Get the corresponding axis for the subplot
+            row = i // 10
+            col = i % 10
+            ax = axes[row, col]
+
+            # Display the image and set the title
+            ax.imshow(np.transpose(image, (1, 2, 0)))
+            image_index = batch_start + i
+            ax.set_title(f"Idx: {image_index}")
+
+        # Remove axis labels and adjust layout
+        for ax in axes.flat:
+            ax.axis('off')
+        plt.tight_layout()
+
+        # Save or display the figure
+        if save_dir:
+            if not os.path.exists(save_dir):
+                os.makedirs(save_dir)
+            plt.savefig(f"{save_dir}/cifar_images_batch_{batch_start}.png")
+        else:
+            plt.show()
+        plt.close()
 
 
 if __name__ == '__main__':
