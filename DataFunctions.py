@@ -40,9 +40,10 @@ def create_loader_from_data_set(data_set, n_samples, batch_size, num_workers, te
     indices = list(range(len(data_set)))
     selected_indices = random.sample(indices, n_samples)
 
-    train_indices, test_indices = train_test_split(selected_indices, test_size=test_size, random_state=42, shuffle=False)
-#    train_indices = adjust_list_length_same_bs(train_indices, batch_size)
-#    test_indices = adjust_list_length_same_bs(test_indices, batch_size)
+    train_indices, test_indices = train_test_split(selected_indices, test_size=test_size,
+                              shuffle=False, random_state=42)
+    train_indices = adjust_list_length_same_bs(train_indices, batch_size)
+    test_indices = adjust_list_length_same_bs(test_indices, batch_size)
 
     train_sampler = SubsetRandomSampler(train_indices)
     test_sampler = SubsetRandomSampler(test_indices)
