@@ -6,13 +6,16 @@ from LogFunctions import print_and_log_message
 import math
 from OutputHandler import save_outputs
 import numpy as np
-
+from OutputHandler import save_orig_img
+from OutputHandler import save_randomize_outputs
 
 def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_dim, img_dim, cr, epochs,
              save_img=False):
     model.eval()
     model.to(device)
     cumu_loss = 0
+    pic_width = int(math.sqrt(img_dim))
+    save_orig_img(loader, folder_path, name_sub_folder='test_images')
 
     for batch_index, sim_bucket_tensor in enumerate(loader):
         sim_object, _ = sim_bucket_tensor
@@ -33,6 +36,9 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         criterion = nn.MSELoss()
         loss = criterion(reconstruct_imgs_batch, sim_object)
         cumu_loss += loss.item()
+        if save_img:
+            save_randomize_outputs(epoch, reconstruct_imgs_batch, sim_object, pic_width, folder_path,
+                                   'test_images')
 
     test_loss = cumu_loss / len(loader)
 #    try:
@@ -49,7 +55,6 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
   #            f"genValLoss: {test_loss:.4f}")
  #   except:
 #        print_and_log_message('Test Loss: {:.6f}\n'.format(test_loss), log_path)
-    if save_img:
-        save_outputs(epoch, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path, 'test_images')
+
 
     return test_loss

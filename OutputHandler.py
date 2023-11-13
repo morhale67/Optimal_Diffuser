@@ -2,11 +2,13 @@ import os
 import matplotlib.pyplot as plt
 import torch
 import cv2
+from torchvision import transforms
 
 
 def make_folder(net_name, p):
-    folder_name = f"{p['data_name']}_{net_name}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}" \
-                  f"_picw_{p['pic_width']}_lr_{p['lr']}"
+    folder_name = f"{p['data_name']}_{net_name}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}_picw_{p['pic_width']}"
+    if not p['learn_vec_lr']:
+        folder_name = folder_name + f"_lr_{p['lr']}"
     print(folder_name)
     folder_path = 'Results/' + folder_name
     if not os.path.exists(folder_path):
@@ -15,7 +17,7 @@ def make_folder(net_name, p):
 
 
 def save_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder):
-    first_img_path = folder_path + '/' + name_sub_folder + f'first_image.pth'
+    first_img_path = folder_path + '/' + name_sub_folder + f'/first_image.pth'
     if epoch == 0:
         org_imgs = y_label.view(-1, pic_width, pic_width)
         first_img = org_imgs[0, :, :]
@@ -60,4 +62,55 @@ def save_loss_figure(train_loss, test_loss, folder_path='.', filename='loss_figu
     # Save the figure to the specified filename
     full_file_path = os.path.join(folder_path, filename)
     plt.savefig(full_file_path)
+    plt.show()
+
+
+def save_orig_img(loader, folder_path, name_sub_folder):
+    all_image_tensors = []
+    for index, (batch_images, label) in enumerate(loader):
+        for img in batch_images:
+            all_image_tensors.append(img)
+    all_images_tensor = torch.cat(all_image_tensors, dim=0)
+    path_subfolder = os.path.join(folder_path, name_sub_folder)
+    if not os.path.exists(path_subfolder):
+        os.makedirs(path_subfolder)
+    orig_img_path = os.path.join(path_subfolder, 'orig_imgs_tensors.pt')
+    torch.save(all_images_tensor, orig_img_path)
+
+
+def save_randomize_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder):
+    in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
+    for i, (out_image, orig_image) in enumerate(in_out_images):
+        image_number = get_original_image_number(orig_image, folder_path, name_sub_folder)
+        if image_number <= 20:
+            output_dir = folder_path + '/' + name_sub_folder + f'/image_{image_number}'
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
+            if epoch == 0:
+                plt.imsave(output_dir + f'/{image_number}_orig.jpg', orig_image.cpu().detach().numpy())
+            plt.imsave(output_dir + f'/epoch_{epoch}_{image_number}_out.jpg', out_image.detach().numpy())
+
+
+def get_original_image_number(orig_img, folder_path, name_sub_folder):
+    orig_img_path = folder_path + '/' + name_sub_folder + '/orig_imgs_tensors.pt'
+    all_images_tensor = torch.load(orig_img_path)
+    for index, image_tensor in enumerate(all_images_tensor):
+        if torch.equal(orig_img, image_tensor):
+            # plot_2_images(orig_img, image_tensor, index)
+            return index
+    return -1
+
+
+def plot_2_images(cur_img, image_tensor, index):
+    # Plot the original and matching tensors
+    plt.figure(figsize=(8, 4))
+
+    plt.subplot(1, 2, 1)
+    plt.imshow(cur_img.numpy(), cmap='gray')
+    plt.title('Current Image')
+
+    plt.subplot(1, 2, 2)
+    plt.imshow(image_tensor.numpy(), cmap='gray')
+    plt.title('Matching Image (Index {})'.format(index))
+
     plt.show()
