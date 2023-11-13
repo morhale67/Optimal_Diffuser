@@ -41,12 +41,13 @@ def create_loader_from_data_set(data_set, n_samples, batch_size, num_workers, te
     selected_indices = random.sample(indices, n_samples)
 
     train_indices, test_indices = train_test_split(selected_indices, test_size=test_size,
-                              shuffle=False, random_state=42)
+                                                   shuffle=False, random_state=42)
     train_indices = adjust_list_length_same_bs(train_indices, batch_size)
     test_indices = adjust_list_length_same_bs(test_indices, batch_size)
+    gen = torch.Generator()
 
-    train_sampler = SubsetRandomSampler(train_indices)
-    test_sampler = SubsetRandomSampler(test_indices)
+    train_sampler = SubsetRandomSampler(train_indices, generator=gen)
+    test_sampler = SubsetRandomSampler(test_indices, generator=gen)
 
     train_loader = DataLoader(data_set, batch_size=batch_size, num_workers=num_workers, sampler=train_sampler,
                               shuffle=False)
@@ -89,7 +90,7 @@ def extract_mean_std(pic_width, data_root, plot_image=False):
 
     mean = pixel_sum / (num_images * pic_width * pic_width)
     std = np.sqrt(pixel_squared_sum / (num_images * pic_width * pic_width) - mean ** 2)
-    print(f'Calculate mean and std to the folder took {time.time()-start} sec')
+    print(f'Calculate mean and std to the folder took {time.time() - start} sec')
     print(f'Mean: {mean}')
     print(f'Std : {std}')
     return mean, std
@@ -135,7 +136,7 @@ def extract_min_dims(data_root='data/Medical/part1'):
         if image_height < min_height:
             min_height = image_height
 
-    print(f'Calculate minimum image dimensions took {time.time()-start} sec')
+    print(f'Calculate minimum image dimensions took {time.time() - start} sec')
     print(f'Minimum Image Width: {min_width}')
     print(f'Minimum Image Height: {min_height}')
     return min_width, min_height
@@ -196,10 +197,13 @@ def chunk_middle_parts(input_folder, pic_width):
 
 def get_simple_images_indices():
     indices = [12, 18, 20, 21, 29, 41, 49, 66, 77, 103, 105, 108, 115, 123, 140, 160, 172, 194, 202, 252, 289, 290, 317,
-           323, 330, 335, 341, 348, 349, 371, 402, 409, 415, 441, 461, 479, 504, 535, 538, 539, 588, 605, 650, 655, 663,
-           687, 691, 695, 713, 731, 790, 822, 935, 977, 991, 998, 1017, 1064, 1131, 1145, 1168, 1211, 1219, 1231, 1293,
-           1328, 1428, 1495, 1522, 1527, 1533, 1588, 1681, 1687, 1816, 1849, 1908, 1912, 1918, 1978, 2063, 2079, 2227,
-           2244, 2320, 2328, 2377, 2379, 2446, 2540, 2596, 2639, 2669, 2682, 2690, 2744, 3004, 3020, 3091, 3105, 3184,
-           3205, 3291, 3387, 3526, 3536, 3568, 3651, 3692, 3791, 3842, 4078, 4266, 4273, 4331, 4348, 4418, 4444]
+               323, 330, 335, 341, 348, 349, 371, 402, 409, 415, 441, 461, 479, 504, 535, 538, 539, 588, 605, 650, 655,
+               663,
+               687, 691, 695, 713, 731, 790, 822, 935, 977, 991, 998, 1017, 1064, 1131, 1145, 1168, 1211, 1219, 1231,
+               1293,
+               1328, 1428, 1495, 1522, 1527, 1533, 1588, 1681, 1687, 1816, 1849, 1908, 1912, 1918, 1978, 2063, 2079,
+               2227,
+               2244, 2320, 2328, 2377, 2379, 2446, 2540, 2596, 2639, 2669, 2682, 2690, 2744, 3004, 3020, 3091, 3105,
+               3184,
+               3205, 3291, 3387, 3526, 3536, 3568, 3651, 3692, 3791, 3842, 4078, 4266, 4273, 4331, 4348, 4418, 4444]
     return indices
-
