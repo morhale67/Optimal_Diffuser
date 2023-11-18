@@ -321,16 +321,22 @@ def load_and_plot_images_from_tensor(folder_path, name_sub_folder, num_try=1):
     # Plot the images
     plt.figure(figsize=(12, 3 * num_rows))
 
-    for i in range(num_images):
-        plt.subplot(num_rows, num_cols, i + 1)
-        plt.imshow(all_images_tensor[i].view(pic_width, pic_width).numpy(), cmap='gray')
-        plt.title(f'Image {i + 1}')
+    # for i in range(num_images):
+    #     plt.subplot(num_rows, num_cols, i + 1)
+    #     plt.imshow(all_images_tensor[i].view(pic_width, pic_width).numpy(), cmap='gray')
+    #     plt.title(f'Image {i + 1}')
+
+    for index, image_tensor in enumerate(all_images_tensor):
+        plt.subplot(num_rows, num_cols, index + 1)
+        plt.imshow(image_tensor.view(pic_width, pic_width).numpy(), cmap='gray')
+        plt.title(f'Image {index + 1}')
 
     plt.tight_layout()
     plt.savefig(name_fig)
     plt.show()
 
+
 if __name__ == '__main__':
-    folder_path = os.path.join('Results', 'simple_cifar_GEN_bs_2_cr_10_nsamples40_picw_32_lr_0.001')
-    load_and_plot_images_from_tensor(folder_path, 'train_images', num_try=3)
+    folder_path = os.path.join('Results', 'simple_cifar_GEN_bs_2_cr_10_nsamples40_picw_16_lr_0.001')
+    load_and_plot_images_from_tensor(folder_path, 'train_images', num_try=6)
 
