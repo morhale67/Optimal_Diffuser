@@ -1,0 +1,89 @@
+2023-11-18 20:29:20,949 This is a summery of the run:
+2023-11-18 20:29:20,949 Batch size for this run: 2
+2023-11-18 20:29:20,949 Size of original image: 32 X 32
+2023-11-18 20:29:20,949 learning rate: 0.001
+2023-11-18 20:29:20,949 number of masks: 10
+2023-11-18 20:29:20,949 Compression ratio: 100
+2023-11-18 20:29:20,949 epochs : 5
+2023-11-18 20:29:20,949 ***************************************************************************
+
+
+2023-11-18 20:29:20,950 learning rate: 0.001
+2023-11-18 20:29:21,578 Epoch number 0, batch number 0/8:       batch loss 0.043203238397836685
+2023-11-18 20:29:23,206 Epoch number 0, batch number 1/8:       batch loss 0.04814453423023224
+2023-11-18 20:29:26,803 Epoch number 0, batch number 2/8:       batch loss 0.04100864380598068
+2023-11-18 20:29:29,233 Epoch number 0, batch number 3/8:       batch loss 0.0465049222111702
+2023-11-18 20:29:32,582 Epoch number 0, batch number 4/8:       batch loss 0.057352542877197266
+2023-11-18 20:29:35,831 Epoch number 0, batch number 5/8:       batch loss 0.033458177000284195
+2023-11-18 20:29:39,482 Epoch number 0, batch number 6/8:       batch loss 0.030123088508844376
+2023-11-18 20:29:43,668 Epoch number 0, batch number 7/8:       batch loss 0.04335765540599823
+2023-11-18 20:29:45,796 Epoch: 1 	Training Loss: 0.042894
+2023-11-18 20:29:45,796 Time for epoch 1 : 25 sec
+2023-11-18 20:29:45,796 lr for epoch 1 is 0.00100
+2023-11-18 20:29:49,437 Epoch number 1, batch number 0/8:       batch loss 0.04273302108049393
+2023-11-18 20:29:52,263 Epoch number 1, batch number 1/8:       batch loss 0.044101811945438385
+2023-11-18 20:29:54,824 Epoch number 1, batch number 2/8:       batch loss 0.04075036942958832
+2023-11-18 20:29:57,776 Epoch number 1, batch number 3/8:       batch loss 0.046931423246860504
+2023-11-18 20:30:01,849 Epoch number 1, batch number 4/8:       batch loss 0.038141265511512756
+2023-11-18 20:30:03,782 Epoch number 1, batch number 5/8:       batch loss 0.033089738339185715
+2023-11-18 20:30:06,374 Epoch number 1, batch number 6/8:       batch loss 0.03503408655524254
+2023-11-18 20:30:09,899 Epoch number 1, batch number 7/8:       batch loss 0.0616401769220829
+2023-11-18 20:30:13,648 Epoch: 2 	Training Loss: 0.042803
+2023-11-18 20:30:13,648 Time for epoch 2 : 25 sec
+2023-11-18 20:30:13,649 lr for epoch 2 is 0.00100
+2023-11-18 20:30:16,841 Epoch number 2, batch number 0/8:       batch loss 0.031423866748809814
+2023-11-18 20:30:19,332 Epoch number 2, batch number 1/8:       batch loss 0.026646628975868225
+2023-11-18 20:30:21,889 Epoch number 2, batch number 2/8:       batch loss 0.047020334750413895
+2023-11-18 20:30:23,703 Epoch number 2, batch number 3/8:       batch loss 0.045876942574977875
+2023-11-18 20:30:28,839 Epoch number 2, batch number 4/8:       batch loss 0.058539729565382004
+2023-11-18 20:30:30,277 Epoch number 2, batch number 5/8:       batch loss 0.05648640915751457
+2023-11-18 20:30:33,838 Epoch number 2, batch number 6/8:       batch loss 0.041290704160928726
+2023-11-18 20:30:37,509 Epoch number 2, batch number 7/8:       batch loss 0.033182501792907715
+2023-11-18 20:30:40,920 Epoch: 3 	Training Loss: 0.042558
+2023-11-18 20:30:40,921 Time for epoch 3 : 25 sec
+2023-11-18 20:30:40,921 lr for epoch 3 is 0.00100
+2023-11-18 20:30:45,164 Epoch number 3, batch number 0/8:       batch loss 0.05143292248249054
+2023-11-18 20:30:48,562 Epoch number 3, batch number 1/8:       batch loss 0.04121366888284683
+2023-11-18 20:30:50,625 Epoch number 3, batch number 2/8:       batch loss 0.04554152116179466
+2023-11-18 20:30:52,422 Epoch number 3, batch number 3/8:       batch loss 0.05678800120949745
+2023-11-18 20:30:55,896 Epoch number 3, batch number 4/8:       batch loss 0.03570697084069252
+2023-11-18 20:30:58,848 Epoch number 3, batch number 5/8:       batch loss 0.029182353988289833
+2023-11-18 20:31:00,372 Epoch number 3, batch number 6/8:       batch loss 0.029481250792741776
+2023-11-18 20:31:04,516 Epoch number 3, batch number 7/8:       batch loss 0.05219509080052376
+2023-11-18 20:31:09,690 Epoch: 4 	Training Loss: 0.042693
+2023-11-18 20:31:09,690 Time for epoch 4 : 25 sec
+2023-11-18 20:31:09,690 lr for epoch 4 is 0.00100
+2023-11-18 20:31:13,006 Epoch number 4, batch number 0/8:       batch loss 0.05299970135092735
+2023-11-18 20:31:14,705 Epoch number 4, batch number 1/8:       batch loss 0.03034915402531624
+2023-11-18 20:31:17,818 Epoch number 4, batch number 2/8:       batch loss 0.04633476585149765
+2023-11-18 20:31:21,852 Epoch number 4, batch number 3/8:       batch loss 0.03165489435195923
+2023-11-18 20:31:24,513 Epoch number 4, batch number 4/8:       batch loss 0.03896346315741539
+2023-11-18 20:31:27,868 Epoch number 4, batch number 5/8:       batch loss 0.04428324103355408
+2023-11-18 20:31:30,646 Epoch number 4, batch number 6/8:       batch loss 0.045080699026584625
+2023-11-18 20:31:34,461 Epoch number 4, batch number 7/8:       batch loss 0.04598073661327362
+2023-11-18 20:31:38,358 Epoch: 5 	Training Loss: 0.041956
+2023-11-18 20:31:38,359 Time for epoch 5 : 26 sec
+2023-11-18 20:31:38,359 lr for epoch 5 is 0.00100
+2023-11-18 20:31:41,723 Epoch number 5, batch number 0/8:       batch loss 0.04432886466383934
+2023-11-18 20:31:45,199 Epoch number 5, batch number 1/8:       batch loss 0.035632211714982986
+2023-11-18 20:31:46,896 Epoch number 5, batch number 2/8:       batch loss 0.053443022072315216
+2023-11-18 20:31:50,347 Epoch number 5, batch number 3/8:       batch loss 0.04443711042404175
+2023-11-18 20:31:54,001 Epoch number 5, batch number 4/8:       batch loss 0.025167711079120636
+2023-11-18 20:31:57,073 Epoch number 5, batch number 5/8:       batch loss 0.042456403374671936
+2023-11-18 20:32:00,248 Epoch number 5, batch number 6/8:       batch loss 0.0548386313021183
+2023-11-18 20:32:02,334 Epoch number 5, batch number 7/8:       batch loss 0.030347198247909546
+2023-11-18 20:32:07,756 findfont: Font family 'Arial' not found.
+2023-11-18 20:32:07,757 findfont: Font family 'Arial' not found.
+2023-11-18 20:32:07,759 findfont: Font family 'Times New Roman' not found.
+2023-11-18 20:32:07,759 findfont: Font family 'Times New Roman' not found.
+2023-11-18 20:32:07,760 findfont: Font family 'Times New Roman' not found.
+2023-11-18 20:32:07,783 findfont: Font family 'Arial' not found.
+2023-11-18 20:32:07,784 findfont: Font family 'Arial' not found.
+2023-11-18 20:32:07,792 findfont: Font family 'Arial' not found.
+2023-11-18 20:32:07,794 findfont: Font family 'Times New Roman' not found.
+2023-11-18 20:32:07,795 findfont: Font family 'Times New Roman' not found.
+2023-11-18 20:32:07,858 findfont: Font family 'Arial' not found.
+2023-11-18 20:32:07,866 findfont: Font family 'Arial' not found.
+2023-11-18 20:32:07,868 findfont: Font family 'Times New Roman' not found.
+2023-11-18 20:32:07,869 findfont: Font family 'Times New Roman' not found.
+2023-11-18 20:32:07,878 Run Finished Successfully
