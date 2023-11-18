@@ -37,7 +37,7 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         loss = criterion(reconstruct_imgs_batch, sim_object)
         cumu_loss += loss.item()
         if save_img:
-            save_randomize_outputs(epoch, reconstruct_imgs_batch, sim_object, pic_width, folder_path,
+            save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, pic_width, folder_path,
                                    'test_images')
 
     test_loss = cumu_loss / len(loader)
