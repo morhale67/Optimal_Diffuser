@@ -76,8 +76,6 @@ def save_orig_img(loader, folder_path, name_sub_folder):
     if not os.path.exists(path_subfolder):
         os.makedirs(path_subfolder)
     orig_img_path = os.path.join(path_subfolder, 'orig_imgs_tensors.pt')
-    # with open(orig_img_path, 'wb') as file:
-    #     pickle.dump(all_image_tensors, file)
     torch.save(all_images_tensor, orig_img_path)
 
 
@@ -97,33 +95,10 @@ def save_randomize_outputs(epoch, batch_index, output, y_label, pic_width, folde
 
 def get_original_image_number(orig_img, folder_path, name_sub_folder, epoch, batch_index):
     orig_img_path = folder_path + '/' + name_sub_folder + '/orig_imgs_tensors.pt'
-    # with open(orig_img_path, 'rb') as file:
-    #     all_images_tensor = pickle.load(file)
     all_images_tensor = torch.load(orig_img_path)
-
-    num_images = all_images_tensor.size(0)
-
-    pic_width = all_images_tensor[0].size(1)
-    num_cols = 4  # You can adjust the number of columns as needed
-    num_rows = (num_images + num_cols - 1) // num_cols
-    name_fig = f'all_img_tensor_order_epoch_{epoch}_batch_index{batch_index}.png'
-    # Plot the images
-    plt.figure(figsize=(12, 3 * num_rows))
-
     for index, image_tensor in enumerate(all_images_tensor):
-        plt.subplot(num_rows, num_cols, index + 1)
-        plt.imshow(image_tensor.view(pic_width, pic_width).numpy(), cmap='gray')
-        plt.title(f'Image {index + 1}')
-
         if torch.equal(orig_img, image_tensor):
-            plt.tight_layout()
-            plt.savefig(os.path.join(folder_path, name_fig))
-            plt.show()
-
-            # plot_2_images(orig_img, image_tensor, index, folder_path, epoch)
             return index
-        else:
-            index += 1
     return -1
 
 
