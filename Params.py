@@ -8,7 +8,7 @@ def get_run_parameters():
          'epochs_vec': [10, 10, 30, 30],
          'learn_vec_lr': False,
          'pic_width': 32,
-         'n_samples': 100,
+         'n_samples': 16,
          'cr': 4,
          'batch_size': 2,
          'lr': 0.001,
