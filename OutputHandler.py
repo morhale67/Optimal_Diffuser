@@ -88,6 +88,7 @@ def save_randomize_outputs(epoch, output, y_label, pic_width, folder_path, name_
                 os.makedirs(output_dir)
             if epoch == 0:
                 plt.imsave(output_dir + f'/{image_number}_orig.jpg', orig_image.cpu().detach().numpy())
+            plt.imsave(output_dir + f'/{image_number}_orig_epoch{epoch}.jpg', orig_image.cpu().detach().numpy())
             plt.imsave(output_dir + f'/epoch_{epoch}_{image_number}_out.jpg', out_image.detach().numpy())
 
 
