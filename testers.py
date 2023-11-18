@@ -306,7 +306,7 @@ def subplot_cifar_images(data_dir, save_dir):
 
 
 def load_and_plot_images_from_tensor(folder_path, name_sub_folder, num_try=1):
-    orig_img_path = os.path.join(folder_path, name_sub_folder, 'orig_imgs_tensors.pkl')
+    orig_img_path = os.path.join(folder_path, name_sub_folder, 'orig_imgs_tensors.pt')
     # with open(orig_img_path, 'rb') as file:
     #     all_images_tensor = pickle.load(file)
     all_images_tensor = torch.load(orig_img_path)
@@ -331,6 +331,6 @@ def load_and_plot_images_from_tensor(folder_path, name_sub_folder, num_try=1):
     plt.show()
 
 if __name__ == '__main__':
-    folder_path = os.path.join('Results', 'simple_cifar_GEN_bs_2_cr_100_nsamples40_picw_16_lr_0.001')
-    load_and_plot_images_from_tensor(folder_path, 'train_images', num_try=1)
+    folder_path = os.path.join('Results', 'simple_cifar_GEN_bs_2_cr_10_nsamples40_picw_32_lr_0.001')
+    load_and_plot_images_from_tensor(folder_path, 'train_images', num_try=3)
 
