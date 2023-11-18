@@ -84,7 +84,7 @@ def train(config=None):
 def save_img_train_test(epoch, train_loader, test_loader, network, params, optimizer, device, folder_path, log_path):
     _ = train_epoch(epoch, network, train_loader, optimizer, params['batch_size'], params['z_dim'],
                                        params['img_dim'], params['n_masks'], device, log_path, folder_path,
-                                       ac_stride=params['ac_stride'], save_img=True)
+                                       save_img=True)
     _ = test_loss_epoch = test_net(epoch, network, test_loader, device, log_path, folder_path, params['batch_size'],
                                    params['z_dim'], params['img_dim'], params['cr'], params['epochs'], save_img=True)
 

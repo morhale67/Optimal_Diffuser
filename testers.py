@@ -1,3 +1,5 @@
+import pickle
+
 import matplotlib.pyplot as plt
 import numpy as np
 import math
@@ -303,6 +305,32 @@ def subplot_cifar_images(data_dir, save_dir):
         plt.close()
 
 
+def load_and_plot_images_from_tensor(folder_path, name_sub_folder, num_try=1):
+    orig_img_path = os.path.join(folder_path, name_sub_folder, 'orig_imgs_tensors.pkl')
+    # with open(orig_img_path, 'rb') as file:
+    #     all_images_tensor = pickle.load(file)
+    all_images_tensor = torch.load(orig_img_path)
+
+    # num_images = len(all_images_tensor)
+    num_images = all_images_tensor.size(0)
+
+    pic_width = all_images_tensor[0].size(1)
+    num_cols = 4  # You can adjust the number of columns as needed
+    num_rows = (num_images + num_cols - 1) // num_cols
+    name_fig = f'all_img_tensor_try_order_{num_try}.png'
+    # Plot the images
+    plt.figure(figsize=(12, 3 * num_rows))
+
+    for i in range(num_images):
+        plt.subplot(num_rows, num_cols, i + 1)
+        plt.imshow(all_images_tensor[i].view(pic_width, pic_width).numpy(), cmap='gray')
+        plt.title(f'Image {i + 1}')
+
+    plt.tight_layout()
+    plt.savefig(name_fig)
+    plt.show()
+
 if __name__ == '__main__':
-    rec_from_samples(5, 64)
+    folder_path = os.path.join('Results', 'simple_cifar_GEN_bs_2_cr_100_nsamples40_picw_16_lr_0.001')
+    load_and_plot_images_from_tensor(folder_path, 'train_images', num_try=1)
 

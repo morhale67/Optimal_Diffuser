@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import torch
 import cv2
 from torchvision import transforms
+import pickle
 
 
 def make_folder(net_name, p):
@@ -75,13 +76,15 @@ def save_orig_img(loader, folder_path, name_sub_folder):
     if not os.path.exists(path_subfolder):
         os.makedirs(path_subfolder)
     orig_img_path = os.path.join(path_subfolder, 'orig_imgs_tensors.pt')
+    # with open(orig_img_path, 'wb') as file:
+    #     pickle.dump(all_image_tensors, file)
     torch.save(all_images_tensor, orig_img_path)
 
 
 def save_randomize_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder):
     in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
     for i, (out_image, orig_image) in enumerate(in_out_images):
-        image_number = get_original_image_number(orig_image, folder_path, name_sub_folder)
+        image_number = get_original_image_number(orig_image, folder_path, name_sub_folder, epoch)
         if image_number <= 20:
             output_dir = folder_path + '/' + name_sub_folder + f'/image_{image_number}'
             if not os.path.exists(output_dir):
@@ -92,17 +95,19 @@ def save_randomize_outputs(epoch, output, y_label, pic_width, folder_path, name_
             plt.imsave(output_dir + f'/epoch_{epoch}_{image_number}_out.jpg', out_image.detach().numpy())
 
 
-def get_original_image_number(orig_img, folder_path, name_sub_folder):
+def get_original_image_number(orig_img, folder_path, name_sub_folder, epoch):
     orig_img_path = folder_path + '/' + name_sub_folder + '/orig_imgs_tensors.pt'
+    # with open(orig_img_path, 'rb') as file:
+    #     all_images_tensor = pickle.load(file)
     all_images_tensor = torch.load(orig_img_path)
     for index, image_tensor in enumerate(all_images_tensor):
         if torch.equal(orig_img, image_tensor):
-            # plot_2_images(orig_img, image_tensor, index)
+            plot_2_images(orig_img, image_tensor, index, folder_path, epoch)
             return index
     return -1
 
 
-def plot_2_images(cur_img, image_tensor, index):
+def plot_2_images(cur_img, image_tensor, index, folder_path, epoch):
     # Plot the original and matching tensors
     plt.figure(figsize=(8, 4))
 
@@ -113,5 +118,7 @@ def plot_2_images(cur_img, image_tensor, index):
     plt.subplot(1, 2, 2)
     plt.imshow(image_tensor.numpy(), cmap='gray')
     plt.title('Matching Image (Index {})'.format(index))
+    save_path = os.path.join(folder_path, f'index_{index}_epoch_{epoch}.png')
+    plt.savefig(save_path)
 
-    plt.show()
+    # plt.show()
