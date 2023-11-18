@@ -81,10 +81,10 @@ def save_orig_img(loader, folder_path, name_sub_folder):
     torch.save(all_images_tensor, orig_img_path)
 
 
-def save_randomize_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder):
+def save_randomize_outputs(epoch, batch_index, output, y_label, pic_width, folder_path, name_sub_folder):
     in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
     for i, (out_image, orig_image) in enumerate(in_out_images):
-        image_number = get_original_image_number(orig_image, folder_path, name_sub_folder, epoch)
+        image_number = get_original_image_number(orig_image, folder_path, name_sub_folder, epoch, batch_index)
         if image_number <= 20:
             output_dir = folder_path + '/' + name_sub_folder + f'/image_{image_number}'
             if not os.path.exists(output_dir):
@@ -95,7 +95,7 @@ def save_randomize_outputs(epoch, output, y_label, pic_width, folder_path, name_
             plt.imsave(output_dir + f'/epoch_{epoch}_{image_number}_out.jpg', out_image.detach().numpy())
 
 
-def get_original_image_number(orig_img, folder_path, name_sub_folder, epoch):
+def get_original_image_number(orig_img, folder_path, name_sub_folder, epoch, batch_index):
     orig_img_path = folder_path + '/' + name_sub_folder + '/orig_imgs_tensors.pt'
     # with open(orig_img_path, 'rb') as file:
     #     all_images_tensor = pickle.load(file)
@@ -106,7 +106,7 @@ def get_original_image_number(orig_img, folder_path, name_sub_folder, epoch):
     pic_width = all_images_tensor[0].size(1)
     num_cols = 4  # You can adjust the number of columns as needed
     num_rows = (num_images + num_cols - 1) // num_cols
-    name_fig = f'all_img_tensor_order_epoch_{epoch}.png'
+    name_fig = f'all_img_tensor_order_epoch_{epoch}_batch_index{batch_index}.png'
     # Plot the images
     plt.figure(figsize=(12, 3 * num_rows))
 
@@ -120,7 +120,7 @@ def get_original_image_number(orig_img, folder_path, name_sub_folder, epoch):
             plt.savefig(os.path.join(folder_path, name_fig))
             plt.show()
 
-            plot_2_images(orig_img, image_tensor, index, folder_path, epoch)
+            # plot_2_images(orig_img, image_tensor, index, folder_path, epoch)
             return index
         else:
             index += 1

@@ -77,7 +77,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
                 log_path)
 
         if save_img:
-            save_randomize_outputs(epoch, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path,
+            save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path,
                                    'train_images')
 
     train_loss = cumu_loss / len(loader)
