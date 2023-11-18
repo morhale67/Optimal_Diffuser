@@ -24,7 +24,6 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
     cumu_loss = 0
     network.train()
     n_batchs = len(loader.batch_sampler)
-    save_orig_img(loader, folder_path, name_sub_folder='train_images')
 
     for batch_index, sim_bucket_tensor in enumerate(loader):
         # with torch.autograd.set_detect_anomaly(True):
@@ -77,8 +76,8 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
                 log_path)
 
         if save_img:
-            save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)), folder_path,
-                                   'train_images')
+            save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)),
+                                   folder_path, 'train_images')
 
     train_loss = cumu_loss / len(loader)
     try:

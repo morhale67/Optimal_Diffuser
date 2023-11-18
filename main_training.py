@@ -7,7 +7,7 @@ from Training import train_epoch
 from Testing import test_net
 from LogFunctions import print_and_log_message
 from LogFunctions import print_training_messages
-from OutputHandler import save_loss_figure
+from OutputHandler import save_loss_figure, save_orig_img
 import wandb
 import math
 import time
@@ -29,6 +29,9 @@ def train_local(params, log_path, folder_path):
     optimizer = build_optimizer(network, params['optimizer'], params['lr'])
     train_loss, test_loss = [], []
     lr = params['lr']
+    save_orig_img(train_loader, folder_path, name_sub_folder='train_images')
+    save_orig_img(test_loader, folder_path, name_sub_folder='test_images')
+
     for epoch in range(params['epochs']):
         if params['learn_vec_lr']:
             lr = get_lr(epoch, params['lr_vec'], params['cum_epochs'])

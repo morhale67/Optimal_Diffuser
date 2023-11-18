@@ -15,7 +15,6 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
     model.to(device)
     cumu_loss = 0
     pic_width = int(math.sqrt(img_dim))
-    save_orig_img(loader, folder_path, name_sub_folder='test_images')
 
     for batch_index, sim_bucket_tensor in enumerate(loader):
         sim_object, _ = sim_bucket_tensor
