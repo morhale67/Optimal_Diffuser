@@ -150,7 +150,7 @@ def subplot_epochs_reconstruction(run_folder_path, data_set, image_folder):
 
     plt.tight_layout()
     plt.savefig(name_subplot)
-    plt.show()
+    # plt.show()
 
 
 def subplot_reconstraction_for_all_images(run_folder_path):
@@ -171,5 +171,5 @@ def subplot_reconstraction_for_all_images(run_folder_path):
 
 
 if __name__ == '__main__':
-    subplot_reconstraction_for_all_images(r'Results_to_save\by order\simple_cifar_GEN_bs_2_cr_4_nsamples100_picw_32')
+    subplot_reconstraction_for_all_images(r'Results_to_save\by order\simple_cifar_GEN_bs_2_cr_3_nsamples100_picw_32')
 

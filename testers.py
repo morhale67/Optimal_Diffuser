@@ -151,32 +151,30 @@ def save_autocorr(autocorr, rand_autocorr, pic_size, folder_path):
     plt.show()
 
 
-
-
-
-def rec_from_samples(cr, img_new_width):
-    xray_folder = 'data/medical/chunked_256/mock_class'
-    results_dir = 'temp/split_bregman_xray'
+def rec_from_samples(cr, img_new_width=32):
+    image_folder = r'Results_to_save\by order\simple_cifar_GEN_bs_2_cr_3_nsamples100_picw_32'
+    results_dir = 'temp\split_bregman_classic_cifar'
     img_size = img_new_width**2
     realizations_number = math.floor(img_size / cr)
     image_names = get_image_names()
 
     for i, img_name in enumerate(image_names):
-        knee_xray = cv2.imread(xray_folder + '/' + img_name, cv2.IMREAD_GRAYSCALE)
-        knee_xray = np.array(knee_xray)
-        plt.imshow(knee_xray)
+        image_path = os.path.join(image_folder, img_name)
+        org_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+        org_image = np.array(org_image)
+        plt.imshow(org_image)
         plt.title(f"{i} ground truth cr={cr}")
-        plt.savefig(results_dir + "/" + f"xray-{i}_ground_truth_cr_{cr}.png")
+        plt.savefig(results_dir + "/" + f"-{i}_ground_truth_cr_{cr}.png")
         plt.show()
 
-        knee_xray_resized = cv2.resize(knee_xray, (img_new_width, img_new_width))
-        plt.imshow(knee_xray_resized)
-        plt.title(f"resiezed {i} ground truth cr={cr}")
-        plt.savefig(results_dir + "/" + f"xray-{i}_resized_{img_new_width}_{img_new_width}_cr_{cr}.png")
-        plt.show()
+        # knee_xray_resized = cv2.resize(org_image, (img_new_width, img_new_width))
+        # plt.imshow(knee_xray_resized)
+        # plt.title(f"resiezed {i} ground truth cr={cr}")
+        # plt.savefig(results_dir + "/" + f"-{i}_resized_{img_new_width}_{img_new_width}_cr_{cr}.png")
+        # plt.show()
 
         sim_diffuser = create_diffuser(realizations_number, img_new_width**2)
-        sim_object = knee_xray_resized.reshape(1, img_size)
+        sim_object = org_image.reshape(1, img_size)
         sim_object = sim_object.transpose(1, 0)
         sim_bucket = np.matmul(sim_diffuser, sim_object)
         sim_bucket = sim_bucket.transpose((1, 0))
@@ -188,8 +186,8 @@ def rec_from_samples(cr, img_new_width):
                             algorithm='split-bregman')
 
         plt.imshow(rec.reshape(img_new_width, img_new_width))
-        plt.title(f"reconstruction {i} cr={cr}")
-        plt.savefig(results_dir + "/" + f"rec_xray-{i}_cr_{cr}.png")
+        plt.title(f"reconstruction by random patterns cr={cr}")
+        plt.savefig(os.path.join(results_dir, f"rec_{i}_cr_{cr}.png"))
         plt.show()
 
 
@@ -200,12 +198,8 @@ def create_diffuser(M, N, diffuser_mean=0.5, diffuser_std=0.5):
 
 
 def get_image_names():
-    image_names = ['chunk_middle_part_0417_0697542589_01_WRI-R2_F008.png',
-                    'chunk_middle_part_0503_1018511008_01_WRI-L1_M012.png',
-                    'chunk_middle_part_0417_0727170640_02_WRI-R1_F009.png',
-                    'chunk_middle_part_0503_1018511068_01_WRI-L2_M012.png',
-                    'chunk_middle_part_0417_0727170681_02_WRI-R2_F009.png',
-                    'chunk_middle_part_0503_1020470848_02_WRI-L1_M012.png']
+    image_names = [r'train_images\image_15\15_orig.jpg',
+                   r'test_images\image_4\4_orig.jpg']
     return image_names
 
 
@@ -337,6 +331,4 @@ def load_and_plot_images_from_tensor(folder_path, name_sub_folder, num_try=1):
 
 
 if __name__ == '__main__':
-    folder_path = os.path.join('Results', 'simple_cifar_GEN_bs_2_cr_10_nsamples40_picw_16_lr_0.001')
-    load_and_plot_images_from_tensor(folder_path, 'train_images', num_try=6)
-
+    rec_from_samples(3)
