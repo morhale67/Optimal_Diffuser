@@ -4,6 +4,8 @@ import torch
 import cv2
 from torchvision import transforms
 import pickle
+import re
+
 
 
 def make_folder(net_name, p):
@@ -89,7 +91,6 @@ def save_randomize_outputs(epoch, batch_index, output, y_label, pic_width, folde
                 os.makedirs(output_dir)
             if epoch == 0:
                 plt.imsave(output_dir + f'/{image_number}_orig.jpg', orig_image.cpu().detach().numpy())
-            plt.imsave(output_dir + f'/{image_number}_orig_epoch{epoch}.jpg', orig_image.cpu().detach().numpy())
             plt.imsave(output_dir + f'/epoch_{epoch}_{image_number}_out.jpg', out_image.detach().numpy())
 
 
@@ -116,4 +117,59 @@ def plot_2_images(cur_img, image_tensor, index, folder_path, epoch):
     save_path = os.path.join(folder_path, f'index_{index}_epoch_{epoch}.png')
     plt.savefig(save_path)
 
-    # plt.show()
+
+def subplot_epochs_reconstruction(run_folder_path, data_set, image_folder):
+    '''
+    :param folder_path: the name of the folder with all the image_i folders
+    :param num_image: number of image from the train/test set
+    :return: no output, save the subplot of the reconstraction process in the main folder
+    '''
+
+    images_path = os.path.join(run_folder_path, data_set, image_folder)
+    save_folder = os.path.join(run_folder_path, 'reconstruction')
+    if not os.path.exists(save_folder):
+        os.mkdir(save_folder)
+    name_subplot = os.path.join(save_folder, f'{data_set}_{image_folder}_reconstruction.png')
+    # Filter images that match the pattern 'epoch_{epoc7h}'
+    filtered_images = [img for img in os.listdir(images_path) if f'epoch_' in img]
+
+    filtered_images.sort(key=lambda x: int(re.search(r'epoch_(\d+)', x).group(1)))
+
+    num_epochs = len(filtered_images)
+    num_cols = 10  # Number of columns in the subplot grid
+    num_rows = (num_epochs + num_cols - 1) // num_cols
+
+    plt.figure(figsize=(15, 3 * num_rows))
+
+    for i, image_name in enumerate(filtered_images):
+        img_path = os.path.join(images_path, image_name)
+        img = plt.imread(img_path)
+        plt.subplot(num_rows, num_cols, i + 1)
+        plt.imshow(img, cmap='gray')
+        plt.title(f'Epoch {i + 1}')
+
+    plt.tight_layout()
+    plt.savefig(name_subplot)
+    plt.show()
+
+
+def subplot_reconstraction_for_all_images(run_folder_path):
+    data_set = 'train_images'
+    folder_path = os.path.join(run_folder_path, data_set)
+    # Get a list of subfolders starting with "image_"
+    images_folders = [subfolder for subfolder in os.listdir(folder_path) if subfolder.startswith("image_")]
+
+    # Iterate through each subfolder and call subplot_images_in_folder
+    for image_folder in images_folders:
+        subplot_epochs_reconstruction(run_folder_path, data_set, image_folder)
+
+    data_set = 'test_images'
+    folder_path = os.path.join(run_folder_path, data_set)
+    images_folders = [subfolder for subfolder in os.listdir(folder_path) if subfolder.startswith("image_")]
+    for image_folder in images_folders:
+        subplot_epochs_reconstruction(run_folder_path, data_set, image_folder)
+
+
+if __name__ == '__main__':
+    subplot_reconstraction_for_all_images(r'Results_to_save\by order\simple_cifar_GEN_bs_2_cr_4_nsamples100_picw_32')
+
