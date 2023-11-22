@@ -46,9 +46,9 @@ def train_local(params, log_path, folder_path):
         update_numerical_outputs(numerical_outputs, train_loss_epoch, test_loss_epoch, train_psnr_epoch, test_psnr_epoch)
 
     save_img_train_test(epoch + 1, train_loader, test_loader, network, params, optimizer, device, folder_path, log_path)
-    save_numerical_figure(numerical_outputs['train_loss'], numerical_outputs['test_loss'], 'Train Loss', 'Test Loss',
+    save_numerical_figure(numerical_outputs['train_loss'], numerical_outputs['test_loss'], 'Train Loss', 'Test Loss', "Loss",
                           filename='loss_figure.png', folder_path=folder_path)
-    save_numerical_figure(numerical_outputs['train_psnr'], numerical_outputs['test_psnr'], 'Train PSNR', 'Test PSNR',
+    save_numerical_figure(numerical_outputs['train_psnr'], numerical_outputs['test_psnr'], 'Train PSNR', 'Test PSNR','PSNR [db]',
                           filename='PSNR_figure.png', folder_path=folder_path)
     print_and_log_message('Run Finished Successfully', log_path)
 
