@@ -23,6 +23,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
     cumu_loss, cumu_psnr = 0, 0
     network.train()
     n_batchs = len(loader.batch_sampler)
+    pic_width = int(math.sqrt(img_dim))
 
     for batch_index, sim_bucket_tensor in enumerate(loader):
         # with torch.autograd.set_detect_anomaly(True):
@@ -31,7 +32,6 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         first_image = sim_object[0, 0, :].view(-1, int(math.sqrt(img_dim)))
         sim_object = sim_object.to(device)
         if big_diffuser:
-            pic_width = int(math.sqrt(img_dim))
             noise = torch.randn(int(batch_size), int(z_dim), requires_grad=True).to(device)
             diffuser = network(noise)
             #            print('Forward Net Successfully')
