@@ -59,7 +59,7 @@ def save_numerical_figure(g1, g2, g1_label, g2_label, filename='loss_figure.png'
     # Add labels and title
     plt.xlabel('Epoch', fontsize=22, fontname='Arial')
     plt.ylabel('Loss', fontsize=22, fontname='Arial')
-    title = g1_label + 'and' + g2_label
+    title = g1_label + ' and ' + g2_label
     subtitle = f'Min {g2_label}: {min_g2:.3f} (Epoch {min_g2_epoch})'
     plt.title(f'{title}\n{subtitle}', fontsize=22, fontname='Times New Roman')
 
