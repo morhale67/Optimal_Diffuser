@@ -7,13 +7,14 @@ import math
 from OutputHandler import save_outputs
 import numpy as np
 from OutputHandler import save_orig_img
-from OutputHandler import save_randomize_outputs
+from OutputHandler import save_randomize_outputs, calc_psnr_batch
+
 
 def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_dim, img_dim, cr, epochs,
              save_img=False):
     model.eval()
     model.to(device)
-    cumu_loss = 0
+    cumu_loss, cumu_psnr = 0, 0
     pic_width = int(math.sqrt(img_dim))
 
     for batch_index, sim_bucket_tensor in enumerate(loader):
@@ -35,25 +36,26 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         criterion = nn.MSELoss()
         loss = criterion(reconstruct_imgs_batch, sim_object)
         cumu_loss += loss.item()
+        cumu_psnr += calc_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
         if save_img:
             save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, pic_width, folder_path,
                                    'test_images')
 
     test_loss = cumu_loss / len(loader)
-#    try:
-       # pic_width = int(math.sqrt(img_dim))
-       # image_reconstructions = [wandb.Image(i.reshape(pic_width, pic_width)) for i in reconstruct_imgs_batch]
-       # sim_object_images = [wandb.Image(i.reshape(pic_width, pic_width)) for i in sim_object]
+    test_psnr = cumu_psnr / len(loader)
 
-       # wandb.log({'sim_diffuser': [wandb.Image(i) for i in sim_diffuser_reshaped]})
-      #  wandb.log({'image reconstructions': image_reconstructions})
-     #   wandb.log({'test original images': sim_object_images})
-    #    wandb.log({'Test_loss': test_loss})
-
+   # try:
+   #     pic_width = int(math.sqrt(img_dim))
+   #     image_reconstructions = [wandb.Image(i.reshape(pic_width, pic_width)) for i in reconstruct_imgs_batch]
+   #     sim_object_images = [wandb.Image(i.reshape(pic_width, pic_width)) for i in sim_object]
+   #     wandb.log({'sim_diffuser': [wandb.Image(i) for i in sim_diffuser_reshaped]})
+   #     wandb.log({'image reconstructions': image_reconstructions})
+   #     wandb.log({'test original images': sim_object_images})
+   #     wandb.log({'Test_loss': test_loss})
+   #
    #     print(f"epoch [{epoch} / {epochs}] \ "
-  #            f"genValLoss: {test_loss:.4f}")
- #   except:
-#        print_and_log_message('Test Loss: {:.6f}\n'.format(test_loss), log_path)
+   #           f"genValLoss: {test_loss:.4f}")
+   # except:
+   #     print_and_log_message('Test Loss: {:.6f}\n'.format(test_loss), log_path)
 
-
-    return test_loss
+    return test_loss, test_psnr

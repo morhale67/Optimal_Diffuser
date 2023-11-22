@@ -7,7 +7,7 @@ from Training import train_epoch
 from Testing import test_net
 from LogFunctions import print_and_log_message
 from LogFunctions import print_training_messages
-from OutputHandler import save_loss_figure, save_orig_img
+from OutputHandler import save_numerical_figure, save_orig_img
 import wandb
 import math
 import time
@@ -27,7 +27,7 @@ def train_local(params, log_path, folder_path):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     network = build_network(params['z_dim'], params['img_dim'], params['n_masks'], device)
     optimizer = build_optimizer(network, params['optimizer'], params['lr'])
-    train_loss, test_loss = [], []
+    numerical_outputs = {'train_loss': [], 'test_loss': [], 'train_psnr': [], 'test_psnr': []}
     lr = params['lr']
     save_orig_img(train_loader, folder_path, name_sub_folder='train_images')
     save_orig_img(test_loader, folder_path, name_sub_folder='test_images')
@@ -37,17 +37,19 @@ def train_local(params, log_path, folder_path):
             lr = get_lr(epoch, params['lr_vec'], params['cum_epochs'])
             optimizer = build_optimizer(network, params['optimizer'], lr)
         start_epoch = time.time()
-        train_loss_epoch = train_epoch(epoch, network, train_loader, optimizer, params['batch_size'], params['z_dim'],
+        train_loss_epoch, train_psnr_epoch = train_epoch(epoch, network, train_loader, optimizer, params['batch_size'], params['z_dim'],
                                        params['img_dim'], params['n_masks'], device, log_path, folder_path,
                                        save_img=True)
         print_training_messages(epoch, train_loss_epoch, lr, start_epoch, log_path)
-        test_loss_epoch = test_net(epoch, network, test_loader, device, log_path, folder_path, params['batch_size'],
+        test_loss_epoch, test_psnr_epoch = test_net(epoch, network, test_loader, device, log_path, folder_path, params['batch_size'],
                                    params['z_dim'], params['img_dim'], params['cr'], params['epochs'], save_img=True)
-        train_loss.append(train_loss_epoch)
-        test_loss.append(test_loss_epoch)
+        update_numerical_outputs(numerical_outputs, train_loss_epoch, test_loss_epoch, train_psnr_epoch, test_psnr_epoch)
 
     save_img_train_test(epoch + 1, train_loader, test_loader, network, params, optimizer, device, folder_path, log_path)
-    save_loss_figure(train_loss, test_loss, folder_path)
+    save_numerical_figure(numerical_outputs['train_loss'], numerical_outputs['test_loss'], 'Train Loss', 'Test Loss',
+                          filename='loss_figure.png', folder_path=folder_path)
+    save_numerical_figure(numerical_outputs['train_psnr'], numerical_outputs['test_psnr'], 'Train PSNR', 'Test PSNR',
+                          filename='PSNR_figure.png', folder_path=folder_path)
     print_and_log_message('Run Finished Successfully', log_path)
 
 
@@ -111,3 +113,11 @@ def build_optimizer(network, optimizer, learning_rate):
     elif optimizer == "adam":
         optimizer = optim.Adam(network.parameters(), lr=learning_rate)
     return optimizer
+
+
+def update_numerical_outputs(numerical_outputs, train_loss_epoch, test_loss_epoch, train_psnr_epoch, test_psnr_epoch):
+    numerical_outputs['train_loss'].append(train_loss_epoch)
+    numerical_outputs['test_loss'].append(test_loss_epoch)
+    numerical_outputs['train_psnr'].append(train_psnr_epoch)
+    numerical_outputs['test_psnr'].append(test_psnr_epoch)
+    return numerical_outputs

@@ -198,7 +198,15 @@ def create_diffuser(M, N, diffuser_mean=0.5, diffuser_std=0.5):
 
 
 def get_image_names():
-    image_names = [r'train_images\image_15\15_orig.jpg',
+    image_names = [r'train_images\image_1\1_orig.jpg',
+                   r'train_images\image_2\2_orig.jpg',
+                   r'train_images\image_3\3_orig.jpg',
+                   r'train_images\image_4\4_orig.jpg',
+                   r'train_images\image_5\5_orig.jpg',
+                   r'train_images\image_6\6_orig.jpg',
+                   r'train_images\image_7\7_orig.jpg',
+                   r'train_images\image_8\8_orig.jpg',
+                   r'train_images\image_9\9_orig.jpg',
                    r'test_images\image_4\4_orig.jpg']
     return image_names
 

@@ -15,13 +15,12 @@ from Model import Gen_no_batch
 import Model
 from testers import check_diff_ac
 import matplotlib.pyplot as plt
-from OutputHandler import save_orig_img
-from OutputHandler import save_randomize_outputs
+from OutputHandler import save_randomize_outputs, calc_psnr_batch, save_orig_img
 
 
 def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n_masks, device, log_path, folder_path,
                 ac_stride=5, save_img=False, big_diffuser=False):
-    cumu_loss = 0
+    cumu_loss, cumu_psnr = 0, 0
     network.train()
     n_batchs = len(loader.batch_sampler)
 
@@ -67,6 +66,8 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         #        print('Optimizer step')
         cumu_loss += loss.item()
         torch.cuda.empty_cache()  # Before starting a new forward/backward pass
+        cumu_psnr += calc_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
+
         try:
             wandb.log({"batch loss": loss.item()})
             print(f"batch loss {batch_index}/{n_batchs}: {loss.item()}, epoch {epoch}")
@@ -80,12 +81,12 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
                                    folder_path, 'train_images')
 
     train_loss = cumu_loss / len(loader)
+    train_psnr = cumu_psnr / len(loader)
     try:
         wandb.log({'train_loss': train_loss})
     except Exception as e:
         pass
 
-    # and epoch % 5 == 0:
     #        try:
     #           num_images = reconstruct_imgs_batch.shape[0]  # most of the time = batch_size
     #          pic_width = int(math.sqrt(img_dim))
@@ -97,7 +98,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
     #     wandb.log({'train original images': sim_object_images})
     # except:
 
-    return train_loss
+    return train_loss, train_psnr
 
 
 def make_masks_from_big_diff(diffuser, ac_stride):
@@ -109,3 +110,4 @@ def make_masks_from_big_diff(diffuser, ac_stride):
     diffuser_expanded = diffuser[:, :, mask_indices + torch.arange(pic_width)]
     masks = diffuser_expanded.view(batch_size, -1, img_dim)
     return masks
+

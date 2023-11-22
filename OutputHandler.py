@@ -1,11 +1,14 @@
+import math
 import os
 import matplotlib.pyplot as plt
+import numpy as np
 import torch
 import cv2
 from torchvision import transforms
 import pickle
 import re
-
+from Lasso import sparse_encode
+from testers import create_diffuser
 
 
 def make_folder(net_name, p):
@@ -40,24 +43,24 @@ def save_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder
             break
 
 
-def save_loss_figure(train_loss, test_loss, folder_path='.', filename='loss_figure.png'):
+def save_numerical_figure(g1, g2, g1_label, g2_label, filename='loss_figure.png', folder_path='.'):
     # Set custom font and size for the entire plot
     plt.rcParams['font.family'] = 'serif'
     plt.rcParams['font.size'] = 16
     plt.figure(figsize=(10, 7))
 
-    plt.plot(train_loss, label='Train Loss', color='blue')
-    plt.plot(test_loss, label='Test Loss', color='orange')
+    plt.plot(g1, label=g1_label, color='blue')
+    plt.plot(g2, label=g2_label, color='orange')
 
     # Calculate the minimal test loss and its corresponding epoch
-    min_test_loss = min(test_loss)
-    min_test_epoch = test_loss.index(min_test_loss) + 1  # Adding 1 to convert from 0-based index to epoch number
+    min_g2 = min(g2)
+    min_g2_epoch = g2.index(min_g2) + 1  # Adding 1 to convert from 0-based index to epoch number
 
     # Add labels and title
     plt.xlabel('Epoch', fontsize=22, fontname='Arial')
     plt.ylabel('Loss', fontsize=22, fontname='Arial')
-    title = 'Train and Test Loss'
-    subtitle = 'Min Test Loss: {:.6f} (Epoch {})'.format(min_test_loss, min_test_epoch)
+    title = g1_label + 'and' + g2_label
+    subtitle = f'Min {g2_label}: {min_g2:.3f} (Epoch {min_g2_epoch})'
     plt.title(f'{title}\n{subtitle}', fontsize=22, fontname='Times New Roman')
 
     plt.legend()
@@ -153,7 +156,7 @@ def subplot_epochs_reconstruction(run_folder_path, data_set, image_folder):
     # plt.show()
 
 
-def subplot_reconstraction_for_all_images(run_folder_path):
+def subplot_reconstraction_for_all_images(run_folder_path, cr):
     data_set = 'train_images'
     folder_path = os.path.join(run_folder_path, data_set)
     # Get a list of subfolders starting with "image_"
@@ -161,15 +164,71 @@ def subplot_reconstraction_for_all_images(run_folder_path):
 
     # Iterate through each subfolder and call subplot_images_in_folder
     for image_folder in images_folders:
-        subplot_epochs_reconstruction(run_folder_path, data_set, image_folder)
+        rec_bregman_for_image(cr, image_folder, data_set, run_folder_path)
+        # subplot_epochs_reconstruction(run_folder_path, data_set, image_folder)
 
     data_set = 'test_images'
     folder_path = os.path.join(run_folder_path, data_set)
     images_folders = [subfolder for subfolder in os.listdir(folder_path) if subfolder.startswith("image_")]
     for image_folder in images_folders:
-        subplot_epochs_reconstruction(run_folder_path, data_set, image_folder)
+        rec_bregman_for_image(cr, image_folder, data_set, run_folder_path)
+        # subplot_epochs_reconstruction(run_folder_path, data_set, image_folder)
+
+
+def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path):
+    save_folder = os.path.join(run_folder_path, 'reconstruction')
+
+    images_path = os.path.join(run_folder_path, data_set, image_folder)
+    org_img_name = [img for img in os.listdir(images_path) if f'_orig' in img]
+    image_path = os.path.join(images_path, org_img_name[0])
+
+    org_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+    org_image = np.array(org_image)
+
+    plt.imshow(org_image)
+    plt.savefig(os.path.join(save_folder, f"{data_set}_{image_folder}_ground_truth.png"))
+
+    pic_width = len(org_image)
+    img_dim = pic_width**2
+    realizations_number = math.floor(img_dim / cr)
+
+    sim_diffuser = create_diffuser(realizations_number, img_dim)
+    sim_object = org_image.reshape(1, img_dim)
+    sim_object = sim_object.transpose(1, 0)
+    sim_bucket = np.matmul(sim_diffuser, sim_object)
+    sim_bucket = sim_bucket.transpose((1, 0))
+
+    sim_diffuser = torch.from_numpy(sim_diffuser)
+    sim_bucket = torch.from_numpy(sim_bucket)
+
+    rec = sparse_encode(sim_bucket, sim_diffuser, maxiter=1, niter_inner=1, alpha=1,
+                        algorithm='split-bregman')
+
+    plt.imshow(rec.reshape(pic_width, pic_width))
+    plt.title(f"reconstruction by random patterns cr={cr}")
+    plt.savefig(os.path.join(save_folder, f"Bregman_rec_{data_set}_{image_folder}_cr_{cr}.png"))
+    # plt.show()
+
+
+def PSNR(image1, image2, m, n, max_i=255):
+    # max_i is n_gray_levels
+    y = torch.add(image1, (-image2))
+    y_squared = torch.pow(y, 2)
+    mse = torch.sum(y_squared)/(m*n)
+    psnr = 10*math.log(max_i**2/mse, 10)
+    return psnr
+
+
+def calc_psnr_batch(output, y_label, pic_width):
+    dev = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
+    batch_psnr = 0
+    for i, (out_image, orig_image) in enumerate(in_out_images):
+        batch_psnr += PSNR(out_image.to(dev), orig_image.to(dev), pic_width, pic_width)
+    return batch_psnr
 
 
 if __name__ == '__main__':
-    subplot_reconstraction_for_all_images(r'Results_to_save\by order\simple_cifar_GEN_bs_2_cr_3_nsamples100_picw_32')
+    subplot_reconstraction_for_all_images(r'Results_to_save\by order\simple_cifar_GEN_bs_2_cr_10_nsamples100_picw_32',
+                                          cr=10)
 
