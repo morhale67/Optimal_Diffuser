@@ -1,5 +1,6 @@
 import math
 import os
+import shutil
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
@@ -11,13 +12,34 @@ from Lasso import sparse_encode
 from testers import create_diffuser
 
 
+def deal_exist_folder(folder_path):
+    decision = input(
+        f"The folder '{folder_path}' already exists. Do you want to (D)elete it or create a new (V)ersion?"
+        f" (D/V): ").lower()
+    if decision == 'd':
+        # Delete the existing folder
+        shutil.rmtree(folder_path)
+        print(f"Deleted folder: {folder_path}")
+        os.makedirs(folder_path)
+    elif decision == 'v':
+        # Create a new version of the folder
+        folder_path = f"{folder_path}_ver_2"
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+    else:
+        print("Invalid choice. No action taken.")
+    return folder_path
+
+
 def make_folder(net_name, p):
     folder_name = f"{p['data_name']}_{net_name}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}_picw_{p['pic_width']}"
     if not p['learn_vec_lr']:
         folder_name = folder_name + f"_lr_{p['lr']}"
     print(folder_name)
     folder_path = 'Results/' + folder_name
-    if not os.path.exists(folder_path):
+    if os.path.exists(folder_path):
+        folder_path = deal_exist_folder(folder_path)
+    else:
         os.makedirs(folder_path)
     return folder_path
 
@@ -189,7 +211,7 @@ def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path):
     plt.savefig(os.path.join(save_folder, f"{data_set}_{image_folder}_ground_truth.png"))
 
     pic_width = len(org_image)
-    img_dim = pic_width**2
+    img_dim = pic_width ** 2
     realizations_number = math.floor(img_dim / cr)
 
     sim_diffuser = create_diffuser(realizations_number, img_dim)
@@ -210,12 +232,13 @@ def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path):
     # plt.show()
 
 
-def PSNR(image1, image2, m, n, max_i=255):
+def PSNR(image1, image2, m, n):
     # max_i is n_gray_levels
+    max_i = 1 # if the images are normalized
     y = torch.add(image1, (-image2))
     y_squared = torch.pow(y, 2)
-    mse = torch.sum(y_squared)/(m*n)
-    psnr = 10*math.log(max_i**2/mse, 10)
+    mse = torch.sum(y_squared) / (m * n)
+    psnr = 10 * math.log(max_i ** 2 / mse, 10)
     return psnr
 
 
@@ -231,4 +254,3 @@ def calc_psnr_batch(output, y_label, pic_width):
 if __name__ == '__main__':
     subplot_reconstraction_for_all_images(r'Results_to_save\by order\simple_cifar_GEN_bs_2_cr_10_nsamples100_picw_32',
                                           cr=10)
-
