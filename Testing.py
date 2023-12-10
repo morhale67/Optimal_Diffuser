@@ -4,7 +4,7 @@ from Model import breg_rec
 import wandb
 from LogFunctions import print_and_log_message
 import math
-from OutputHandler import save_outputs
+from OutputHandler import save_outputs, calc_ssim_batch
 import numpy as np
 from OutputHandler import save_orig_img
 from OutputHandler import save_randomize_outputs, calc_psnr_batch
@@ -14,7 +14,7 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
              save_img=False):
     model.eval()
     model.to(device)
-    cumu_loss, cumu_psnr = 0, 0
+    cumu_loss, cumu_psnr, cumu_ssim = 0, 0, 0
     pic_width = int(math.sqrt(img_dim))
 
     for batch_index, sim_bucket_tensor in enumerate(loader):
@@ -37,12 +37,12 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         loss = criterion(reconstruct_imgs_batch, sim_object)
         cumu_loss += loss.item()
         cumu_psnr += calc_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        cumu_ssim += calc_ssim_batch(reconstruct_imgs_batch, sim_object, pic_width)
         if save_img:
             save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, pic_width, folder_path,
                                    'test_images')
 
-    test_loss = cumu_loss / len(loader)
-    test_psnr = cumu_psnr / len(loader)
+    test_loss, test_psnr, test_ssim = cumu_loss / len(loader), cumu_psnr / len(loader), cumu_ssim / len(loader)
 
    # try:
    #     pic_width = int(math.sqrt(img_dim))
@@ -58,4 +58,4 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
    # except:
    #     print_and_log_message('Test Loss: {:.6f}\n'.format(test_loss), log_path)
 
-    return test_loss, test_psnr
+    return test_loss, test_psnr, test_ssim

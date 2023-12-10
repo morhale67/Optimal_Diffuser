@@ -5,10 +5,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import cv2
+from skimage.metrics import structural_similarity as ssim
 from torchvision import transforms
 import pickle
 import re
 from Lasso import sparse_encode
+from LogFunctions import print_and_log_message
 from testers import create_diffuser
 
 
@@ -65,27 +67,37 @@ def save_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder
             break
 
 
-def save_numerical_figure(g1, g2, g1_label, g2_label, y_label, filename='loss_figure.png', folder_path='.'):
+def save_numerical_figure(graphs, y_label, title, filename='loss_figure.png', folder_path='.'):
+    ''''
+    g1 and g2 are train and test values
+    g3 are the reference (random patterns)
+    '''
+
+
     # Set custom font and size for the entire plot
     plt.rcParams['font.family'] = 'serif'
     plt.rcParams['font.size'] = 16
     plt.figure(figsize=(10, 7))
 
-    plt.plot(g1, label=g1_label, color='blue')
-    plt.plot(g2, label=g2_label, color='orange')
+    for i, (gi, gi_label) in enumerate(graphs):
+        color = plt.cm.get_cmap('tab10')(i)
+        plt.plot(gi, label=gi_label, color=color)
 
-    # Calculate the minimal test loss and its corresponding epoch
-    min_g2 = min(g2)
-    min_g2_epoch = g2.index(min_g2) + 1  # Adding 1 to convert from 0-based index to epoch number
+
+    # # Calculate the minimal test loss and its corresponding epoch
+    # min_g2 = min(g2)
+    # min_g2_epoch = g2.index(min_g2) + 1  # Adding 1 to convert from 0-based index to epoch number
+    # subtitle = f'Min {g2_label}: {min_g2:.3f} (Epoch {min_g2_epoch})'
+    # plt.title(f'{title}\n{subtitle}', fontsize=22, fontname='Times New Roman')
 
     # Add labels and title
     plt.xlabel('Epoch', fontsize=22, fontname='Arial')
-    plt.ylabel(y_label , fontsize=22, fontname='Arial')
-    title = g1_label + ' and ' + g2_label
-    subtitle = f'Min {g2_label}: {min_g2:.3f} (Epoch {min_g2_epoch})'
-    plt.title(f'{title}\n{subtitle}', fontsize=22, fontname='Times New Roman')
-
+    plt.ylabel(y_label, fontsize=22, fontname='Arial')
+    plt.title(title, fontsize=22, fontname='Times New Roman')
     plt.legend()
+
+    # Set the x-axis ticks to be integer values only
+    plt.xticks(np.arange(0, len(graphs[0][0]) + 1, step=1), fontsize=16)
 
     # Save the figure to the specified filename
     full_file_path = os.path.join(folder_path, filename)
@@ -233,8 +245,9 @@ def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path):
 
 
 def PSNR(image1, image2, m, n):
+    '''assum the images are tensors'''
     # max_i is n_gray_levels
-    max_i = 1 # if the images are normalized
+    max_i = 1  # if the images are normalized
     y = torch.add(image1, (-image2))
     y_squared = torch.pow(y, 2)
     mse = torch.sum(y_squared) / (m * n)
@@ -249,6 +262,48 @@ def calc_psnr_batch(output, y_label, pic_width):
     for i, (out_image, orig_image) in enumerate(in_out_images):
         batch_psnr += PSNR(out_image.to(dev), orig_image.to(dev), pic_width, pic_width)
     return batch_psnr
+
+
+def SSIM(orig_image, rec_image):
+    ''' assum it np array'''
+    ssim_value = ssim(orig_image, rec_image, data_range=1)
+    # ssim_value = ssim(orig_image_np, rec_image_np, data_range=rec_image_np.max()-rec_image_np.min())
+    return ssim_value
+
+
+def calc_ssim_batch(output, y_label, pic_width):
+    dev = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
+    batch_ssim = 0
+    for i, (out_image, orig_image) in enumerate(in_out_images):
+        orig_image_np = orig_image.cpu().detach().numpy()
+        rec_image_np = out_image.cpu().detach().numpy()
+        batch_ssim += SSIM(orig_image_np, rec_image_np)
+    return batch_ssim
+
+
+def save_all_run_numerical_outputs(numerical_outputs, folder_path):
+    file_path = os.path.join(folder_path, 'numerical_outputs.pkl')
+    with open(file_path, 'wb') as file:
+        pickle.dump(numerical_outputs, file)
+
+    n_points = len(numerical_outputs['train_psnr'])
+    rand_diff_loss = np.full(n_points, numerical_outputs['rand_diff_loss'])
+    rand_diff_psnr = np.full(n_points, numerical_outputs['rand_diff_psnr'])
+    rand_diff_ssim = np.full(n_points, numerical_outputs['rand_diff_ssim'])
+
+    Loss_graphs = [[numerical_outputs['train_loss'], 'Train Loss'], [numerical_outputs['test_loss'], 'Test Loss'],
+                   [rand_diff_loss, 'Random Diffuser Loss']]
+    PSNR_graphs = [[numerical_outputs['train_psnr'], 'Train PSNR'], [numerical_outputs['test_psnr'], 'Test PSNR'],
+                   [rand_diff_psnr, 'Random Diffuser PSNR']]
+    SSIM_graphs = [[numerical_outputs['train_ssim'], 'Train SSIM'], [numerical_outputs['test_ssim'], 'Test SSIM'],
+                   [rand_diff_ssim, 'Random Diffuser SSIM']]
+
+    save_numerical_figure(Loss_graphs, "Loss", "Loss", filename='loss_figure.png', folder_path=folder_path)
+    save_numerical_figure(PSNR_graphs, "PSNR [dB]", "PSNR", filename='PSNR_figure.png', folder_path=folder_path)
+    save_numerical_figure(SSIM_graphs, "SSIM", "SSIM", filename='SSIM_figure.png', folder_path=folder_path)
+
+
 
 
 if __name__ == '__main__':

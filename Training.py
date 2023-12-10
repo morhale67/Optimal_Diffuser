@@ -8,7 +8,7 @@ import torchvision.transforms as tr
 from Model import Gen
 from Model import breg_rec
 from LogFunctions import print_and_log_message
-from OutputHandler import save_outputs
+from OutputHandler import save_outputs, calc_ssim_batch
 from testers import check_diff
 from testers import compare_buckets
 from Model import Gen_no_batch
@@ -20,7 +20,7 @@ from OutputHandler import save_randomize_outputs, calc_psnr_batch, save_orig_img
 
 def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n_masks, device, log_path, folder_path,
                 ac_stride=5, save_img=False, big_diffuser=False):
-    cumu_loss, cumu_psnr = 0, 0
+    cumu_loss, cumu_psnr, cumu_ssim = 0, 0, 0
     network.train()
     n_batchs = len(loader.batch_sampler)
     pic_width = int(math.sqrt(img_dim))
@@ -67,6 +67,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         cumu_loss += loss.item()
         torch.cuda.empty_cache()  # Before starting a new forward/backward pass
         cumu_psnr += calc_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        cumu_ssim += calc_ssim_batch(reconstruct_imgs_batch, sim_object, pic_width)
 
         try:
             wandb.log({"batch loss": loss.item()})
@@ -80,8 +81,8 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
             save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)),
                                    folder_path, 'train_images')
 
-    train_loss = cumu_loss / len(loader)
-    train_psnr = cumu_psnr / len(loader)
+    train_loss, train_psnr, train_ssim = cumu_loss / len(loader), cumu_psnr / len(loader), cumu_ssim / len(loader)
+
     try:
         wandb.log({'train_loss': train_loss})
     except Exception as e:
@@ -98,7 +99,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
     #     wandb.log({'train original images': sim_object_images})
     # except:
 
-    return train_loss, train_psnr
+    return train_loss, train_psnr, train_ssim
 
 
 def make_masks_from_big_diff(diffuser, ac_stride):
