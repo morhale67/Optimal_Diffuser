@@ -98,7 +98,7 @@ def save_numerical_figure(graphs, y_label, title, filename='loss_figure.png', fo
     plt.legend()
 
     # Set the x-axis ticks to be integer values only
-    plt.xticks(np.arange(0, len(graphs[0][0]) + 1, step=1), fontsize=16)
+    plt.xticks(np.arange(0, len(graphs[0][0]) + 1, step=5), fontsize=16)
 
     # Save the figure to the specified filename
     full_file_path = os.path.join(folder_path, filename)
@@ -191,7 +191,7 @@ def subplot_epochs_reconstruction(run_folder_path, data_set, image_folder):
     # plt.show()
 
 
-def subplot_reconstraction_for_all_images(run_folder_path, cr):
+def sb_reconstraction_for_all_images(run_folder_path, cr):
     data_set = 'train_images'
     folder_path = os.path.join(run_folder_path, data_set)
     # Get a list of subfolders starting with "image_"
@@ -211,17 +211,17 @@ def subplot_reconstraction_for_all_images(run_folder_path, cr):
 
 
 def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path):
-    save_folder = os.path.join(run_folder_path, 'reconstruction')
 
     images_path = os.path.join(run_folder_path, data_set, image_folder)
     org_img_name = [img for img in os.listdir(images_path) if f'_orig' in img]
     image_path = os.path.join(images_path, org_img_name[0])
+    save_folder = images_path
 
     org_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     org_image = np.array(org_image)
 
-    plt.imshow(org_image)
-    plt.savefig(os.path.join(save_folder, f"{data_set}_{image_folder}_ground_truth.png"))
+    # plt.imshow(org_image)
+    # plt.savefig(os.path.join(save_folder, f"{data_set}_{image_folder}_ground_truth.png"))
 
     pic_width = len(org_image)
     img_dim = pic_width ** 2
@@ -239,9 +239,10 @@ def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path):
     rec = sparse_encode(sim_bucket, sim_diffuser, maxiter=1, niter_inner=1, alpha=1,
                         algorithm='split-bregman')
 
-    plt.imshow(rec.reshape(pic_width, pic_width))
-    plt.title(f"reconstruction by random patterns cr={cr}")
-    plt.savefig(os.path.join(save_folder, f"Bregman_rec_{data_set}_{image_folder}_cr_{cr}.png"))
+    plt.imsave(os.path.join(save_folder, f"Bregman_rec_{image_folder}.png"), rec.numpy().reshape(pic_width, pic_width))
+    # plt.imshow(rec.reshape(pic_width, pic_width))
+    # plt.title(f"reconstruction by random patterns cr={cr}")
+    # plt.savefig(os.path.join(save_folder, f"Bregman_rec_{data_set}_{image_folder}_cr_{cr}.png"))
     # plt.show()
 
 
@@ -305,8 +306,59 @@ def save_all_run_numerical_outputs(numerical_outputs, folder_path):
     save_numerical_figure(SSIM_graphs, "SSIM", "SSIM", filename='SSIM_figure.png', folder_path=folder_path)
 
 
+def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10]):
+    folder_path = os.path.join(run_folder_path, data_set)
+    plt.figure(figsize=(50, 30))
+    cols = 2 + len(epochs_to_show)
+    plt.subplot(20, cols, 1)
+    if data_set == 'train_images':
+        plt.suptitle('Train Set', fontsize=16)
+    else:
+        plt.suptitle('Test Set', fontsize=16)
+
+    i_sub = 1
+    # images_folders = [subfolder for subfolder in os.listdir(folder_path) if subfolder.startswith("image_")]
+
+    for n_img in range(20):
+        image_folder = f'image_{n_img}'
+        image_path = os.path.join(image_folder, f'{n_img}_orig.jpg')
+        original = cv2.imread(os.path.join(folder_path, image_path), cv2.IMREAD_GRAYSCALE)
+        plt.subplot(20, cols, i_sub)
+        i_sub += 1
+        plt.imshow(original)
+        if n_img == 0:
+            plt.title(f'Original')
+        plt.axis('off')
+
+        image_path = os.path.join(image_folder, f'Bregman_rec_image_{n_img}.png')
+        bregman = cv2.imread(os.path.join(folder_path, image_path), cv2.IMREAD_GRAYSCALE)
+        plt.subplot(20, cols, i_sub)
+        i_sub += 1
+        plt.imshow(bregman)
+        if n_img == 0:
+            plt.title(f'Split Bregman')
+        plt.axis('off')
+
+        for j, epoch in enumerate(epochs_to_show):
+            image_path = os.path.join(image_folder, f'epoch_{epoch}_{n_img}_out.jpg')
+            image = cv2.imread(os.path.join(folder_path, image_path), cv2.IMREAD_GRAYSCALE)
+            plt.subplot(20, cols, i_sub)
+            i_sub += 1
+            plt.imshow(image)
+            if n_img == 0:
+                plt.title(f'Epoch {epoch}')
+            plt.axis('off')
+
+    plt.savefig(os.path.join(run_folder_path, f'{data_set}_results.jpg'))
+    # plt.show()
+
+
+
+
 
 
 if __name__ == '__main__':
-    subplot_reconstraction_for_all_images(r'Results_to_save\by order\simple_cifar_GEN_bs_2_cr_10_nsamples100_picw_32',
-                                          cr=10)
+    run_folder_path = r'Results_to_save\simple_cifar\simple_cifar_GEN_bs_2_cr_5_nsamples100_picw_32_epochs_20'
+    # sb_reconstraction_for_all_images(run_folder_path, cr=5)
+    image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, 15])
+

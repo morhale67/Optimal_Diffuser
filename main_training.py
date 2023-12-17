@@ -11,7 +11,8 @@ from Training import train_epoch
 from Testing import test_net
 from LogFunctions import print_and_log_message
 from LogFunctions import print_training_messages
-from OutputHandler import save_numerical_figure, save_orig_img, save_all_run_numerical_outputs, PSNR, SSIM
+from OutputHandler import save_numerical_figure, save_orig_img, save_all_run_numerical_outputs, PSNR, SSIM, \
+    sb_reconstraction_for_all_images, image_results_subplot
 import wandb
 import math
 import time
@@ -52,7 +53,10 @@ def train_local(params, log_path, folder_path):
     numerical_outputs['rand_diff_loss'], numerical_outputs['rand_diff_psnr'], numerical_outputs['rand_diff_ssim'] = \
         split_bregman_on_random_for_run(folder_path, params)
     save_all_run_numerical_outputs(numerical_outputs, folder_path)
+    sb_reconstraction_for_all_images(folder_path, cr=params['cr'])
     print_and_log_message('Run Finished Successfully', log_path)
+    image_results_subplot(folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, params['epochs']])
+    image_results_subplot(folder_path, data_set='test_images', epochs_to_show=[0, 1, 2, 5, 10, params['epochs']])
 
 
 def train(config=None):
