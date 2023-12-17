@@ -1,0 +1,905 @@
+2023-12-17 14:20:37,802 This is a summery of the run:
+2023-12-17 14:20:37,802 Batch size for this run: 2
+2023-12-17 14:20:37,802 Size of original image: 32 X 32
+2023-12-17 14:20:37,802 learning rate: 0.1
+2023-12-17 14:20:37,802 number of masks: 51
+2023-12-17 14:20:37,802 Compression ratio: 20
+2023-12-17 14:20:37,802 epochs : 20
+2023-12-17 14:20:37,802 ***************************************************************************
+
+
+2023-12-17 14:20:37,802 learning rate: 0.1
+2023-12-17 14:20:38,952 Epoch number 0, batch number 0/40:       batch loss 0.04573644697666168
+2023-12-17 14:20:39,365 Epoch number 0, batch number 1/40:       batch loss 0.05083724111318588
+2023-12-17 14:20:39,785 Epoch number 0, batch number 2/40:       batch loss 0.036630142480134964
+2023-12-17 14:20:40,223 Epoch number 0, batch number 3/40:       batch loss 0.04830315709114075
+2023-12-17 14:20:40,662 Epoch number 0, batch number 4/40:       batch loss 0.04824662581086159
+2023-12-17 14:20:41,095 Epoch number 0, batch number 5/40:       batch loss 0.04038640856742859
+2023-12-17 14:20:41,541 Epoch number 0, batch number 6/40:       batch loss 0.03689717501401901
+2023-12-17 14:20:41,980 Epoch number 0, batch number 7/40:       batch loss 0.03153384476900101
+2023-12-17 14:20:42,413 Epoch number 0, batch number 8/40:       batch loss 0.049372829496860504
+2023-12-17 14:20:42,854 Epoch number 0, batch number 9/40:       batch loss 0.02579793520271778
+2023-12-17 14:20:43,284 Epoch number 0, batch number 10/40:       batch loss 0.030248505994677544
+2023-12-17 14:20:43,721 Epoch number 0, batch number 11/40:       batch loss 0.027280181646347046
+2023-12-17 14:20:44,147 Epoch number 0, batch number 12/40:       batch loss 0.03358093276619911
+2023-12-17 14:20:44,566 Epoch number 0, batch number 13/40:       batch loss 0.021868381649255753
+2023-12-17 14:20:45,018 Epoch number 0, batch number 14/40:       batch loss 0.026139242574572563
+2023-12-17 14:20:45,455 Epoch number 0, batch number 15/40:       batch loss 0.030146587640047073
+2023-12-17 14:20:45,886 Epoch number 0, batch number 16/40:       batch loss 0.01995806209743023
+2023-12-17 14:20:46,316 Epoch number 0, batch number 17/40:       batch loss 0.039026886224746704
+2023-12-17 14:20:46,751 Epoch number 0, batch number 18/40:       batch loss 0.026116913184523582
+2023-12-17 14:20:47,188 Epoch number 0, batch number 19/40:       batch loss 0.024953994899988174
+2023-12-17 14:20:47,638 Epoch number 0, batch number 20/40:       batch loss 0.02292751707136631
+2023-12-17 14:20:48,083 Epoch number 0, batch number 21/40:       batch loss 0.023396827280521393
+2023-12-17 14:20:48,530 Epoch number 0, batch number 22/40:       batch loss 0.03227830305695534
+2023-12-17 14:20:48,968 Epoch number 0, batch number 23/40:       batch loss 0.036578815430402756
+2023-12-17 14:20:49,409 Epoch number 0, batch number 24/40:       batch loss 0.03467804566025734
+2023-12-17 14:20:49,840 Epoch number 0, batch number 25/40:       batch loss 0.0265756007283926
+2023-12-17 14:20:50,272 Epoch number 0, batch number 26/40:       batch loss 0.01588538847863674
+2023-12-17 14:20:50,706 Epoch number 0, batch number 27/40:       batch loss 0.017314603552222252
+2023-12-17 14:20:51,154 Epoch number 0, batch number 28/40:       batch loss 0.02092481404542923
+2023-12-17 14:20:51,587 Epoch number 0, batch number 29/40:       batch loss 0.01934884674847126
+2023-12-17 14:20:52,024 Epoch number 0, batch number 30/40:       batch loss 0.026629850268363953
+2023-12-17 14:20:52,463 Epoch number 0, batch number 31/40:       batch loss 0.02993675507605076
+2023-12-17 14:20:52,886 Epoch number 0, batch number 32/40:       batch loss 0.028770077973604202
+2023-12-17 14:20:53,314 Epoch number 0, batch number 33/40:       batch loss 0.023036997765302658
+2023-12-17 14:20:53,741 Epoch number 0, batch number 34/40:       batch loss 0.03494970500469208
+2023-12-17 14:20:54,179 Epoch number 0, batch number 35/40:       batch loss 0.013644975610077381
+2023-12-17 14:20:54,612 Epoch number 0, batch number 36/40:       batch loss 0.019055811688303947
+2023-12-17 14:20:55,038 Epoch number 0, batch number 37/40:       batch loss 0.0243522971868515
+2023-12-17 14:20:55,474 Epoch number 0, batch number 38/40:       batch loss 0.02243722602725029
+2023-12-17 14:20:55,893 Epoch number 0, batch number 39/40:       batch loss 0.017730912193655968
+2023-12-17 14:20:55,919 Epoch: 1 	Training Loss: 0.029588
+2023-12-17 14:20:55,919 Time for epoch 1 : 18 sec
+2023-12-17 14:20:55,919 lr for epoch 1 is 0.10000
+2023-12-17 14:20:57,739 Epoch number 1, batch number 0/40:       batch loss 0.012702042236924171
+2023-12-17 14:20:58,195 Epoch number 1, batch number 1/40:       batch loss 0.019878029823303223
+2023-12-17 14:20:58,639 Epoch number 1, batch number 2/40:       batch loss 0.02426070347428322
+2023-12-17 14:20:59,086 Epoch number 1, batch number 3/40:       batch loss 0.022694334387779236
+2023-12-17 14:20:59,546 Epoch number 1, batch number 4/40:       batch loss 0.016932930797338486
+2023-12-17 14:21:00,003 Epoch number 1, batch number 5/40:       batch loss 0.017783842980861664
+2023-12-17 14:21:00,442 Epoch number 1, batch number 6/40:       batch loss 0.024829193949699402
+2023-12-17 14:21:00,880 Epoch number 1, batch number 7/40:       batch loss 0.01625506952404976
+2023-12-17 14:21:01,336 Epoch number 1, batch number 8/40:       batch loss 0.018908724188804626
+2023-12-17 14:21:01,802 Epoch number 1, batch number 9/40:       batch loss 0.01874266006052494
+2023-12-17 14:21:02,265 Epoch number 1, batch number 10/40:       batch loss 0.013110214844346046
+2023-12-17 14:21:02,724 Epoch number 1, batch number 11/40:       batch loss 0.022286154329776764
+2023-12-17 14:21:03,194 Epoch number 1, batch number 12/40:       batch loss 0.021830303594470024
+2023-12-17 14:21:03,653 Epoch number 1, batch number 13/40:       batch loss 0.02337040565907955
+2023-12-17 14:21:04,113 Epoch number 1, batch number 14/40:       batch loss 0.01743355207145214
+2023-12-17 14:21:04,582 Epoch number 1, batch number 15/40:       batch loss 0.021910812705755234
+2023-12-17 14:21:05,033 Epoch number 1, batch number 16/40:       batch loss 0.016100602224469185
+2023-12-17 14:21:05,493 Epoch number 1, batch number 17/40:       batch loss 0.016043836250901222
+2023-12-17 14:21:05,957 Epoch number 1, batch number 18/40:       batch loss 0.010653473436832428
+2023-12-17 14:21:06,437 Epoch number 1, batch number 19/40:       batch loss 0.023222919553518295
+2023-12-17 14:21:06,912 Epoch number 1, batch number 20/40:       batch loss 0.01607629470527172
+2023-12-17 14:21:07,378 Epoch number 1, batch number 21/40:       batch loss 0.02111552096903324
+2023-12-17 14:21:07,847 Epoch number 1, batch number 22/40:       batch loss 0.01418349053710699
+2023-12-17 14:21:08,315 Epoch number 1, batch number 23/40:       batch loss 0.015151849016547203
+2023-12-17 14:21:08,775 Epoch number 1, batch number 24/40:       batch loss 0.02204052172601223
+2023-12-17 14:21:09,245 Epoch number 1, batch number 25/40:       batch loss 0.016614627093076706
+2023-12-17 14:21:09,697 Epoch number 1, batch number 26/40:       batch loss 0.018404800444841385
+2023-12-17 14:21:10,155 Epoch number 1, batch number 27/40:       batch loss 0.01942508853971958
+2023-12-17 14:21:10,594 Epoch number 1, batch number 28/40:       batch loss 0.01988040655851364
+2023-12-17 14:21:11,046 Epoch number 1, batch number 29/40:       batch loss 0.01797543838620186
+2023-12-17 14:21:11,502 Epoch number 1, batch number 30/40:       batch loss 0.018450602889060974
+2023-12-17 14:21:11,944 Epoch number 1, batch number 31/40:       batch loss 0.013659459538757801
+2023-12-17 14:21:12,385 Epoch number 1, batch number 32/40:       batch loss 0.01557595282793045
+2023-12-17 14:21:12,852 Epoch number 1, batch number 33/40:       batch loss 0.01575915887951851
+2023-12-17 14:21:13,288 Epoch number 1, batch number 34/40:       batch loss 0.015685759484767914
+2023-12-17 14:21:13,713 Epoch number 1, batch number 35/40:       batch loss 0.02571484073996544
+2023-12-17 14:21:14,150 Epoch number 1, batch number 36/40:       batch loss 0.01728506200015545
+2023-12-17 14:21:14,576 Epoch number 1, batch number 37/40:       batch loss 0.013471981510519981
+2023-12-17 14:21:15,016 Epoch number 1, batch number 38/40:       batch loss 0.01541107427328825
+2023-12-17 14:21:15,466 Epoch number 1, batch number 39/40:       batch loss 0.01402499619871378
+2023-12-17 14:21:15,498 Epoch: 2 	Training Loss: 0.018121
+2023-12-17 14:21:15,498 Time for epoch 2 : 18 sec
+2023-12-17 14:21:15,498 lr for epoch 2 is 0.10000
+2023-12-17 14:21:17,286 Epoch number 2, batch number 0/40:       batch loss 0.01019809115678072
+2023-12-17 14:21:17,771 Epoch number 2, batch number 1/40:       batch loss 0.020676957443356514
+2023-12-17 14:21:18,252 Epoch number 2, batch number 2/40:       batch loss 0.02038455568253994
+2023-12-17 14:21:18,726 Epoch number 2, batch number 3/40:       batch loss 0.011822358705103397
+2023-12-17 14:21:19,200 Epoch number 2, batch number 4/40:       batch loss 0.018434058874845505
+2023-12-17 14:21:19,660 Epoch number 2, batch number 5/40:       batch loss 0.01028995867818594
+2023-12-17 14:21:20,148 Epoch number 2, batch number 6/40:       batch loss 0.012489430606365204
+2023-12-17 14:21:20,622 Epoch number 2, batch number 7/40:       batch loss 0.013099984265863895
+2023-12-17 14:21:21,105 Epoch number 2, batch number 8/40:       batch loss 0.01646360196173191
+2023-12-17 14:21:21,588 Epoch number 2, batch number 9/40:       batch loss 0.016214577481150627
+2023-12-17 14:21:22,069 Epoch number 2, batch number 10/40:       batch loss 0.017604440450668335
+2023-12-17 14:21:22,553 Epoch number 2, batch number 11/40:       batch loss 0.017246384173631668
+2023-12-17 14:21:23,030 Epoch number 2, batch number 12/40:       batch loss 0.015456080436706543
+2023-12-17 14:21:23,515 Epoch number 2, batch number 13/40:       batch loss 0.01703786849975586
+2023-12-17 14:21:24,003 Epoch number 2, batch number 14/40:       batch loss 0.011438583955168724
+2023-12-17 14:21:24,469 Epoch number 2, batch number 15/40:       batch loss 0.011960156261920929
+2023-12-17 14:21:24,947 Epoch number 2, batch number 16/40:       batch loss 0.010230743326246738
+2023-12-17 14:21:25,429 Epoch number 2, batch number 17/40:       batch loss 0.022319462150335312
+2023-12-17 14:21:25,905 Epoch number 2, batch number 18/40:       batch loss 0.015208886936306953
+2023-12-17 14:21:26,378 Epoch number 2, batch number 19/40:       batch loss 0.015265286900103092
+2023-12-17 14:21:26,852 Epoch number 2, batch number 20/40:       batch loss 0.011920373886823654
+2023-12-17 14:21:27,329 Epoch number 2, batch number 21/40:       batch loss 0.02461259812116623
+2023-12-17 14:21:27,813 Epoch number 2, batch number 22/40:       batch loss 0.01856614649295807
+2023-12-17 14:21:28,297 Epoch number 2, batch number 23/40:       batch loss 0.012294950895011425
+2023-12-17 14:21:28,768 Epoch number 2, batch number 24/40:       batch loss 0.010853305459022522
+2023-12-17 14:21:29,243 Epoch number 2, batch number 25/40:       batch loss 0.013035155832767487
+2023-12-17 14:21:29,727 Epoch number 2, batch number 26/40:       batch loss 0.020723840221762657
+2023-12-17 14:21:30,204 Epoch number 2, batch number 27/40:       batch loss 0.014038363471627235
+2023-12-17 14:21:30,695 Epoch number 2, batch number 28/40:       batch loss 0.017071394249796867
+2023-12-17 14:21:31,177 Epoch number 2, batch number 29/40:       batch loss 0.012757508084177971
+2023-12-17 14:21:31,660 Epoch number 2, batch number 30/40:       batch loss 0.01882382482290268
+2023-12-17 14:21:32,135 Epoch number 2, batch number 31/40:       batch loss 0.012475553900003433
+2023-12-17 14:21:32,618 Epoch number 2, batch number 32/40:       batch loss 0.017189469188451767
+2023-12-17 14:21:33,103 Epoch number 2, batch number 33/40:       batch loss 0.01569797284901142
+2023-12-17 14:21:33,588 Epoch number 2, batch number 34/40:       batch loss 0.0128557700663805
+2023-12-17 14:21:34,058 Epoch number 2, batch number 35/40:       batch loss 0.01976623386144638
+2023-12-17 14:21:34,535 Epoch number 2, batch number 36/40:       batch loss 0.013541320338845253
+2023-12-17 14:21:34,999 Epoch number 2, batch number 37/40:       batch loss 0.012073260731995106
+2023-12-17 14:21:35,484 Epoch number 2, batch number 38/40:       batch loss 0.011959600262343884
+2023-12-17 14:21:35,961 Epoch number 2, batch number 39/40:       batch loss 0.015165322460234165
+2023-12-17 14:21:35,992 Epoch: 3 	Training Loss: 0.015232
+2023-12-17 14:21:35,993 Time for epoch 3 : 19 sec
+2023-12-17 14:21:35,993 lr for epoch 3 is 0.10000
+2023-12-17 14:21:37,797 Epoch number 3, batch number 0/40:       batch loss 0.013431353494524956
+2023-12-17 14:21:38,295 Epoch number 3, batch number 1/40:       batch loss 0.010946458205580711
+2023-12-17 14:21:38,776 Epoch number 3, batch number 2/40:       batch loss 0.012549024075269699
+2023-12-17 14:21:39,252 Epoch number 3, batch number 3/40:       batch loss 0.010862089693546295
+2023-12-17 14:21:39,720 Epoch number 3, batch number 4/40:       batch loss 0.007649157661944628
+2023-12-17 14:21:40,176 Epoch number 3, batch number 5/40:       batch loss 0.015776151791214943
+2023-12-17 14:21:40,675 Epoch number 3, batch number 6/40:       batch loss 0.014668282121419907
+2023-12-17 14:21:41,176 Epoch number 3, batch number 7/40:       batch loss 0.01141333393752575
+2023-12-17 14:21:41,653 Epoch number 3, batch number 8/40:       batch loss 0.015048705041408539
+2023-12-17 14:21:42,151 Epoch number 3, batch number 9/40:       batch loss 0.012672207318246365
+2023-12-17 14:21:42,652 Epoch number 3, batch number 10/40:       batch loss 0.012168030254542828
+2023-12-17 14:21:43,150 Epoch number 3, batch number 11/40:       batch loss 0.012926476076245308
+2023-12-17 14:21:43,632 Epoch number 3, batch number 12/40:       batch loss 0.008820315822958946
+2023-12-17 14:21:44,119 Epoch number 3, batch number 13/40:       batch loss 0.008032429032027721
+2023-12-17 14:21:44,596 Epoch number 3, batch number 14/40:       batch loss 0.013978349044919014
+2023-12-17 14:21:45,082 Epoch number 3, batch number 15/40:       batch loss 0.016215020790696144
+2023-12-17 14:21:45,590 Epoch number 3, batch number 16/40:       batch loss 0.012079326435923576
+2023-12-17 14:21:46,078 Epoch number 3, batch number 17/40:       batch loss 0.011620272882282734
+2023-12-17 14:21:46,561 Epoch number 3, batch number 18/40:       batch loss 0.01565530151128769
+2023-12-17 14:21:47,030 Epoch number 3, batch number 19/40:       batch loss 0.014051010832190514
+2023-12-17 14:21:47,500 Epoch number 3, batch number 20/40:       batch loss 0.013737288303673267
+2023-12-17 14:21:47,999 Epoch number 3, batch number 21/40:       batch loss 0.02158277854323387
+2023-12-17 14:21:48,484 Epoch number 3, batch number 22/40:       batch loss 0.01747562550008297
+2023-12-17 14:21:48,951 Epoch number 3, batch number 23/40:       batch loss 0.013608476147055626
+2023-12-17 14:21:49,436 Epoch number 3, batch number 24/40:       batch loss 0.01585993357002735
+2023-12-17 14:21:49,913 Epoch number 3, batch number 25/40:       batch loss 0.013214973732829094
+2023-12-17 14:21:50,401 Epoch number 3, batch number 26/40:       batch loss 0.013430800288915634
+2023-12-17 14:21:50,880 Epoch number 3, batch number 27/40:       batch loss 0.014117452315986156
+2023-12-17 14:21:51,349 Epoch number 3, batch number 28/40:       batch loss 0.01328946091234684
+2023-12-17 14:21:51,833 Epoch number 3, batch number 29/40:       batch loss 0.013366976752877235
+2023-12-17 14:21:52,316 Epoch number 3, batch number 30/40:       batch loss 0.01147432904690504
+2023-12-17 14:21:52,808 Epoch number 3, batch number 31/40:       batch loss 0.011035718023777008
+2023-12-17 14:21:53,276 Epoch number 3, batch number 32/40:       batch loss 0.01870114356279373
+2023-12-17 14:21:53,764 Epoch number 3, batch number 33/40:       batch loss 0.011607705615460873
+2023-12-17 14:21:54,255 Epoch number 3, batch number 34/40:       batch loss 0.013439861126244068
+2023-12-17 14:21:54,747 Epoch number 3, batch number 35/40:       batch loss 0.012032056227326393
+2023-12-17 14:21:55,230 Epoch number 3, batch number 36/40:       batch loss 0.01266904454678297
+2023-12-17 14:21:55,711 Epoch number 3, batch number 37/40:       batch loss 0.013987710699439049
+2023-12-17 14:21:56,194 Epoch number 3, batch number 38/40:       batch loss 0.012189054861664772
+2023-12-17 14:21:56,662 Epoch number 3, batch number 39/40:       batch loss 0.017690373584628105
+2023-12-17 14:21:56,698 Epoch: 4 	Training Loss: 0.013377
+2023-12-17 14:21:56,698 Time for epoch 4 : 20 sec
+2023-12-17 14:21:56,698 lr for epoch 4 is 0.10000
+2023-12-17 14:21:58,459 Epoch number 4, batch number 0/40:       batch loss 0.008794872090220451
+2023-12-17 14:21:58,933 Epoch number 4, batch number 1/40:       batch loss 0.01074801292270422
+2023-12-17 14:21:59,405 Epoch number 4, batch number 2/40:       batch loss 0.015041391365230083
+2023-12-17 14:21:59,880 Epoch number 4, batch number 3/40:       batch loss 0.008995629847049713
+2023-12-17 14:22:00,360 Epoch number 4, batch number 4/40:       batch loss 0.009180176071822643
+2023-12-17 14:22:00,829 Epoch number 4, batch number 5/40:       batch loss 0.00810487661510706
+2023-12-17 14:22:01,305 Epoch number 4, batch number 6/40:       batch loss 0.01248879637569189
+2023-12-17 14:22:01,786 Epoch number 4, batch number 7/40:       batch loss 0.011933952569961548
+2023-12-17 14:22:02,288 Epoch number 4, batch number 8/40:       batch loss 0.012431371957063675
+2023-12-17 14:22:02,783 Epoch number 4, batch number 9/40:       batch loss 0.013130707666277885
+2023-12-17 14:22:03,283 Epoch number 4, batch number 10/40:       batch loss 0.009365968406200409
+2023-12-17 14:22:03,743 Epoch number 4, batch number 11/40:       batch loss 0.0119289830327034
+2023-12-17 14:22:04,201 Epoch number 4, batch number 12/40:       batch loss 0.015201423317193985
+2023-12-17 14:22:04,672 Epoch number 4, batch number 13/40:       batch loss 0.012284056283533573
+2023-12-17 14:22:05,153 Epoch number 4, batch number 14/40:       batch loss 0.012319790199398994
+2023-12-17 14:22:05,619 Epoch number 4, batch number 15/40:       batch loss 0.01146792247891426
+2023-12-17 14:22:06,089 Epoch number 4, batch number 16/40:       batch loss 0.010243725031614304
+2023-12-17 14:22:06,565 Epoch number 4, batch number 17/40:       batch loss 0.008185334503650665
+2023-12-17 14:22:07,047 Epoch number 4, batch number 18/40:       batch loss 0.00899745523929596
+2023-12-17 14:22:07,541 Epoch number 4, batch number 19/40:       batch loss 0.009538027457892895
+2023-12-17 14:22:08,017 Epoch number 4, batch number 20/40:       batch loss 0.008325285278260708
+2023-12-17 14:22:08,485 Epoch number 4, batch number 21/40:       batch loss 0.019087597727775574
+2023-12-17 14:22:08,970 Epoch number 4, batch number 22/40:       batch loss 0.012177953496575356
+2023-12-17 14:22:09,443 Epoch number 4, batch number 23/40:       batch loss 0.015180865302681923
+2023-12-17 14:22:09,904 Epoch number 4, batch number 24/40:       batch loss 0.011849172413349152
+2023-12-17 14:22:10,384 Epoch number 4, batch number 25/40:       batch loss 0.01064373180270195
+2023-12-17 14:22:10,848 Epoch number 4, batch number 26/40:       batch loss 0.014705603942275047
+2023-12-17 14:22:11,316 Epoch number 4, batch number 27/40:       batch loss 0.011526466347277164
+2023-12-17 14:22:11,779 Epoch number 4, batch number 28/40:       batch loss 0.017733613029122353
+2023-12-17 14:22:12,233 Epoch number 4, batch number 29/40:       batch loss 0.01310532633215189
+2023-12-17 14:22:12,728 Epoch number 4, batch number 30/40:       batch loss 0.013945402577519417
+2023-12-17 14:22:13,203 Epoch number 4, batch number 31/40:       batch loss 0.01404372975230217
+2023-12-17 14:22:13,671 Epoch number 4, batch number 32/40:       batch loss 0.01680796965956688
+2023-12-17 14:22:14,141 Epoch number 4, batch number 33/40:       batch loss 0.009036028757691383
+2023-12-17 14:22:14,597 Epoch number 4, batch number 34/40:       batch loss 0.009323271922767162
+2023-12-17 14:22:15,064 Epoch number 4, batch number 35/40:       batch loss 0.010042857378721237
+2023-12-17 14:22:15,530 Epoch number 4, batch number 36/40:       batch loss 0.006845272611826658
+2023-12-17 14:22:15,989 Epoch number 4, batch number 37/40:       batch loss 0.012128131464123726
+2023-12-17 14:22:16,460 Epoch number 4, batch number 38/40:       batch loss 0.012523997575044632
+2023-12-17 14:22:16,917 Epoch number 4, batch number 39/40:       batch loss 0.008930003270506859
+2023-12-17 14:22:16,950 Epoch: 5 	Training Loss: 0.011709
+2023-12-17 14:22:16,950 Time for epoch 5 : 19 sec
+2023-12-17 14:22:16,950 lr for epoch 5 is 0.10000
+2023-12-17 14:22:18,660 Epoch number 5, batch number 0/40:       batch loss 0.015858838334679604
+2023-12-17 14:22:19,144 Epoch number 5, batch number 1/40:       batch loss 0.007835288532078266
+2023-12-17 14:22:19,628 Epoch number 5, batch number 2/40:       batch loss 0.005468431394547224
+2023-12-17 14:22:20,115 Epoch number 5, batch number 3/40:       batch loss 0.008564308285713196
+2023-12-17 14:22:20,579 Epoch number 5, batch number 4/40:       batch loss 0.007225950248539448
+2023-12-17 14:22:21,053 Epoch number 5, batch number 5/40:       batch loss 0.010835535824298859
+2023-12-17 14:22:21,503 Epoch number 5, batch number 6/40:       batch loss 0.010243132710456848
+2023-12-17 14:22:21,983 Epoch number 5, batch number 7/40:       batch loss 0.0073123471811413765
+2023-12-17 14:22:22,439 Epoch number 5, batch number 8/40:       batch loss 0.010173852555453777
+2023-12-17 14:22:22,915 Epoch number 5, batch number 9/40:       batch loss 0.009675808250904083
+2023-12-17 14:22:23,397 Epoch number 5, batch number 10/40:       batch loss 0.009592166170477867
+2023-12-17 14:22:23,870 Epoch number 5, batch number 11/40:       batch loss 0.008728950284421444
+2023-12-17 14:22:24,350 Epoch number 5, batch number 12/40:       batch loss 0.015991006046533585
+2023-12-17 14:22:24,821 Epoch number 5, batch number 13/40:       batch loss 0.008378435857594013
+2023-12-17 14:22:25,286 Epoch number 5, batch number 14/40:       batch loss 0.007748748175799847
+2023-12-17 14:22:25,749 Epoch number 5, batch number 15/40:       batch loss 0.007850755006074905
+2023-12-17 14:22:26,230 Epoch number 5, batch number 16/40:       batch loss 0.01959281414747238
+2023-12-17 14:22:26,688 Epoch number 5, batch number 17/40:       batch loss 0.007921331562101841
+2023-12-17 14:22:27,159 Epoch number 5, batch number 18/40:       batch loss 0.011141774244606495
+2023-12-17 14:22:27,637 Epoch number 5, batch number 19/40:       batch loss 0.009451301768422127
+2023-12-17 14:22:28,120 Epoch number 5, batch number 20/40:       batch loss 0.010579005815088749
+2023-12-17 14:22:28,604 Epoch number 5, batch number 21/40:       batch loss 0.008318942971527576
+2023-12-17 14:22:29,067 Epoch number 5, batch number 22/40:       batch loss 0.01626892015337944
+2023-12-17 14:22:29,528 Epoch number 5, batch number 23/40:       batch loss 0.011605329811573029
+2023-12-17 14:22:29,989 Epoch number 5, batch number 24/40:       batch loss 0.00765953678637743
+2023-12-17 14:22:30,451 Epoch number 5, batch number 25/40:       batch loss 0.010332239791750908
+2023-12-17 14:22:30,925 Epoch number 5, batch number 26/40:       batch loss 0.00802674237638712
+2023-12-17 14:22:31,418 Epoch number 5, batch number 27/40:       batch loss 0.007257531397044659
+2023-12-17 14:22:31,884 Epoch number 5, batch number 28/40:       batch loss 0.007388084661215544
+2023-12-17 14:22:32,366 Epoch number 5, batch number 29/40:       batch loss 0.008519688621163368
+2023-12-17 14:22:32,852 Epoch number 5, batch number 30/40:       batch loss 0.00821640808135271
+2023-12-17 14:22:33,344 Epoch number 5, batch number 31/40:       batch loss 0.012684553861618042
+2023-12-17 14:22:33,818 Epoch number 5, batch number 32/40:       batch loss 0.006365370936691761
+2023-12-17 14:22:34,290 Epoch number 5, batch number 33/40:       batch loss 0.009924686513841152
+2023-12-17 14:22:34,772 Epoch number 5, batch number 34/40:       batch loss 0.006190032698214054
+2023-12-17 14:22:35,237 Epoch number 5, batch number 35/40:       batch loss 0.012331558391451836
+2023-12-17 14:22:35,712 Epoch number 5, batch number 36/40:       batch loss 0.01063811220228672
+2023-12-17 14:22:36,191 Epoch number 5, batch number 37/40:       batch loss 0.006429487373679876
+2023-12-17 14:22:36,657 Epoch number 5, batch number 38/40:       batch loss 0.009426235221326351
+2023-12-17 14:22:37,124 Epoch number 5, batch number 39/40:       batch loss 0.006871918216347694
+2023-12-17 14:22:37,160 Epoch: 6 	Training Loss: 0.009616
+2023-12-17 14:22:37,160 Time for epoch 6 : 19 sec
+2023-12-17 14:22:37,160 lr for epoch 6 is 0.01000
+2023-12-17 14:22:38,931 Epoch number 6, batch number 0/40:       batch loss 0.009454682469367981
+2023-12-17 14:22:39,405 Epoch number 6, batch number 1/40:       batch loss 0.009967818856239319
+2023-12-17 14:22:39,870 Epoch number 6, batch number 2/40:       batch loss 0.007276223041117191
+2023-12-17 14:22:40,338 Epoch number 6, batch number 3/40:       batch loss 0.007171333767473698
+2023-12-17 14:22:40,799 Epoch number 6, batch number 4/40:       batch loss 0.0065815383568406105
+2023-12-17 14:22:41,261 Epoch number 6, batch number 5/40:       batch loss 0.013575204648077488
+2023-12-17 14:22:41,712 Epoch number 6, batch number 6/40:       batch loss 0.00859177764505148
+2023-12-17 14:22:42,177 Epoch number 6, batch number 7/40:       batch loss 0.008649799041450024
+2023-12-17 14:22:42,649 Epoch number 6, batch number 8/40:       batch loss 0.010240406729280949
+2023-12-17 14:22:43,102 Epoch number 6, batch number 9/40:       batch loss 0.007891414687037468
+2023-12-17 14:22:43,564 Epoch number 6, batch number 10/40:       batch loss 0.010839944705367088
+2023-12-17 14:22:44,023 Epoch number 6, batch number 11/40:       batch loss 0.007984223775565624
+2023-12-17 14:22:44,485 Epoch number 6, batch number 12/40:       batch loss 0.009879037737846375
+2023-12-17 14:22:44,964 Epoch number 6, batch number 13/40:       batch loss 0.010350177995860577
+2023-12-17 14:22:45,440 Epoch number 6, batch number 14/40:       batch loss 0.0071058799512684345
+2023-12-17 14:22:45,913 Epoch number 6, batch number 15/40:       batch loss 0.010899372398853302
+2023-12-17 14:22:46,380 Epoch number 6, batch number 16/40:       batch loss 0.007954146713018417
+2023-12-17 14:22:46,851 Epoch number 6, batch number 17/40:       batch loss 0.007614036090672016
+2023-12-17 14:22:47,312 Epoch number 6, batch number 18/40:       batch loss 0.006245102733373642
+2023-12-17 14:22:47,770 Epoch number 6, batch number 19/40:       batch loss 0.005018383264541626
+2023-12-17 14:22:48,233 Epoch number 6, batch number 20/40:       batch loss 0.011241836473345757
+2023-12-17 14:22:48,694 Epoch number 6, batch number 21/40:       batch loss 0.008589858189225197
+2023-12-17 14:22:49,173 Epoch number 6, batch number 22/40:       batch loss 0.004984322935342789
+2023-12-17 14:22:49,623 Epoch number 6, batch number 23/40:       batch loss 0.009883569553494453
+2023-12-17 14:22:50,095 Epoch number 6, batch number 24/40:       batch loss 0.012022413313388824
+2023-12-17 14:22:50,564 Epoch number 6, batch number 25/40:       batch loss 0.013971840962767601
+2023-12-17 14:22:51,038 Epoch number 6, batch number 26/40:       batch loss 0.00734147522598505
+2023-12-17 14:22:51,498 Epoch number 6, batch number 27/40:       batch loss 0.005334677640348673
+2023-12-17 14:22:51,958 Epoch number 6, batch number 28/40:       batch loss 0.008229650557041168
+2023-12-17 14:22:52,421 Epoch number 6, batch number 29/40:       batch loss 0.01241999864578247
+2023-12-17 14:22:52,879 Epoch number 6, batch number 30/40:       batch loss 0.005195776931941509
+2023-12-17 14:22:53,329 Epoch number 6, batch number 31/40:       batch loss 0.009097081609070301
+2023-12-17 14:22:53,782 Epoch number 6, batch number 32/40:       batch loss 0.012668882496654987
+2023-12-17 14:22:54,236 Epoch number 6, batch number 33/40:       batch loss 0.006561617832630873
+2023-12-17 14:22:54,701 Epoch number 6, batch number 34/40:       batch loss 0.008595729246735573
+2023-12-17 14:22:55,164 Epoch number 6, batch number 35/40:       batch loss 0.009807756170630455
+2023-12-17 14:22:55,644 Epoch number 6, batch number 36/40:       batch loss 0.009083284065127373
+2023-12-17 14:22:56,118 Epoch number 6, batch number 37/40:       batch loss 0.007111821323633194
+2023-12-17 14:22:56,596 Epoch number 6, batch number 38/40:       batch loss 0.00896162074059248
+2023-12-17 14:22:57,064 Epoch number 6, batch number 39/40:       batch loss 0.006860167719423771
+2023-12-17 14:22:57,097 Epoch: 7 	Training Loss: 0.008781
+2023-12-17 14:22:57,097 Time for epoch 7 : 19 sec
+2023-12-17 14:22:57,097 lr for epoch 7 is 0.01000
+2023-12-17 14:22:58,859 Epoch number 7, batch number 0/40:       batch loss 0.006276803556829691
+2023-12-17 14:22:59,326 Epoch number 7, batch number 1/40:       batch loss 0.006450648419559002
+2023-12-17 14:22:59,798 Epoch number 7, batch number 2/40:       batch loss 0.014932321384549141
+2023-12-17 14:23:00,269 Epoch number 7, batch number 3/40:       batch loss 0.00942749623209238
+2023-12-17 14:23:00,744 Epoch number 7, batch number 4/40:       batch loss 0.01162801031023264
+2023-12-17 14:23:01,217 Epoch number 7, batch number 5/40:       batch loss 0.009499454870820045
+2023-12-17 14:23:01,691 Epoch number 7, batch number 6/40:       batch loss 0.007889144122600555
+2023-12-17 14:23:02,163 Epoch number 7, batch number 7/40:       batch loss 0.010360327549278736
+2023-12-17 14:23:02,625 Epoch number 7, batch number 8/40:       batch loss 0.008328858762979507
+2023-12-17 14:23:03,091 Epoch number 7, batch number 9/40:       batch loss 0.010457923635840416
+2023-12-17 14:23:03,561 Epoch number 7, batch number 10/40:       batch loss 0.00899994745850563
+2023-12-17 14:23:04,031 Epoch number 7, batch number 11/40:       batch loss 0.0102275051176548
+2023-12-17 14:23:04,508 Epoch number 7, batch number 12/40:       batch loss 0.007308365777134895
+2023-12-17 14:23:05,011 Epoch number 7, batch number 13/40:       batch loss 0.005839836783707142
+2023-12-17 14:23:05,499 Epoch number 7, batch number 14/40:       batch loss 0.009190842509269714
+2023-12-17 14:23:05,967 Epoch number 7, batch number 15/40:       batch loss 0.01130009163171053
+2023-12-17 14:23:06,436 Epoch number 7, batch number 16/40:       batch loss 0.006316789425909519
+2023-12-17 14:23:06,897 Epoch number 7, batch number 17/40:       batch loss 0.007112514693289995
+2023-12-17 14:23:07,364 Epoch number 7, batch number 18/40:       batch loss 0.0058516813442111015
+2023-12-17 14:23:07,833 Epoch number 7, batch number 19/40:       batch loss 0.008939272724092007
+2023-12-17 14:23:08,338 Epoch number 7, batch number 20/40:       batch loss 0.015450346283614635
+2023-12-17 14:23:08,814 Epoch number 7, batch number 21/40:       batch loss 0.008173350244760513
+2023-12-17 14:23:09,292 Epoch number 7, batch number 22/40:       batch loss 0.01709480583667755
+2023-12-17 14:23:09,781 Epoch number 7, batch number 23/40:       batch loss 0.01147653628140688
+2023-12-17 14:23:10,268 Epoch number 7, batch number 24/40:       batch loss 0.008945451118052006
+2023-12-17 14:23:10,729 Epoch number 7, batch number 25/40:       batch loss 0.007977517321705818
+2023-12-17 14:23:11,222 Epoch number 7, batch number 26/40:       batch loss 0.006677032448351383
+2023-12-17 14:23:11,686 Epoch number 7, batch number 27/40:       batch loss 0.00913965329527855
+2023-12-17 14:23:12,152 Epoch number 7, batch number 28/40:       batch loss 0.010416739620268345
+2023-12-17 14:23:12,617 Epoch number 7, batch number 29/40:       batch loss 0.008069287054240704
+2023-12-17 14:23:13,089 Epoch number 7, batch number 30/40:       batch loss 0.007858690805733204
+2023-12-17 14:23:13,560 Epoch number 7, batch number 31/40:       batch loss 0.009778255596756935
+2023-12-17 14:23:14,011 Epoch number 7, batch number 32/40:       batch loss 0.0077475132420659065
+2023-12-17 14:23:14,483 Epoch number 7, batch number 33/40:       batch loss 0.006399270612746477
+2023-12-17 14:23:14,946 Epoch number 7, batch number 34/40:       batch loss 0.008659249171614647
+2023-12-17 14:23:15,407 Epoch number 7, batch number 35/40:       batch loss 0.007054602727293968
+2023-12-17 14:23:15,860 Epoch number 7, batch number 36/40:       batch loss 0.008122998289763927
+2023-12-17 14:23:16,335 Epoch number 7, batch number 37/40:       batch loss 0.006864008028060198
+2023-12-17 14:23:16,809 Epoch number 7, batch number 38/40:       batch loss 0.004486783407628536
+2023-12-17 14:23:17,279 Epoch number 7, batch number 39/40:       batch loss 0.006855575833469629
+2023-12-17 14:23:17,312 Epoch: 8 	Training Loss: 0.008840
+2023-12-17 14:23:17,313 Time for epoch 8 : 19 sec
+2023-12-17 14:23:17,313 lr for epoch 8 is 0.01000
+2023-12-17 14:23:19,015 Epoch number 8, batch number 0/40:       batch loss 0.00815041083842516
+2023-12-17 14:23:19,479 Epoch number 8, batch number 1/40:       batch loss 0.006554048042744398
+2023-12-17 14:23:19,955 Epoch number 8, batch number 2/40:       batch loss 0.008723873645067215
+2023-12-17 14:23:20,422 Epoch number 8, batch number 3/40:       batch loss 0.005217683967202902
+2023-12-17 14:23:20,906 Epoch number 8, batch number 4/40:       batch loss 0.008937009610235691
+2023-12-17 14:23:21,390 Epoch number 8, batch number 5/40:       batch loss 0.006018816027790308
+2023-12-17 14:23:21,848 Epoch number 8, batch number 6/40:       batch loss 0.00926436111330986
+2023-12-17 14:23:22,313 Epoch number 8, batch number 7/40:       batch loss 0.008224678225815296
+2023-12-17 14:23:22,793 Epoch number 8, batch number 8/40:       batch loss 0.005852572154253721
+2023-12-17 14:23:23,263 Epoch number 8, batch number 9/40:       batch loss 0.007685292977839708
+2023-12-17 14:23:23,743 Epoch number 8, batch number 10/40:       batch loss 0.0049610440619289875
+2023-12-17 14:23:24,219 Epoch number 8, batch number 11/40:       batch loss 0.008261054754257202
+2023-12-17 14:23:24,686 Epoch number 8, batch number 12/40:       batch loss 0.007218657527118921
+2023-12-17 14:23:25,145 Epoch number 8, batch number 13/40:       batch loss 0.008833829313516617
+2023-12-17 14:23:25,616 Epoch number 8, batch number 14/40:       batch loss 0.009696194902062416
+2023-12-17 14:23:26,073 Epoch number 8, batch number 15/40:       batch loss 0.007253965828567743
+2023-12-17 14:23:26,544 Epoch number 8, batch number 16/40:       batch loss 0.0148457121104002
+2023-12-17 14:23:27,013 Epoch number 8, batch number 17/40:       batch loss 0.010178311727941036
+2023-12-17 14:23:27,490 Epoch number 8, batch number 18/40:       batch loss 0.005237453617155552
+2023-12-17 14:23:27,954 Epoch number 8, batch number 19/40:       batch loss 0.010133815929293633
+2023-12-17 14:23:28,414 Epoch number 8, batch number 20/40:       batch loss 0.005256905220448971
+2023-12-17 14:23:28,890 Epoch number 8, batch number 21/40:       batch loss 0.014036176726222038
+2023-12-17 14:23:29,346 Epoch number 8, batch number 22/40:       batch loss 0.008002574555575848
+2023-12-17 14:23:29,821 Epoch number 8, batch number 23/40:       batch loss 0.01615023985505104
+2023-12-17 14:23:30,281 Epoch number 8, batch number 24/40:       batch loss 0.008145428262650967
+2023-12-17 14:23:30,748 Epoch number 8, batch number 25/40:       batch loss 0.00725859310477972
+2023-12-17 14:23:31,212 Epoch number 8, batch number 26/40:       batch loss 0.010663223452866077
+2023-12-17 14:23:31,681 Epoch number 8, batch number 27/40:       batch loss 0.009602517820894718
+2023-12-17 14:23:32,162 Epoch number 8, batch number 28/40:       batch loss 0.009220107458531857
+2023-12-17 14:23:32,643 Epoch number 8, batch number 29/40:       batch loss 0.014364167116582394
+2023-12-17 14:23:33,121 Epoch number 8, batch number 30/40:       batch loss 0.011352360248565674
+2023-12-17 14:23:33,576 Epoch number 8, batch number 31/40:       batch loss 0.008624162524938583
+2023-12-17 14:23:34,045 Epoch number 8, batch number 32/40:       batch loss 0.006652698386460543
+2023-12-17 14:23:34,522 Epoch number 8, batch number 33/40:       batch loss 0.012554056011140347
+2023-12-17 14:23:34,976 Epoch number 8, batch number 34/40:       batch loss 0.008403340354561806
+2023-12-17 14:23:35,429 Epoch number 8, batch number 35/40:       batch loss 0.006256610155105591
+2023-12-17 14:23:35,893 Epoch number 8, batch number 36/40:       batch loss 0.007542463019490242
+2023-12-17 14:23:36,359 Epoch number 8, batch number 37/40:       batch loss 0.007801596075296402
+2023-12-17 14:23:36,817 Epoch number 8, batch number 38/40:       batch loss 0.004919826053082943
+2023-12-17 14:23:37,273 Epoch number 8, batch number 39/40:       batch loss 0.009533362463116646
+2023-12-17 14:23:37,308 Epoch: 9 	Training Loss: 0.008690
+2023-12-17 14:23:37,308 Time for epoch 9 : 19 sec
+2023-12-17 14:23:37,308 lr for epoch 9 is 0.01000
+2023-12-17 14:23:39,048 Epoch number 9, batch number 0/40:       batch loss 0.008795519359409809
+2023-12-17 14:23:39,525 Epoch number 9, batch number 1/40:       batch loss 0.006469334475696087
+2023-12-17 14:23:39,987 Epoch number 9, batch number 2/40:       batch loss 0.00908164493739605
+2023-12-17 14:23:40,459 Epoch number 9, batch number 3/40:       batch loss 0.007306151557713747
+2023-12-17 14:23:40,925 Epoch number 9, batch number 4/40:       batch loss 0.00834663212299347
+2023-12-17 14:23:41,394 Epoch number 9, batch number 5/40:       batch loss 0.006106595508754253
+2023-12-17 14:23:41,868 Epoch number 9, batch number 6/40:       batch loss 0.007629995234310627
+2023-12-17 14:23:42,341 Epoch number 9, batch number 7/40:       batch loss 0.010110408999025822
+2023-12-17 14:23:42,823 Epoch number 9, batch number 8/40:       batch loss 0.012727327644824982
+2023-12-17 14:23:43,310 Epoch number 9, batch number 9/40:       batch loss 0.007895335555076599
+2023-12-17 14:23:43,780 Epoch number 9, batch number 10/40:       batch loss 0.011223994195461273
+2023-12-17 14:23:44,260 Epoch number 9, batch number 11/40:       batch loss 0.007797488942742348
+2023-12-17 14:23:44,738 Epoch number 9, batch number 12/40:       batch loss 0.008000739850103855
+2023-12-17 14:23:45,206 Epoch number 9, batch number 13/40:       batch loss 0.008027483709156513
+2023-12-17 14:23:45,671 Epoch number 9, batch number 14/40:       batch loss 0.01019984669983387
+2023-12-17 14:23:46,149 Epoch number 9, batch number 15/40:       batch loss 0.007016631308943033
+2023-12-17 14:23:46,610 Epoch number 9, batch number 16/40:       batch loss 0.007349882274866104
+2023-12-17 14:23:47,084 Epoch number 9, batch number 17/40:       batch loss 0.0070177107118070126
+2023-12-17 14:23:47,560 Epoch number 9, batch number 18/40:       batch loss 0.010723739862442017
+2023-12-17 14:23:48,060 Epoch number 9, batch number 19/40:       batch loss 0.006660760380327702
+2023-12-17 14:23:48,531 Epoch number 9, batch number 20/40:       batch loss 0.0067905280739068985
+2023-12-17 14:23:48,996 Epoch number 9, batch number 21/40:       batch loss 0.010931787081062794
+2023-12-17 14:23:49,450 Epoch number 9, batch number 22/40:       batch loss 0.006284873466938734
+2023-12-17 14:23:49,902 Epoch number 9, batch number 23/40:       batch loss 0.006917668506503105
+2023-12-17 14:23:50,354 Epoch number 9, batch number 24/40:       batch loss 0.00439115148037672
+2023-12-17 14:23:50,816 Epoch number 9, batch number 25/40:       batch loss 0.013257821090519428
+2023-12-17 14:23:51,275 Epoch number 9, batch number 26/40:       batch loss 0.005858148913830519
+2023-12-17 14:23:51,735 Epoch number 9, batch number 27/40:       batch loss 0.0059807030484080315
+2023-12-17 14:23:52,209 Epoch number 9, batch number 28/40:       batch loss 0.009240411221981049
+2023-12-17 14:23:52,677 Epoch number 9, batch number 29/40:       batch loss 0.009329026564955711
+2023-12-17 14:23:53,155 Epoch number 9, batch number 30/40:       batch loss 0.008281132206320763
+2023-12-17 14:23:53,610 Epoch number 9, batch number 31/40:       batch loss 0.005670155398547649
+2023-12-17 14:23:54,069 Epoch number 9, batch number 32/40:       batch loss 0.010032386519014835
+2023-12-17 14:23:54,527 Epoch number 9, batch number 33/40:       batch loss 0.005258018150925636
+2023-12-17 14:23:55,022 Epoch number 9, batch number 34/40:       batch loss 0.008586003445088863
+2023-12-17 14:23:55,479 Epoch number 9, batch number 35/40:       batch loss 0.005843421444296837
+2023-12-17 14:23:55,970 Epoch number 9, batch number 36/40:       batch loss 0.004081247374415398
+2023-12-17 14:23:56,446 Epoch number 9, batch number 37/40:       batch loss 0.006216450594365597
+2023-12-17 14:23:56,928 Epoch number 9, batch number 38/40:       batch loss 0.008855984546244144
+2023-12-17 14:23:57,391 Epoch number 9, batch number 39/40:       batch loss 0.007444060407578945
+2023-12-17 14:23:57,426 Epoch: 10 	Training Loss: 0.007943
+2023-12-17 14:23:57,426 Time for epoch 10 : 19 sec
+2023-12-17 14:23:57,426 lr for epoch 10 is 0.01000
+2023-12-17 14:23:59,107 Epoch number 10, batch number 0/40:       batch loss 0.006501504220068455
+2023-12-17 14:23:59,572 Epoch number 10, batch number 1/40:       batch loss 0.006192237604409456
+2023-12-17 14:24:00,035 Epoch number 10, batch number 2/40:       batch loss 0.009740877896547318
+2023-12-17 14:24:00,499 Epoch number 10, batch number 3/40:       batch loss 0.00859968364238739
+2023-12-17 14:24:00,978 Epoch number 10, batch number 4/40:       batch loss 0.007907310500741005
+2023-12-17 14:24:01,430 Epoch number 10, batch number 5/40:       batch loss 0.010407071560621262
+2023-12-17 14:24:01,901 Epoch number 10, batch number 6/40:       batch loss 0.0058887372724711895
+2023-12-17 14:24:02,392 Epoch number 10, batch number 7/40:       batch loss 0.010020922869443893
+2023-12-17 14:24:02,866 Epoch number 10, batch number 8/40:       batch loss 0.006185934878885746
+2023-12-17 14:24:03,343 Epoch number 10, batch number 9/40:       batch loss 0.00739423930644989
+2023-12-17 14:24:03,822 Epoch number 10, batch number 10/40:       batch loss 0.009766658768057823
+2023-12-17 14:24:04,296 Epoch number 10, batch number 11/40:       batch loss 0.006730567663908005
+2023-12-17 14:24:04,753 Epoch number 10, batch number 12/40:       batch loss 0.011178632266819477
+2023-12-17 14:24:05,232 Epoch number 10, batch number 13/40:       batch loss 0.008391405455768108
+2023-12-17 14:24:05,719 Epoch number 10, batch number 14/40:       batch loss 0.0073119052685797215
+2023-12-17 14:24:06,188 Epoch number 10, batch number 15/40:       batch loss 0.00857642013579607
+2023-12-17 14:24:06,645 Epoch number 10, batch number 16/40:       batch loss 0.01020035706460476
+2023-12-17 14:24:07,129 Epoch number 10, batch number 17/40:       batch loss 0.006697908043861389
+2023-12-17 14:24:07,629 Epoch number 10, batch number 18/40:       batch loss 0.013079850934445858
+2023-12-17 14:24:08,108 Epoch number 10, batch number 19/40:       batch loss 0.007298579905182123
+2023-12-17 14:24:08,588 Epoch number 10, batch number 20/40:       batch loss 0.006503931246697903
+2023-12-17 14:24:09,088 Epoch number 10, batch number 21/40:       batch loss 0.009358265437185764
+2023-12-17 14:24:09,558 Epoch number 10, batch number 22/40:       batch loss 0.006111264694482088
+2023-12-17 14:24:10,052 Epoch number 10, batch number 23/40:       batch loss 0.0037475156132131815
+2023-12-17 14:24:10,515 Epoch number 10, batch number 24/40:       batch loss 0.007089563645422459
+2023-12-17 14:24:10,994 Epoch number 10, batch number 25/40:       batch loss 0.01327887736260891
+2023-12-17 14:24:11,470 Epoch number 10, batch number 26/40:       batch loss 0.007446921430528164
+2023-12-17 14:24:11,946 Epoch number 10, batch number 27/40:       batch loss 0.008264283649623394
+2023-12-17 14:24:12,416 Epoch number 10, batch number 28/40:       batch loss 0.007353833876550198
+2023-12-17 14:24:12,890 Epoch number 10, batch number 29/40:       batch loss 0.0062664104625582695
+2023-12-17 14:24:13,359 Epoch number 10, batch number 30/40:       batch loss 0.004298396408557892
+2023-12-17 14:24:13,827 Epoch number 10, batch number 31/40:       batch loss 0.010676332749426365
+2023-12-17 14:24:14,296 Epoch number 10, batch number 32/40:       batch loss 0.007814301177859306
+2023-12-17 14:24:14,765 Epoch number 10, batch number 33/40:       batch loss 0.00617065979167819
+2023-12-17 14:24:15,240 Epoch number 10, batch number 34/40:       batch loss 0.008099522441625595
+2023-12-17 14:24:15,720 Epoch number 10, batch number 35/40:       batch loss 0.007587616331875324
+2023-12-17 14:24:16,190 Epoch number 10, batch number 36/40:       batch loss 0.009393291547894478
+2023-12-17 14:24:16,637 Epoch number 10, batch number 37/40:       batch loss 0.005270856432616711
+2023-12-17 14:24:17,104 Epoch number 10, batch number 38/40:       batch loss 0.004676239099353552
+2023-12-17 14:24:17,587 Epoch number 10, batch number 39/40:       batch loss 0.010026556439697742
+2023-12-17 14:24:17,620 Epoch: 11 	Training Loss: 0.007938
+2023-12-17 14:24:17,620 Time for epoch 11 : 19 sec
+2023-12-17 14:24:17,620 lr for epoch 11 is 0.00100
+2023-12-17 14:24:19,339 Epoch number 11, batch number 0/40:       batch loss 0.007135700900107622
+2023-12-17 14:24:19,809 Epoch number 11, batch number 1/40:       batch loss 0.00773611618205905
+2023-12-17 14:24:20,270 Epoch number 11, batch number 2/40:       batch loss 0.008975749835371971
+2023-12-17 14:24:20,721 Epoch number 11, batch number 3/40:       batch loss 0.0064867762848734856
+2023-12-17 14:24:21,184 Epoch number 11, batch number 4/40:       batch loss 0.008016988635063171
+2023-12-17 14:24:21,627 Epoch number 11, batch number 5/40:       batch loss 0.006363328546285629
+2023-12-17 14:24:22,082 Epoch number 11, batch number 6/40:       batch loss 0.008037914521992207
+2023-12-17 14:24:22,546 Epoch number 11, batch number 7/40:       batch loss 0.008016951382160187
+2023-12-17 14:24:23,022 Epoch number 11, batch number 8/40:       batch loss 0.007714986801147461
+2023-12-17 14:24:23,493 Epoch number 11, batch number 9/40:       batch loss 0.008515173569321632
+2023-12-17 14:24:23,959 Epoch number 11, batch number 10/40:       batch loss 0.009407304227352142
+2023-12-17 14:24:24,409 Epoch number 11, batch number 11/40:       batch loss 0.004159604664891958
+2023-12-17 14:24:24,860 Epoch number 11, batch number 12/40:       batch loss 0.00672922795638442
+2023-12-17 14:24:25,316 Epoch number 11, batch number 13/40:       batch loss 0.008531847968697548
+2023-12-17 14:24:25,800 Epoch number 11, batch number 14/40:       batch loss 0.009180453605949879
+2023-12-17 14:24:26,262 Epoch number 11, batch number 15/40:       batch loss 0.005039076320827007
+2023-12-17 14:24:26,709 Epoch number 11, batch number 16/40:       batch loss 0.007310623303055763
+2023-12-17 14:24:27,151 Epoch number 11, batch number 17/40:       batch loss 0.01546544674783945
+2023-12-17 14:24:27,597 Epoch number 11, batch number 18/40:       batch loss 0.006997819524258375
+2023-12-17 14:24:28,039 Epoch number 11, batch number 19/40:       batch loss 0.008660637773573399
+2023-12-17 14:24:28,499 Epoch number 11, batch number 20/40:       batch loss 0.005483812652528286
+2023-12-17 14:24:28,949 Epoch number 11, batch number 21/40:       batch loss 0.007258889731019735
+2023-12-17 14:24:29,401 Epoch number 11, batch number 22/40:       batch loss 0.006325302645564079
+2023-12-17 14:24:29,861 Epoch number 11, batch number 23/40:       batch loss 0.007507195696234703
+2023-12-17 14:24:30,329 Epoch number 11, batch number 24/40:       batch loss 0.005241872277110815
+2023-12-17 14:24:30,800 Epoch number 11, batch number 25/40:       batch loss 0.007822009734809399
+2023-12-17 14:24:31,270 Epoch number 11, batch number 26/40:       batch loss 0.007899136282503605
+2023-12-17 14:24:31,747 Epoch number 11, batch number 27/40:       batch loss 0.010099980048835278
+2023-12-17 14:24:32,203 Epoch number 11, batch number 28/40:       batch loss 0.005138163920491934
+2023-12-17 14:24:32,668 Epoch number 11, batch number 29/40:       batch loss 0.006972874514758587
+2023-12-17 14:24:33,123 Epoch number 11, batch number 30/40:       batch loss 0.006996631156653166
+2023-12-17 14:24:33,573 Epoch number 11, batch number 31/40:       batch loss 0.0061318534426391125
+2023-12-17 14:24:34,026 Epoch number 11, batch number 32/40:       batch loss 0.006225363351404667
+2023-12-17 14:24:34,495 Epoch number 11, batch number 33/40:       batch loss 0.005950739607214928
+2023-12-17 14:24:34,955 Epoch number 11, batch number 34/40:       batch loss 0.00659418199211359
+2023-12-17 14:24:35,405 Epoch number 11, batch number 35/40:       batch loss 0.006085220258682966
+2023-12-17 14:24:35,866 Epoch number 11, batch number 36/40:       batch loss 0.00792652927339077
+2023-12-17 14:24:36,329 Epoch number 11, batch number 37/40:       batch loss 0.010340346954762936
+2023-12-17 14:24:36,801 Epoch number 11, batch number 38/40:       batch loss 0.005802236031740904
+2023-12-17 14:24:37,263 Epoch number 11, batch number 39/40:       batch loss 0.00546290772035718
+2023-12-17 14:24:37,300 Epoch: 12 	Training Loss: 0.007394
+2023-12-17 14:24:37,300 Time for epoch 12 : 19 sec
+2023-12-17 14:24:37,300 lr for epoch 12 is 0.00100
+2023-12-17 14:24:39,040 Epoch number 12, batch number 0/40:       batch loss 0.007212119176983833
+2023-12-17 14:24:39,528 Epoch number 12, batch number 1/40:       batch loss 0.010752585716545582
+2023-12-17 14:24:40,011 Epoch number 12, batch number 2/40:       batch loss 0.0059498632326722145
+2023-12-17 14:24:40,477 Epoch number 12, batch number 3/40:       batch loss 0.008470432832837105
+2023-12-17 14:24:40,937 Epoch number 12, batch number 4/40:       batch loss 0.005123403389006853
+2023-12-17 14:24:41,389 Epoch number 12, batch number 5/40:       batch loss 0.007050049025565386
+2023-12-17 14:24:41,843 Epoch number 12, batch number 6/40:       batch loss 0.0038807077798992395
+2023-12-17 14:24:42,306 Epoch number 12, batch number 7/40:       batch loss 0.01044525671750307
+2023-12-17 14:24:42,770 Epoch number 12, batch number 8/40:       batch loss 0.007936351001262665
+2023-12-17 14:24:43,232 Epoch number 12, batch number 9/40:       batch loss 0.00859876535832882
+2023-12-17 14:24:43,705 Epoch number 12, batch number 10/40:       batch loss 0.006234820932149887
+2023-12-17 14:24:44,166 Epoch number 12, batch number 11/40:       batch loss 0.005575415678322315
+2023-12-17 14:24:44,630 Epoch number 12, batch number 12/40:       batch loss 0.0052591292187571526
+2023-12-17 14:24:45,077 Epoch number 12, batch number 13/40:       batch loss 0.007454357575625181
+2023-12-17 14:24:45,534 Epoch number 12, batch number 14/40:       batch loss 0.005816441494971514
+2023-12-17 14:24:45,982 Epoch number 12, batch number 15/40:       batch loss 0.007468927651643753
+2023-12-17 14:24:46,442 Epoch number 12, batch number 16/40:       batch loss 0.012512238696217537
+2023-12-17 14:24:46,917 Epoch number 12, batch number 17/40:       batch loss 0.004234523978084326
+2023-12-17 14:24:47,398 Epoch number 12, batch number 18/40:       batch loss 0.004507309757173061
+2023-12-17 14:24:47,857 Epoch number 12, batch number 19/40:       batch loss 0.005786463152617216
+2023-12-17 14:24:48,320 Epoch number 12, batch number 20/40:       batch loss 0.006522808223962784
+2023-12-17 14:24:48,789 Epoch number 12, batch number 21/40:       batch loss 0.008959616534411907
+2023-12-17 14:24:49,270 Epoch number 12, batch number 22/40:       batch loss 0.010854994878172874
+2023-12-17 14:24:49,731 Epoch number 12, batch number 23/40:       batch loss 0.007797796279191971
+2023-12-17 14:24:50,203 Epoch number 12, batch number 24/40:       batch loss 0.006838248576968908
+2023-12-17 14:24:50,666 Epoch number 12, batch number 25/40:       batch loss 0.007247123867273331
+2023-12-17 14:24:51,139 Epoch number 12, batch number 26/40:       batch loss 0.007617050316184759
+2023-12-17 14:24:51,608 Epoch number 12, batch number 27/40:       batch loss 0.011142827570438385
+2023-12-17 14:24:52,090 Epoch number 12, batch number 28/40:       batch loss 0.006780558731406927
+2023-12-17 14:24:52,601 Epoch number 12, batch number 29/40:       batch loss 0.01252964697778225
+2023-12-17 14:24:53,096 Epoch number 12, batch number 30/40:       batch loss 0.007828041911125183
+2023-12-17 14:24:53,592 Epoch number 12, batch number 31/40:       batch loss 0.005707310047000647
+2023-12-17 14:24:54,090 Epoch number 12, batch number 32/40:       batch loss 0.0059084477834403515
+2023-12-17 14:24:54,580 Epoch number 12, batch number 33/40:       batch loss 0.007525486405938864
+2023-12-17 14:24:55,062 Epoch number 12, batch number 34/40:       batch loss 0.008896572515368462
+2023-12-17 14:24:55,545 Epoch number 12, batch number 35/40:       batch loss 0.005165739916265011
+2023-12-17 14:24:56,031 Epoch number 12, batch number 36/40:       batch loss 0.006825206335633993
+2023-12-17 14:24:56,519 Epoch number 12, batch number 37/40:       batch loss 0.006555029656738043
+2023-12-17 14:24:56,999 Epoch number 12, batch number 38/40:       batch loss 0.005436858162283897
+2023-12-17 14:24:57,494 Epoch number 12, batch number 39/40:       batch loss 0.005243544466793537
+2023-12-17 14:24:57,531 Epoch: 13 	Training Loss: 0.007291
+2023-12-17 14:24:57,531 Time for epoch 13 : 19 sec
+2023-12-17 14:24:57,531 lr for epoch 13 is 0.00100
+2023-12-17 14:24:59,359 Epoch number 13, batch number 0/40:       batch loss 0.008891429752111435
+2023-12-17 14:24:59,853 Epoch number 13, batch number 1/40:       batch loss 0.008178205229341984
+2023-12-17 14:25:00,346 Epoch number 13, batch number 2/40:       batch loss 0.005515134893357754
+2023-12-17 14:25:00,839 Epoch number 13, batch number 3/40:       batch loss 0.00880009587854147
+2023-12-17 14:25:01,316 Epoch number 13, batch number 4/40:       batch loss 0.0065325358882546425
+2023-12-17 14:25:01,806 Epoch number 13, batch number 5/40:       batch loss 0.007909871637821198
+2023-12-17 14:25:02,305 Epoch number 13, batch number 6/40:       batch loss 0.007433844730257988
+2023-12-17 14:25:02,794 Epoch number 13, batch number 7/40:       batch loss 0.006007814779877663
+2023-12-17 14:25:03,268 Epoch number 13, batch number 8/40:       batch loss 0.010113995522260666
+2023-12-17 14:25:03,757 Epoch number 13, batch number 9/40:       batch loss 0.006821427494287491
+2023-12-17 14:25:04,253 Epoch number 13, batch number 10/40:       batch loss 0.006184963043779135
+2023-12-17 14:25:04,771 Epoch number 13, batch number 11/40:       batch loss 0.009195023216307163
+2023-12-17 14:25:05,255 Epoch number 13, batch number 12/40:       batch loss 0.007894851267337799
+2023-12-17 14:25:05,740 Epoch number 13, batch number 13/40:       batch loss 0.004425586201250553
+2023-12-17 14:25:06,230 Epoch number 13, batch number 14/40:       batch loss 0.00863958802074194
+2023-12-17 14:25:06,713 Epoch number 13, batch number 15/40:       batch loss 0.003923725336790085
+2023-12-17 14:25:07,212 Epoch number 13, batch number 16/40:       batch loss 0.007706897798925638
+2023-12-17 14:25:07,701 Epoch number 13, batch number 17/40:       batch loss 0.007917041890323162
+2023-12-17 14:25:08,193 Epoch number 13, batch number 18/40:       batch loss 0.01196097582578659
+2023-12-17 14:25:08,678 Epoch number 13, batch number 19/40:       batch loss 0.006149199791252613
+2023-12-17 14:25:09,165 Epoch number 13, batch number 20/40:       batch loss 0.007422601338475943
+2023-12-17 14:25:09,677 Epoch number 13, batch number 21/40:       batch loss 0.009177126921713352
+2023-12-17 14:25:10,165 Epoch number 13, batch number 22/40:       batch loss 0.00651514483615756
+2023-12-17 14:25:10,664 Epoch number 13, batch number 23/40:       batch loss 0.007540734019130468
+2023-12-17 14:25:11,140 Epoch number 13, batch number 24/40:       batch loss 0.010054894722998142
+2023-12-17 14:25:11,619 Epoch number 13, batch number 25/40:       batch loss 0.006566525902599096
+2023-12-17 14:25:12,120 Epoch number 13, batch number 26/40:       batch loss 0.006068026646971703
+2023-12-17 14:25:12,629 Epoch number 13, batch number 27/40:       batch loss 0.0060993884690105915
+2023-12-17 14:25:13,131 Epoch number 13, batch number 28/40:       batch loss 0.008590101264417171
+2023-12-17 14:25:13,608 Epoch number 13, batch number 29/40:       batch loss 0.008732063695788383
+2023-12-17 14:25:14,085 Epoch number 13, batch number 30/40:       batch loss 0.006104875355958939
+2023-12-17 14:25:14,576 Epoch number 13, batch number 31/40:       batch loss 0.009270005859434605
+2023-12-17 14:25:15,082 Epoch number 13, batch number 32/40:       batch loss 0.009717784821987152
+2023-12-17 14:25:15,577 Epoch number 13, batch number 33/40:       batch loss 0.007526325527578592
+2023-12-17 14:25:16,057 Epoch number 13, batch number 34/40:       batch loss 0.006077264901250601
+2023-12-17 14:25:16,547 Epoch number 13, batch number 35/40:       batch loss 0.007219532039016485
+2023-12-17 14:25:17,022 Epoch number 13, batch number 36/40:       batch loss 0.008500472642481327
+2023-12-17 14:25:17,510 Epoch number 13, batch number 37/40:       batch loss 0.007897778414189816
+2023-12-17 14:25:18,009 Epoch number 13, batch number 38/40:       batch loss 0.006516559515148401
+2023-12-17 14:25:18,508 Epoch number 13, batch number 39/40:       batch loss 0.006618811283260584
+2023-12-17 14:25:18,545 Epoch: 14 	Training Loss: 0.007560
+2023-12-17 14:25:18,546 Time for epoch 14 : 20 sec
+2023-12-17 14:25:18,546 lr for epoch 14 is 0.00100
+2023-12-17 14:25:20,324 Epoch number 14, batch number 0/40:       batch loss 0.010740530677139759
+2023-12-17 14:25:20,833 Epoch number 14, batch number 1/40:       batch loss 0.0054156058467924595
+2023-12-17 14:25:21,335 Epoch number 14, batch number 2/40:       batch loss 0.007537315599620342
+2023-12-17 14:25:21,817 Epoch number 14, batch number 3/40:       batch loss 0.007116400636732578
+2023-12-17 14:25:22,305 Epoch number 14, batch number 4/40:       batch loss 0.008045821450650692
+2023-12-17 14:25:22,794 Epoch number 14, batch number 5/40:       batch loss 0.006235015112906694
+2023-12-17 14:25:23,273 Epoch number 14, batch number 6/40:       batch loss 0.0055510541424155235
+2023-12-17 14:25:23,772 Epoch number 14, batch number 7/40:       batch loss 0.005207070615142584
+2023-12-17 14:25:24,264 Epoch number 14, batch number 8/40:       batch loss 0.0062916819006204605
+2023-12-17 14:25:24,761 Epoch number 14, batch number 9/40:       batch loss 0.008264662697911263
+2023-12-17 14:25:25,265 Epoch number 14, batch number 10/40:       batch loss 0.007381638512015343
+2023-12-17 14:25:25,762 Epoch number 14, batch number 11/40:       batch loss 0.010410835966467857
+2023-12-17 14:25:26,254 Epoch number 14, batch number 12/40:       batch loss 0.008065016940236092
+2023-12-17 14:25:26,757 Epoch number 14, batch number 13/40:       batch loss 0.006936244200915098
+2023-12-17 14:25:27,255 Epoch number 14, batch number 14/40:       batch loss 0.007447239942848682
+2023-12-17 14:25:27,744 Epoch number 14, batch number 15/40:       batch loss 0.006950745824724436
+2023-12-17 14:25:28,228 Epoch number 14, batch number 16/40:       batch loss 0.010504251345992088
+2023-12-17 14:25:28,729 Epoch number 14, batch number 17/40:       batch loss 0.0076114097610116005
+2023-12-17 14:25:29,213 Epoch number 14, batch number 18/40:       batch loss 0.0042977905832231045
+2023-12-17 14:25:29,700 Epoch number 14, batch number 19/40:       batch loss 0.006981687154620886
+2023-12-17 14:25:30,191 Epoch number 14, batch number 20/40:       batch loss 0.010080051608383656
+2023-12-17 14:25:30,685 Epoch number 14, batch number 21/40:       batch loss 0.01017109677195549
+2023-12-17 14:25:31,168 Epoch number 14, batch number 22/40:       batch loss 0.010080878622829914
+2023-12-17 14:25:31,660 Epoch number 14, batch number 23/40:       batch loss 0.005172561854124069
+2023-12-17 14:25:32,173 Epoch number 14, batch number 24/40:       batch loss 0.007380182389169931
+2023-12-17 14:25:32,665 Epoch number 14, batch number 25/40:       batch loss 0.009709181264042854
+2023-12-17 14:25:33,139 Epoch number 14, batch number 26/40:       batch loss 0.006077406462281942
+2023-12-17 14:25:33,626 Epoch number 14, batch number 27/40:       batch loss 0.009123839437961578
+2023-12-17 14:25:34,109 Epoch number 14, batch number 28/40:       batch loss 0.004287046380341053
+2023-12-17 14:25:34,590 Epoch number 14, batch number 29/40:       batch loss 0.008693569339811802
+2023-12-17 14:25:35,067 Epoch number 14, batch number 30/40:       batch loss 0.005923082586377859
+2023-12-17 14:25:35,557 Epoch number 14, batch number 31/40:       batch loss 0.005529541522264481
+2023-12-17 14:25:36,049 Epoch number 14, batch number 32/40:       batch loss 0.007695987354964018
+2023-12-17 14:25:36,536 Epoch number 14, batch number 33/40:       batch loss 0.006143998354673386
+2023-12-17 14:25:37,010 Epoch number 14, batch number 34/40:       batch loss 0.007474028039723635
+2023-12-17 14:25:37,502 Epoch number 14, batch number 35/40:       batch loss 0.005110287573188543
+2023-12-17 14:25:37,995 Epoch number 14, batch number 36/40:       batch loss 0.005072894040495157
+2023-12-17 14:25:38,488 Epoch number 14, batch number 37/40:       batch loss 0.007940341718494892
+2023-12-17 14:25:38,957 Epoch number 14, batch number 38/40:       batch loss 0.00899868831038475
+2023-12-17 14:25:39,445 Epoch number 14, batch number 39/40:       batch loss 0.007305901497602463
+2023-12-17 14:25:39,477 Epoch: 15 	Training Loss: 0.007374
+2023-12-17 14:25:39,478 Time for epoch 15 : 20 sec
+2023-12-17 14:25:39,478 lr for epoch 15 is 0.00100
+2023-12-17 14:25:41,271 Epoch number 15, batch number 0/40:       batch loss 0.006773827131837606
+2023-12-17 14:25:41,762 Epoch number 15, batch number 1/40:       batch loss 0.008301475085318089
+2023-12-17 14:25:42,259 Epoch number 15, batch number 2/40:       batch loss 0.0077192881144583225
+2023-12-17 14:25:42,757 Epoch number 15, batch number 3/40:       batch loss 0.0069545540027320385
+2023-12-17 14:25:43,252 Epoch number 15, batch number 4/40:       batch loss 0.00539179053157568
+2023-12-17 14:25:43,754 Epoch number 15, batch number 5/40:       batch loss 0.006433254107832909
+2023-12-17 14:25:44,242 Epoch number 15, batch number 6/40:       batch loss 0.004335036035627127
+2023-12-17 14:25:44,731 Epoch number 15, batch number 7/40:       batch loss 0.00785030797123909
+2023-12-17 14:25:45,216 Epoch number 15, batch number 8/40:       batch loss 0.010912388563156128
+2023-12-17 14:25:45,703 Epoch number 15, batch number 9/40:       batch loss 0.007513623684644699
+2023-12-17 14:25:46,189 Epoch number 15, batch number 10/40:       batch loss 0.00814591720700264
+2023-12-17 14:25:46,668 Epoch number 15, batch number 11/40:       batch loss 0.005917548667639494
+2023-12-17 14:25:47,148 Epoch number 15, batch number 12/40:       batch loss 0.006656359881162643
+2023-12-17 14:25:47,641 Epoch number 15, batch number 13/40:       batch loss 0.00806608609855175
+2023-12-17 14:25:48,146 Epoch number 15, batch number 14/40:       batch loss 0.011748157441616058
+2023-12-17 14:25:48,648 Epoch number 15, batch number 15/40:       batch loss 0.009506731294095516
+2023-12-17 14:25:49,133 Epoch number 15, batch number 16/40:       batch loss 0.006767551880329847
+2023-12-17 14:25:49,607 Epoch number 15, batch number 17/40:       batch loss 0.006068978924304247
+2023-12-17 14:25:50,105 Epoch number 15, batch number 18/40:       batch loss 0.006132193375378847
+2023-12-17 14:25:50,596 Epoch number 15, batch number 19/40:       batch loss 0.011779684573411942
+2023-12-17 14:25:51,087 Epoch number 15, batch number 20/40:       batch loss 0.005087194964289665
+2023-12-17 14:25:51,573 Epoch number 15, batch number 21/40:       batch loss 0.00643614586442709
+2023-12-17 14:25:52,084 Epoch number 15, batch number 22/40:       batch loss 0.010721022263169289
+2023-12-17 14:25:52,561 Epoch number 15, batch number 23/40:       batch loss 0.00804082676768303
+2023-12-17 14:25:53,038 Epoch number 15, batch number 24/40:       batch loss 0.004811541177332401
+2023-12-17 14:25:53,527 Epoch number 15, batch number 25/40:       batch loss 0.004389273468405008
+2023-12-17 14:25:54,035 Epoch number 15, batch number 26/40:       batch loss 0.009487118571996689
+2023-12-17 14:25:54,529 Epoch number 15, batch number 27/40:       batch loss 0.00810515321791172
+2023-12-17 14:25:55,027 Epoch number 15, batch number 28/40:       batch loss 0.0051466068252921104
+2023-12-17 14:25:55,523 Epoch number 15, batch number 29/40:       batch loss 0.006924032233655453
+2023-12-17 14:25:56,013 Epoch number 15, batch number 30/40:       batch loss 0.008631260134279728
+2023-12-17 14:25:56,513 Epoch number 15, batch number 31/40:       batch loss 0.013370843604207039
+2023-12-17 14:25:56,995 Epoch number 15, batch number 32/40:       batch loss 0.010010147467255592
+2023-12-17 14:25:57,481 Epoch number 15, batch number 33/40:       batch loss 0.008432991802692413
+2023-12-17 14:25:57,989 Epoch number 15, batch number 34/40:       batch loss 0.0065889786928892136
+2023-12-17 14:25:58,500 Epoch number 15, batch number 35/40:       batch loss 0.006891218945384026
+2023-12-17 14:25:58,983 Epoch number 15, batch number 36/40:       batch loss 0.00838251318782568
+2023-12-17 14:25:59,488 Epoch number 15, batch number 37/40:       batch loss 0.007418342866003513
+2023-12-17 14:25:59,967 Epoch number 15, batch number 38/40:       batch loss 0.00448505487293005
+2023-12-17 14:26:00,463 Epoch number 15, batch number 39/40:       batch loss 0.005763824563473463
+2023-12-17 14:26:00,495 Epoch: 16 	Training Loss: 0.007552
+2023-12-17 14:26:00,496 Time for epoch 16 : 20 sec
+2023-12-17 14:26:00,496 lr for epoch 16 is 0.00050
+2023-12-17 14:26:02,256 Epoch number 16, batch number 0/40:       batch loss 0.00804027821868658
+2023-12-17 14:26:02,726 Epoch number 16, batch number 1/40:       batch loss 0.007181191351264715
+2023-12-17 14:26:03,198 Epoch number 16, batch number 2/40:       batch loss 0.009456636384129524
+2023-12-17 14:26:03,655 Epoch number 16, batch number 3/40:       batch loss 0.009756405837833881
+2023-12-17 14:26:04,123 Epoch number 16, batch number 4/40:       batch loss 0.008455701172351837
+2023-12-17 14:26:04,583 Epoch number 16, batch number 5/40:       batch loss 0.00920009333640337
+2023-12-17 14:26:05,070 Epoch number 16, batch number 6/40:       batch loss 0.005888580810278654
+2023-12-17 14:26:05,549 Epoch number 16, batch number 7/40:       batch loss 0.005408150609582663
+2023-12-17 14:26:06,030 Epoch number 16, batch number 8/40:       batch loss 0.00624601636081934
+2023-12-17 14:26:06,508 Epoch number 16, batch number 9/40:       batch loss 0.007222946733236313
+2023-12-17 14:26:06,989 Epoch number 16, batch number 10/40:       batch loss 0.0062909177504479885
+2023-12-17 14:26:07,456 Epoch number 16, batch number 11/40:       batch loss 0.012242714874446392
+2023-12-17 14:26:07,937 Epoch number 16, batch number 12/40:       batch loss 0.007096037268638611
+2023-12-17 14:26:08,420 Epoch number 16, batch number 13/40:       batch loss 0.007615372072905302
+2023-12-17 14:26:08,898 Epoch number 16, batch number 14/40:       batch loss 0.005716197658330202
+2023-12-17 14:26:09,367 Epoch number 16, batch number 15/40:       batch loss 0.00727382255718112
+2023-12-17 14:26:09,847 Epoch number 16, batch number 16/40:       batch loss 0.007172744255512953
+2023-12-17 14:26:10,354 Epoch number 16, batch number 17/40:       batch loss 0.007685148157179356
+2023-12-17 14:26:10,840 Epoch number 16, batch number 18/40:       batch loss 0.009411425329744816
+2023-12-17 14:26:11,320 Epoch number 16, batch number 19/40:       batch loss 0.009644766338169575
+2023-12-17 14:26:11,798 Epoch number 16, batch number 20/40:       batch loss 0.007630692329257727
+2023-12-17 14:26:12,264 Epoch number 16, batch number 21/40:       batch loss 0.004106729291379452
+2023-12-17 14:26:12,751 Epoch number 16, batch number 22/40:       batch loss 0.011162660084664822
+2023-12-17 14:26:13,251 Epoch number 16, batch number 23/40:       batch loss 0.005361538380384445
+2023-12-17 14:26:13,737 Epoch number 16, batch number 24/40:       batch loss 0.0076581379398703575
+2023-12-17 14:26:14,214 Epoch number 16, batch number 25/40:       batch loss 0.00664419075474143
+2023-12-17 14:26:14,685 Epoch number 16, batch number 26/40:       batch loss 0.009172225371003151
+2023-12-17 14:26:15,164 Epoch number 16, batch number 27/40:       batch loss 0.007685691583901644
+2023-12-17 14:26:15,646 Epoch number 16, batch number 28/40:       batch loss 0.010170528665184975
+2023-12-17 14:26:16,125 Epoch number 16, batch number 29/40:       batch loss 0.006298306863754988
+2023-12-17 14:26:16,621 Epoch number 16, batch number 30/40:       batch loss 0.007901547476649284
+2023-12-17 14:26:17,112 Epoch number 16, batch number 31/40:       batch loss 0.00543901976197958
+2023-12-17 14:26:17,570 Epoch number 16, batch number 32/40:       batch loss 0.009800499305129051
+2023-12-17 14:26:18,044 Epoch number 16, batch number 33/40:       batch loss 0.009933984838426113
+2023-12-17 14:26:18,515 Epoch number 16, batch number 34/40:       batch loss 0.007830596528947353
+2023-12-17 14:26:18,987 Epoch number 16, batch number 35/40:       batch loss 0.007402151823043823
+2023-12-17 14:26:19,458 Epoch number 16, batch number 36/40:       batch loss 0.008787150494754314
+2023-12-17 14:26:19,934 Epoch number 16, batch number 37/40:       batch loss 0.010108395479619503
+2023-12-17 14:26:20,403 Epoch number 16, batch number 38/40:       batch loss 0.0056826453655958176
+2023-12-17 14:26:20,879 Epoch number 16, batch number 39/40:       batch loss 0.005243588704615831
+2023-12-17 14:26:20,910 Epoch: 17 	Training Loss: 0.007776
+2023-12-17 14:26:20,910 Time for epoch 17 : 19 sec
+2023-12-17 14:26:20,911 lr for epoch 17 is 0.00050
+2023-12-17 14:26:22,678 Epoch number 17, batch number 0/40:       batch loss 0.006379498168826103
+2023-12-17 14:26:23,172 Epoch number 17, batch number 1/40:       batch loss 0.00709935836493969
+2023-12-17 14:26:23,660 Epoch number 17, batch number 2/40:       batch loss 0.006104746367782354
+2023-12-17 14:26:24,139 Epoch number 17, batch number 3/40:       batch loss 0.010540214367210865
+2023-12-17 14:26:24,622 Epoch number 17, batch number 4/40:       batch loss 0.009915023110806942
+2023-12-17 14:26:25,089 Epoch number 17, batch number 5/40:       batch loss 0.006016014143824577
+2023-12-17 14:26:25,610 Epoch number 17, batch number 6/40:       batch loss 0.009916963055729866
+2023-12-17 14:26:26,105 Epoch number 17, batch number 7/40:       batch loss 0.011810751631855965
+2023-12-17 14:26:26,581 Epoch number 17, batch number 8/40:       batch loss 0.007846727035939693
+2023-12-17 14:26:27,058 Epoch number 17, batch number 9/40:       batch loss 0.0056756711564958096
+2023-12-17 14:26:27,536 Epoch number 17, batch number 10/40:       batch loss 0.007768081966787577
+2023-12-17 14:26:28,009 Epoch number 17, batch number 11/40:       batch loss 0.009573455899953842
+2023-12-17 14:26:28,495 Epoch number 17, batch number 12/40:       batch loss 0.010839500464498997
+2023-12-17 14:26:28,973 Epoch number 17, batch number 13/40:       batch loss 0.009955957531929016
+2023-12-17 14:26:29,432 Epoch number 17, batch number 14/40:       batch loss 0.0049446639604866505
+2023-12-17 14:26:29,920 Epoch number 17, batch number 15/40:       batch loss 0.0075286682695150375
+2023-12-17 14:26:30,373 Epoch number 17, batch number 16/40:       batch loss 0.005077858455479145
+2023-12-17 14:26:30,847 Epoch number 17, batch number 17/40:       batch loss 0.005019730888307095
+2023-12-17 14:26:31,331 Epoch number 17, batch number 18/40:       batch loss 0.0073517924174666405
+2023-12-17 14:26:31,813 Epoch number 17, batch number 19/40:       batch loss 0.005459976382553577
+2023-12-17 14:26:32,304 Epoch number 17, batch number 20/40:       batch loss 0.014027884230017662
+2023-12-17 14:26:32,784 Epoch number 17, batch number 21/40:       batch loss 0.0086594857275486
+2023-12-17 14:26:33,263 Epoch number 17, batch number 22/40:       batch loss 0.008956825360655785
+2023-12-17 14:26:33,741 Epoch number 17, batch number 23/40:       batch loss 0.0064441487193107605
+2023-12-17 14:26:34,232 Epoch number 17, batch number 24/40:       batch loss 0.0072457874193787575
+2023-12-17 14:26:34,737 Epoch number 17, batch number 25/40:       batch loss 0.00514964060857892
+2023-12-17 14:26:35,221 Epoch number 17, batch number 26/40:       batch loss 0.01044469140470028
+2023-12-17 14:26:35,722 Epoch number 17, batch number 27/40:       batch loss 0.009467080235481262
+2023-12-17 14:26:36,210 Epoch number 17, batch number 28/40:       batch loss 0.00790159497410059
+2023-12-17 14:26:36,692 Epoch number 17, batch number 29/40:       batch loss 0.007450093515217304
+2023-12-17 14:26:37,187 Epoch number 17, batch number 30/40:       batch loss 0.007375502493232489
+2023-12-17 14:26:37,662 Epoch number 17, batch number 31/40:       batch loss 0.005946008954197168
+2023-12-17 14:26:38,154 Epoch number 17, batch number 32/40:       batch loss 0.008543296717107296
+2023-12-17 14:26:38,658 Epoch number 17, batch number 33/40:       batch loss 0.0065729510970413685
+2023-12-17 14:26:39,144 Epoch number 17, batch number 34/40:       batch loss 0.005785223096609116
+2023-12-17 14:26:39,632 Epoch number 17, batch number 35/40:       batch loss 0.009256199933588505
+2023-12-17 14:26:40,135 Epoch number 17, batch number 36/40:       batch loss 0.005712416023015976
+2023-12-17 14:26:40,639 Epoch number 17, batch number 37/40:       batch loss 0.010048512369394302
+2023-12-17 14:26:41,143 Epoch number 17, batch number 38/40:       batch loss 0.006215886678546667
+2023-12-17 14:26:41,646 Epoch number 17, batch number 39/40:       batch loss 0.007081632036715746
+2023-12-17 14:26:41,681 Epoch: 18 	Training Loss: 0.007828
+2023-12-17 14:26:41,681 Time for epoch 18 : 20 sec
+2023-12-17 14:26:41,681 lr for epoch 18 is 0.00050
+2023-12-17 14:26:43,477 Epoch number 18, batch number 0/40:       batch loss 0.006117637734860182
+2023-12-17 14:26:43,980 Epoch number 18, batch number 1/40:       batch loss 0.009467958472669125
+2023-12-17 14:26:44,481 Epoch number 18, batch number 2/40:       batch loss 0.006753945257514715
+2023-12-17 14:26:44,978 Epoch number 18, batch number 3/40:       batch loss 0.007145959883928299
+2023-12-17 14:26:45,478 Epoch number 18, batch number 4/40:       batch loss 0.004428742453455925
+2023-12-17 14:26:45,988 Epoch number 18, batch number 5/40:       batch loss 0.008115203119814396
+2023-12-17 14:26:46,491 Epoch number 18, batch number 6/40:       batch loss 0.007007116451859474
+2023-12-17 14:26:46,979 Epoch number 18, batch number 7/40:       batch loss 0.009705204516649246
+2023-12-17 14:26:47,467 Epoch number 18, batch number 8/40:       batch loss 0.0057389214634895325
+2023-12-17 14:26:47,970 Epoch number 18, batch number 9/40:       batch loss 0.007262879051268101
+2023-12-17 14:26:48,467 Epoch number 18, batch number 10/40:       batch loss 0.008874407038092613
+2023-12-17 14:26:48,963 Epoch number 18, batch number 11/40:       batch loss 0.007120583672076464
+2023-12-17 14:26:49,476 Epoch number 18, batch number 12/40:       batch loss 0.006545579992234707
+2023-12-17 14:26:49,987 Epoch number 18, batch number 13/40:       batch loss 0.012941421009600163
+2023-12-17 14:26:50,494 Epoch number 18, batch number 14/40:       batch loss 0.006941306404769421
+2023-12-17 14:26:51,001 Epoch number 18, batch number 15/40:       batch loss 0.007062370888888836
+2023-12-17 14:26:51,485 Epoch number 18, batch number 16/40:       batch loss 0.005910926498472691
+2023-12-17 14:26:51,970 Epoch number 18, batch number 17/40:       batch loss 0.012466475367546082
+2023-12-17 14:26:52,461 Epoch number 18, batch number 18/40:       batch loss 0.005807860288769007
+2023-12-17 14:26:52,948 Epoch number 18, batch number 19/40:       batch loss 0.005617134273052216
+2023-12-17 14:26:53,443 Epoch number 18, batch number 20/40:       batch loss 0.008865674957633018
+2023-12-17 14:26:53,932 Epoch number 18, batch number 21/40:       batch loss 0.006884613074362278
+2023-12-17 14:26:54,429 Epoch number 18, batch number 22/40:       batch loss 0.006983801256865263
+2023-12-17 14:26:54,930 Epoch number 18, batch number 23/40:       batch loss 0.005626496393233538
+2023-12-17 14:26:55,417 Epoch number 18, batch number 24/40:       batch loss 0.015388354659080505
+2023-12-17 14:26:55,894 Epoch number 18, batch number 25/40:       batch loss 0.005959947127848864
+2023-12-17 14:26:56,381 Epoch number 18, batch number 26/40:       batch loss 0.007963365875184536
+2023-12-17 14:26:56,868 Epoch number 18, batch number 27/40:       batch loss 0.005367626436054707
+2023-12-17 14:26:57,354 Epoch number 18, batch number 28/40:       batch loss 0.0068855248391628265
+2023-12-17 14:26:57,827 Epoch number 18, batch number 29/40:       batch loss 0.006040372420102358
+2023-12-17 14:26:58,343 Epoch number 18, batch number 30/40:       batch loss 0.009066942147910595
+2023-12-17 14:26:58,826 Epoch number 18, batch number 31/40:       batch loss 0.007349552121013403
+2023-12-17 14:26:59,317 Epoch number 18, batch number 32/40:       batch loss 0.0076208701357245445
+2023-12-17 14:26:59,813 Epoch number 18, batch number 33/40:       batch loss 0.0051461779512465
+2023-12-17 14:27:00,281 Epoch number 18, batch number 34/40:       batch loss 0.005227918736636639
+2023-12-17 14:27:00,783 Epoch number 18, batch number 35/40:       batch loss 0.005993159022182226
+2023-12-17 14:27:01,270 Epoch number 18, batch number 36/40:       batch loss 0.008364204317331314
+2023-12-17 14:27:01,767 Epoch number 18, batch number 37/40:       batch loss 0.007569622714072466
+2023-12-17 14:27:02,255 Epoch number 18, batch number 38/40:       batch loss 0.006751705426722765
+2023-12-17 14:27:02,741 Epoch number 18, batch number 39/40:       batch loss 0.0053162528201937675
+2023-12-17 14:27:02,772 Epoch: 19 	Training Loss: 0.007385
+2023-12-17 14:27:02,772 Time for epoch 19 : 20 sec
+2023-12-17 14:27:02,773 lr for epoch 19 is 0.00050
+2023-12-17 14:27:04,600 Epoch number 19, batch number 0/40:       batch loss 0.009256734512746334
+2023-12-17 14:27:05,096 Epoch number 19, batch number 1/40:       batch loss 0.0043492973782122135
+2023-12-17 14:27:05,582 Epoch number 19, batch number 2/40:       batch loss 0.010040896013379097
+2023-12-17 14:27:06,091 Epoch number 19, batch number 3/40:       batch loss 0.006864620838314295
+2023-12-17 14:27:06,595 Epoch number 19, batch number 4/40:       batch loss 0.006534918677061796
+2023-12-17 14:27:07,071 Epoch number 19, batch number 5/40:       batch loss 0.009946049191057682
+2023-12-17 14:27:07,543 Epoch number 19, batch number 6/40:       batch loss 0.011297846212983131
+2023-12-17 14:27:08,029 Epoch number 19, batch number 7/40:       batch loss 0.005764976143836975
+2023-12-17 14:27:08,533 Epoch number 19, batch number 8/40:       batch loss 0.008384435437619686
+2023-12-17 14:27:09,053 Epoch number 19, batch number 9/40:       batch loss 0.0063290721736848354
+2023-12-17 14:27:09,543 Epoch number 19, batch number 10/40:       batch loss 0.007089338265359402
+2023-12-17 14:27:10,033 Epoch number 19, batch number 11/40:       batch loss 0.007672564126551151
+2023-12-17 14:27:10,536 Epoch number 19, batch number 12/40:       batch loss 0.006013493053615093
+2023-12-17 14:27:11,061 Epoch number 19, batch number 13/40:       batch loss 0.0067110685631632805
+2023-12-17 14:27:11,556 Epoch number 19, batch number 14/40:       batch loss 0.006486868020147085
+2023-12-17 14:27:12,048 Epoch number 19, batch number 15/40:       batch loss 0.005596171133220196
+2023-12-17 14:27:12,571 Epoch number 19, batch number 16/40:       batch loss 0.0067761181853711605
+2023-12-17 14:27:13,075 Epoch number 19, batch number 17/40:       batch loss 0.01726394146680832
+2023-12-17 14:27:13,572 Epoch number 19, batch number 18/40:       batch loss 0.006370172835886478
+2023-12-17 14:27:14,069 Epoch number 19, batch number 19/40:       batch loss 0.009477876126766205
+2023-12-17 14:27:14,566 Epoch number 19, batch number 20/40:       batch loss 0.006800102069973946
+2023-12-17 14:27:15,059 Epoch number 19, batch number 21/40:       batch loss 0.00869068130850792
+2023-12-17 14:27:15,544 Epoch number 19, batch number 22/40:       batch loss 0.008743628859519958
+2023-12-17 14:27:16,042 Epoch number 19, batch number 23/40:       batch loss 0.010820059105753899
+2023-12-17 14:27:16,539 Epoch number 19, batch number 24/40:       batch loss 0.006246989127248526
+2023-12-17 14:27:17,017 Epoch number 19, batch number 25/40:       batch loss 0.006627448834478855
+2023-12-17 14:27:17,506 Epoch number 19, batch number 26/40:       batch loss 0.007739783264696598
+2023-12-17 14:27:17,990 Epoch number 19, batch number 27/40:       batch loss 0.007245882414281368
+2023-12-17 14:27:18,490 Epoch number 19, batch number 28/40:       batch loss 0.007169574964791536
+2023-12-17 14:27:18,973 Epoch number 19, batch number 29/40:       batch loss 0.00787868071347475
+2023-12-17 14:27:19,453 Epoch number 19, batch number 30/40:       batch loss 0.007632555905729532
+2023-12-17 14:27:19,938 Epoch number 19, batch number 31/40:       batch loss 0.006087362766265869
+2023-12-17 14:27:20,406 Epoch number 19, batch number 32/40:       batch loss 0.008422985672950745
+2023-12-17 14:27:20,876 Epoch number 19, batch number 33/40:       batch loss 0.012059115804731846
+2023-12-17 14:27:21,359 Epoch number 19, batch number 34/40:       batch loss 0.006236234214156866
+2023-12-17 14:27:21,839 Epoch number 19, batch number 35/40:       batch loss 0.0062711420468986034
+2023-12-17 14:27:22,311 Epoch number 19, batch number 36/40:       batch loss 0.005086252465844154
+2023-12-17 14:27:22,792 Epoch number 19, batch number 37/40:       batch loss 0.009189378470182419
+2023-12-17 14:27:23,277 Epoch number 19, batch number 38/40:       batch loss 0.00738244503736496
+2023-12-17 14:27:23,760 Epoch number 19, batch number 39/40:       batch loss 0.007713038474321365
+2023-12-17 14:27:23,795 Epoch: 20 	Training Loss: 0.007807
+2023-12-17 14:27:23,795 Time for epoch 20 : 20 sec
+2023-12-17 14:27:23,795 lr for epoch 20 is 0.00050
+2023-12-17 14:27:26,129 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,131 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,132 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,132 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,140 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,141 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,152 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,155 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,221 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,232 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,234 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,282 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,282 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,283 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,283 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,291 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,291 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,301 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,303 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,372 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,381 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,383 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,433 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,433 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,433 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,434 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,555 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,556 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,565 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,568 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:26,639 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,648 findfont: Font family 'Arial' not found.
+2023-12-17 14:27:26,650 findfont: Font family 'Times New Roman' not found.
+2023-12-17 14:27:29,060 Run Finished Successfully
