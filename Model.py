@@ -221,6 +221,8 @@ class Diff_Paths(nn.Module):
         self.fc_layers = nn.ModuleList([
             nn.Linear(256, img_dim) for _ in range(n_masks)
         ])
+        self.sigmoid = nn.Sigmoid()
+
 
     def forward(self, x):
         x = self.linear1(x)
