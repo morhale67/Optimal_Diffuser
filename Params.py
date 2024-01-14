@@ -4,6 +4,7 @@ import math
 def get_run_parameters():
     p = {'data_medical': 'data_DSI/GCP_data',
          'data_name': 'simple_cifar',
+         'model_name': 'Diff_Paths',
          'lr_vec': [0.1, 0.01, 0.001, 0.0005],
          'epochs_vec': [5, 5, 5, 5],
          'learn_vec_lr': True,
