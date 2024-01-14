@@ -22,10 +22,15 @@ def print_run_info_to_log(p, folder_path='Logs/'):
     logger.info(f"This is a summery of the run:")
     logger.info(f"Batch size for this run: {p['batch_size']}")
     logger.info(f"Size of original image: {p['pic_width']} X {p['pic_width']}")
-    logger.info(f'learning rate: {p["lr"]}')
     logger.info(f'number of masks: {p["n_masks"]}')
     logger.info(f'Compression ratio: {p["cr"]}')
-    logger.info(f'epochs : {p["epochs"]}')
+    if p['learn_vec_lr']:
+        logger.info(f'number of epochs per lr: {p["epochs_vec_lr"]}')
+        logger.info(f'diff learning rate in the run: {p["lr_vec"]}')
+    else:
+        logger.info(f'epochs : {p["epochs"]}')
+        logger.info(f'one learning rate: {p["lr"]}')
+
     # logger.info(f'number of fully connected layers in model: {p["n_fc"]}')
     logger.info('***************************************************************************\n\n')
     return log_path

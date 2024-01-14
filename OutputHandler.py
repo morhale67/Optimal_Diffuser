@@ -361,9 +361,7 @@ def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_sh
 
 
 if __name__ == '__main__':
-    run_folder_path = r'Results_to_save\simple_cifar\simple_cifar_GEN_bs_2_cr_20_nsamples100_picw_32_epochs_20'
-    # image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, 19],
-    #                       imgs_to_plot=[0, 11, 13, 14, 19])
-    image_results_subplot(run_folder_path, data_set='test_images', epochs_to_show=[0, 1, 2, 5, 10, 19],
-                          imgs_to_plot=[6, 10, 11, 15, 19])
+    run_folder_path = r'Results_to_save\Diff_Paths\Diff_Paths_simple_cifar_bs_2_cr_5_nsamples100_picw_32_epochs_40'
+    image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, 19])
+    image_results_subplot(run_folder_path, data_set='test_images', epochs_to_show=[0, 1, 2, 5, 10, 19])
 
