@@ -25,7 +25,7 @@ def print_run_info_to_log(p, folder_path='Logs/'):
     logger.info(f'number of masks: {p["n_masks"]}')
     logger.info(f'Compression ratio: {p["cr"]}')
     if p['learn_vec_lr']:
-        logger.info(f'number of epochs per lr: {p["epochs_vec_lr"]}')
+        logger.info(f'number of epochs per lr: {p["epochs_vec"]}')
         logger.info(f'diff learning rate in the run: {p["lr_vec"]}')
     else:
         logger.info(f'epochs : {p["epochs"]}')

@@ -6,7 +6,7 @@ def get_run_parameters():
          'data_name': 'simple_cifar',
          'model_name': 'Diff_Paths',
          'lr_vec': [0.1, 0.01, 0.001, 0.0005],
-         'epochs_vec': [10, 10, 10, 10],
+         'epochs_vec': [30, 30, 5, 5],
          'learn_vec_lr': True,
          'pic_width': 32,
          'n_samples': 100,
