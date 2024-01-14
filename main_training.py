@@ -54,8 +54,8 @@ def train_local(params, log_path, folder_path):
     save_all_run_numerical_outputs(numerical_outputs, folder_path)
     sb_reconstraction_for_all_images(folder_path, cr=params['cr'])
     print_and_log_message('Run Finished Successfully', log_path)
-    image_results_subplot(folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, params['epochs']])
-    image_results_subplot(folder_path, data_set='test_images', epochs_to_show=[0, 1, 2, 5, 10, params['epochs']])
+    #image_results_subplot(folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, params['epochs']])
+    #image_results_subplot(folder_path, data_set='test_images', epochs_to_show=[0, 1, 2, 5, 10, params['epochs']])
 
 
 def train(config=None):
