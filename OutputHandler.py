@@ -306,48 +306,51 @@ def save_all_run_numerical_outputs(numerical_outputs, folder_path):
     save_numerical_figure(SSIM_graphs, "SSIM", "SSIM", filename='SSIM_figure.png', folder_path=folder_path)
 
 
-def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10]):
+def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10], imgs_to_plot = range(20)):
     folder_path = os.path.join(run_folder_path, data_set)
     plt.figure(figsize=(50, 30))
     cols = 2 + len(epochs_to_show)
-    plt.subplot(20, cols, 1)
-    if data_set == 'train_images':
-        plt.suptitle('Train Set', fontsize=16)
-    else:
-        plt.suptitle('Test Set', fontsize=16)
+    n_img = len(imgs_to_plot)
+    plt.subplot(n_img, cols, 1)
+    fontsize = 50
+    # if data_set == 'train_images':
+    #     plt.suptitle('Train Set', fontsize=fontsize)
+    # else:
+    #     plt.suptitle('Test Set', fontsize=fontsize)
 
     i_sub = 1
     # images_folders = [subfolder for subfolder in os.listdir(folder_path) if subfolder.startswith("image_")]
-
-    for n_img in range(20):
-        image_folder = f'image_{n_img}'
-        image_path = os.path.join(image_folder, f'{n_img}_orig.jpg')
+    first_in_loop = True
+    for i in imgs_to_plot:
+        image_folder = f'image_{i}'
+        image_path = os.path.join(image_folder, f'{i}_orig.jpg')
         original = cv2.imread(os.path.join(folder_path, image_path), cv2.IMREAD_GRAYSCALE)
-        plt.subplot(20, cols, i_sub)
+        plt.subplot(n_img, cols, i_sub)
         i_sub += 1
         plt.imshow(original)
-        if n_img == 0:
-            plt.title(f'Original')
+        if first_in_loop:
+            plt.title(f'Original', fontsize=fontsize)
         plt.axis('off')
 
-        image_path = os.path.join(image_folder, f'Bregman_rec_image_{n_img}.png')
+        image_path = os.path.join(image_folder, f'Bregman_rec_image_{i}.png')
         bregman = cv2.imread(os.path.join(folder_path, image_path), cv2.IMREAD_GRAYSCALE)
-        plt.subplot(20, cols, i_sub)
+        plt.subplot(n_img, cols, i_sub)
         i_sub += 1
         plt.imshow(bregman)
-        if n_img == 0:
-            plt.title(f'Split Bregman')
+        if first_in_loop:
+            plt.title(f'Split Bregman', fontsize=fontsize)
         plt.axis('off')
 
         for j, epoch in enumerate(epochs_to_show):
-            image_path = os.path.join(image_folder, f'epoch_{epoch}_{n_img}_out.jpg')
+            image_path = os.path.join(image_folder, f'epoch_{epoch}_{i}_out.jpg')
             image = cv2.imread(os.path.join(folder_path, image_path), cv2.IMREAD_GRAYSCALE)
-            plt.subplot(20, cols, i_sub)
+            plt.subplot(n_img, cols, i_sub)
             i_sub += 1
             plt.imshow(image)
-            if n_img == 0:
-                plt.title(f'Epoch {epoch}')
+            if first_in_loop:
+                plt.title(f'Epoch {epoch}', fontsize=fontsize)
             plt.axis('off')
+        first_in_loop = False
 
     plt.savefig(os.path.join(run_folder_path, f'{data_set}_results.jpg'))
     # plt.show()
@@ -358,7 +361,9 @@ def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_sh
 
 
 if __name__ == '__main__':
-    run_folder_path = r'Results_to_save\simple_cifar\simple_cifar_GEN_bs_2_cr_5_nsamples100_picw_32_epochs_20'
-    # sb_reconstraction_for_all_images(run_folder_path, cr=5)
-    image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, 15])
+    run_folder_path = r'Results_to_save\simple_cifar\simple_cifar_GEN_bs_2_cr_20_nsamples100_picw_32_epochs_20'
+    # image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, 19],
+    #                       imgs_to_plot=[0, 11, 13, 14, 19])
+    image_results_subplot(run_folder_path, data_set='test_images', epochs_to_show=[0, 1, 2, 5, 10, 19],
+                          imgs_to_plot=[6, 10, 11, 15, 19])
 

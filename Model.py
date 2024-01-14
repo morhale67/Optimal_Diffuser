@@ -205,3 +205,36 @@ class Gen_conv1(nn.Module):
         x = self.sigmoid(x)
         return x
 
+
+class Diff_Paths(nn.Module):
+    def __init__(self, z_dim, img_dim, n_masks):
+        super().__init__()
+
+        self.linear1 = nn.Linear(z_dim, 128)
+        self.bn1 = nn.BatchNorm1d(128)
+        self.relu1 = nn.ReLU()
+
+        self.linear2 = nn.Linear(128, 256)
+        self.bn2 = nn.BatchNorm1d(256)
+        self.relu2 = nn.ReLU()
+
+        self.fc_layers = nn.ModuleList([
+            nn.Linear(256, img_dim) for _ in range(n_masks)
+        ])
+
+    def forward(self, x):
+        x = self.linear1(x)
+        x = self.bn1(x)
+        x = self.relu1(x)
+        x = self.linear2(x)
+        x = self.bn2(x)
+        x = self.relu2(x)
+
+
+        # Forward through each fully connected layer in the ModuleList
+        paths = [fc_layer(x) for fc_layer in self.fc_layers]
+
+        # Concatenate the outputs along the last dimension (dim=1)
+        x = torch.cat(paths, dim=1)
+        return x
+
