@@ -103,7 +103,7 @@ def save_numerical_figure(graphs, y_label, title, filename='loss_figure.png', fo
     # Save the figure to the specified filename
     full_file_path = os.path.join(folder_path, filename)
     plt.savefig(full_file_path)
-    plt.show()
+    # plt.show()
 
 
 def save_orig_img(loader, folder_path, name_sub_folder):
