@@ -20,11 +20,10 @@ import Model
 
 
 def train_local(params, log_path, folder_path):
-    data_root_medical = params['data_medical']
     train_loader, test_loader = build_dataset(params['batch_size'], params['num_workers'], params['pic_width'],
-                                              params['n_samples'], data_root_medical, params['data_name'])
+                                              params['n_samples'], params['data_medical'], params['data_name'])
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    network = build_network(params['z_dim'], params['img_dim'], params['n_masks'], device)
+    network = build_network(params['z_dim'], params['img_dim'], params['n_masks'], device, params['model_name'])
     optimizer = build_optimizer(network, params['optimizer'], params['lr'])
     numerical_outputs = {'train_loss': [], 'test_loss': [], 'train_psnr': [], 'test_psnr': [], 'train_ssim': [], 'test_ssim': []}
     lr = params['lr']
@@ -101,9 +100,10 @@ def save_img_train_test(epoch, train_loader, test_loader, network, params, optim
                                    params['z_dim'], params['img_dim'], params['cr'], params['epochs'], save_img=True)
 
 
-def build_network(z_dim, img_dim, n_masks, device, ac_stride=5):
+def build_network(z_dim, img_dim, n_masks, device, model_name):
     # network = Model.Gen_big_diff(z_dim, img_dim, n_masks, ac_stride)
-    network = Model.Gen(z_dim, img_dim, n_masks)
+    model_class = getattr(Model, model_name)
+    network = model_class(z_dim, img_dim, n_masks)
     # # Use DataParallel to wrap your model for multi-GPU training
     # if torch.cuda.device_count() > 1:
     #     print("Using", torch.cuda.device_count(), "GPUs!")

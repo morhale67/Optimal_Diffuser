@@ -233,7 +233,6 @@ class Diff_Paths(nn.Module):
 
         # Forward through each fully connected layer in the ModuleList
         paths = [fc_layer(x) for fc_layer in self.fc_layers]
-
         # Concatenate the outputs along the last dimension (dim=1)
         x = torch.cat(paths, dim=1)
         return x
