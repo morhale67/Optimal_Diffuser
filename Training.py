@@ -41,10 +41,8 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         else:
             noise = torch.randn(int(batch_size), int(z_dim), requires_grad=True).to(device)
             diffuser = network(noise)
-            #            print('Forward Net Successfully')
-            #             print(f'bs {batch_size} n_masks {n_masks}  img_dim {img_dim}')
+            # print(f'bs {batch_size} n_masks {n_masks}  img_dim {img_dim}')
             diffuser = diffuser.reshape(batch_size, n_masks, img_dim)
-            # diffuser = diffuser.unsqueeze(0).expand(batch_size, -1, -1)  # new tensor that contains repeated copies of the original tensor's data
 
         # check_diff(diffuser, sim_object, folder_path='temp/Gan/new')
 
