@@ -62,61 +62,50 @@ class Gen(nn.Module):
         return x
 
 
-class Diff4a(nn.Module):
+class Masks4(nn.Module):
     def __init__(self, z_dim, img_dim, n_masks):
         super().__init__()
+        self.d_output = n_masks * img_dim
+        self.model = nn.Sequential(
+            nn.Linear(z_dim, 128),
+            nn.BatchNorm1d(128),
+            nn.ReLU(),
 
-        self.linear1 = nn.Linear(z_dim, 128)
-        self.bn1 = nn.BatchNorm1d(128)
-        self.relu1 = nn.ReLU()
+            nn.Linear(128, 256),
+            nn.BatchNorm1d(256),
+            nn.ReLU(),
 
-        self.linear2 = nn.Linear(128, 256)
-        self.bn2 = nn.BatchNorm1d(256)
-        self.relu2 = nn.ReLU()
+            nn.Linear(256, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
 
-        self.linear3 = nn.Linear(256, 512)
-        self.bn3 = nn.BatchNorm1d(512)
-        self.relu3 = nn.ReLU()
-
-        self.linear4 = nn.Linear(512, n_masks * img_dim // 2)
-        self.bn4 = nn.BatchNorm1d(n_masks * img_dim // 2)
-        self.sigmoid = nn.Sigmoid()
+            nn.Linear(512, self.d_output),
+            nn.BatchNorm1d(self.d_output),
+            nn.Sigmoid()
+        )
 
     def forward(self, x):
-        x = self.linear1(x)
-        x = self.bn1(x)
-        x = self.relu1(x)
-        x = self.linear2(x)
-        x = self.bn2(x)
-        x = self.relu2(x)
-        x = self.linear3(x)
-        x = self.bn3(x)
-        x = self.relu3(x)
-        x = self.linear4(x)
-        x = self.bn4(x)
-        x = self.sigmoid(x)
-        return x
-
+        return self.model(x)
 
 class Diff4(nn.Module):
     def __init__(self, z_dim, img_dim, n_masks):
         super().__init__()
-        self.s_output = n_masks * img_dim
+        self.d_output = n_masks * img_dim
         self.model = nn.Sequential(
-            nn.Linear(z_dim, self.s_output // 8),
-            nn.BatchNorm1d(self.s_output // 8),
+            nn.Linear(z_dim, self.d_output // 8),
+            nn.BatchNorm1d(self.d_output // 8),
             nn.ReLU(),
 
-            nn.Linear(self.s_output // 8, self.s_output // 4),
-            nn.BatchNorm1d(self.s_output // 4),
+            nn.Linear(self.d_output // 8, self.d_output // 4),
+            nn.BatchNorm1d(self.d_output // 4),
             nn.ReLU(),
 
-            nn.Linear(self.s_output // 4, self.s_output // 2),
-            nn.BatchNorm1d(self.s_output // 2),
+            nn.Linear(self.d_output // 4, self.d_output // 2),
+            nn.BatchNorm1d(self.d_output // 2),
             nn.ReLU(),
 
-            nn.Linear(self.s_output // 2, self.s_output),
-            nn.BatchNorm1d(self.s_output),
+            nn.Linear(self.d_output // 2, self.d_output),
+            nn.BatchNorm1d(self.d_output),
             nn.Sigmoid()
         )
 
