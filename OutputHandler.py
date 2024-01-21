@@ -36,7 +36,7 @@ def deal_exist_folder(folder_path):
 
 
 def make_folder(p):
-    folder_name = f"{p['model_name']}_{p['data_name']}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}_picw_{p['pic_width']}_epochs_{p['epochs']}"
+    folder_name = f"{p['model_name']}_{p['data_name']}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}_picw_{p['pic_width']}_epochs_{p['epochs']}_wd_{p['weight_decay']}"
     if not p['learn_vec_lr']:
         folder_name = folder_name + f"_lr_{p['lr']}"
 

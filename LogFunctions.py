@@ -31,6 +31,9 @@ def print_run_info_to_log(p, folder_path='Logs/'):
         logger.info(f'epochs : {p["epochs"]}')
         logger.info(f'one learning rate: {p["lr"]}')
 
+    logger.info(f'optimizer: {p["optimizer"]}')
+    logger.info(f'weight_decay: {p["weight_decay"]}')
+
     # logger.info(f'number of fully connected layers in model: {p["n_fc"]}')
     logger.info('***************************************************************************\n\n')
     return log_path

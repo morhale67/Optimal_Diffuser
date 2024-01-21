@@ -24,7 +24,7 @@ def train_local(params, log_path, folder_path):
                                               params['n_samples'], params['data_medical'], params['data_name'])
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     network = build_network(params['z_dim'], params['img_dim'], params['n_masks'], device, params['model_name'])
-    optimizer = build_optimizer(network, params['optimizer'], params['lr'])
+    optimizer = build_optimizer(network, params['optimizer'], params['lr'], params['weight_decay'])
     numerical_outputs = {'train_loss': [], 'test_loss': [], 'train_psnr': [], 'test_psnr': [], 'train_ssim': [], 'test_ssim': []}
     lr = params['lr']
     save_orig_img(train_loader, folder_path, name_sub_folder='train_images')
@@ -33,7 +33,7 @@ def train_local(params, log_path, folder_path):
     for epoch in range(params['epochs']):
         if params['learn_vec_lr']:
             lr = get_lr(epoch, params['lr_vec'], params['cum_epochs'])
-            optimizer = build_optimizer(network, params['optimizer'], lr)
+            optimizer = build_optimizer(network, params['optimizer'], lr, params['weight_decay'])
         start_epoch = time.time()
         train_loss_epoch, train_psnr_epoch, train_ssim_epoch = train_epoch(epoch, network, train_loader, optimizer, params['batch_size'],
                                                          params['z_dim'],
@@ -113,12 +113,12 @@ def build_network(z_dim, img_dim, n_masks, device, model_name):
     return network.to(device)
 
 
-def build_optimizer(network, optimizer, learning_rate):
+def build_optimizer(network, optimizer, learning_rate, weight_decay):
     if optimizer == "sgd":
         optimizer = optim.SGD(network.parameters(),
                               lr=learning_rate, momentum=0.9)
     elif optimizer == "adam":
-        optimizer = optim.Adam(network.parameters(), lr=learning_rate)
+        optimizer = optim.Adam(network.parameters(), lr=learning_rate, weight_decay=weight_decay)
     return optimizer
 
 
