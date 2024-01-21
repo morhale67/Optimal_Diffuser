@@ -8,14 +8,13 @@ import torchvision.transforms as tr
 from Model import Gen
 from Model import breg_rec
 from LogFunctions import print_and_log_message
-from OutputHandler import save_outputs, calc_cumu_ssim_batch
 from testers import check_diff
 from testers import compare_buckets
 from Model import Gen_no_batch
 import Model
 from testers import check_diff_ac
 import matplotlib.pyplot as plt
-from OutputHandler import save_randomize_outputs, calc_cumu_psnr_batch, save_orig_img
+from OutputHandler import save_orig_img, save_outputs, calc_cumu_ssim_batch, save_randomize_outputs, calc_cumu_psnr_batch
 
 
 def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n_masks, device, log_path, folder_path,

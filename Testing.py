@@ -4,10 +4,8 @@ from Model import breg_rec
 import wandb
 from LogFunctions import print_and_log_message
 import math
-from OutputHandler import save_outputs, calc_cumu_psnr_batch
+from OutputHandler import save_orig_img, save_outputs, calc_cumu_ssim_batch, save_randomize_outputs, calc_cumu_psnr_batch
 import numpy as np
-from OutputHandler import save_orig_img
-from OutputHandler import save_randomize_outputs, calc_cumu_psnr_batch
 
 
 def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_dim, img_dim, cr, epochs,
