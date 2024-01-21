@@ -64,6 +64,33 @@ class Gen(nn.Module):
         return x
 
 
+class Diff4(nn.Module):
+    def __init__(self, z_dim, img_dim, n_masks):
+        super().__init__()
+
+        self.model = nn.Sequential(
+            nn.Linear(z_dim, 128),
+            nn.BatchNorm1d(128),
+            nn.ReLU(),
+
+            nn.Linear(128, 256),
+            nn.BatchNorm1d(256),
+            nn.ReLU(),
+
+            nn.Linear(256, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(),
+
+            nn.Linear(512, n_masks * img_dim // 2),
+            nn.BatchNorm1d(n_masks * img_dim // 2),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        return self.model(x)
+
+
+
 # Define the custom layer
 class ElementwiseMultiplyLayer(nn.Module):
     def __init__(self, input_size, n_mask):
