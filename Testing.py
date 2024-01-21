@@ -4,10 +4,10 @@ from Model import breg_rec
 import wandb
 from LogFunctions import print_and_log_message
 import math
-from OutputHandler import save_outputs, calc_ssim_batch
+from OutputHandler import save_outputs, calc_cumu_psnr_batch
 import numpy as np
 from OutputHandler import save_orig_img
-from OutputHandler import save_randomize_outputs, calc_psnr_batch
+from OutputHandler import save_randomize_outputs, calc_cumu_psnr_batch
 
 
 def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_dim, img_dim, cr, epochs,
@@ -38,8 +38,8 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         criterion = nn.MSELoss()
         loss = criterion(reconstruct_imgs_batch, sim_object)
         cumu_loss += loss.item()
-        cumu_psnr += calc_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
-        cumu_ssim += calc_ssim_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        cumu_psnr += calc_cumu_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        cumu_ssim += calc_cumu_ssim_batch(reconstruct_imgs_batch, sim_object, pic_width)
         if save_img:
             save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, pic_width, folder_path,
                                    'test_images')
