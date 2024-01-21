@@ -310,7 +310,7 @@ def save_all_run_numerical_outputs(numerical_outputs, folder_path):
     save_numerical_figure(SSIM_graphs, "SSIM", "SSIM", filename='SSIM_figure.png', folder_path=folder_path)
 
 
-def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10], imgs_to_plot = range(20)):
+def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10], imgs_to_plot=range(20)):
     folder_path = os.path.join(run_folder_path, data_set)
     plt.figure(figsize=(50, 30))
     cols = 2 + len(epochs_to_show)
@@ -365,7 +365,7 @@ def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_sh
 
 
 if __name__ == '__main__':
-    run_folder_path = r'Results_to_save\Masks4\Masks4_simple_cifar_bs_2_cr_5_nsamples100_picw_32_epochs_25_wd_1e-06'
-    image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 15, 24])
-    image_results_subplot(run_folder_path, data_set='test_images', epochs_to_show=[0, 1, 2, 5, 15, 24])
+    run_folder_path = r'Results_to_save\Masks4\Masks4_simple_cifar_bs_2_cr_5_nsamples100_picw_32_epochs_36_wd_5e-07'
+    image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 2, 5, 20, 35], imgs_to_plot=[11, 13, 18, 19])
+    image_results_subplot(run_folder_path, data_set='test_images', epochs_to_show=[0, 2, 5, 20, 35], imgs_to_plot=[7, 13, 15, 16])
 
