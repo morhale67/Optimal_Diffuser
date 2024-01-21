@@ -15,6 +15,8 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
     model.eval()
     model.to(device)
     cumu_loss, cumu_psnr, cumu_ssim = 0, 0, 0
+    n_batchs = len(loader.batch_sampler)
+    n_samples = n_batchs * batch_size
     pic_width = int(math.sqrt(img_dim))
 
     for batch_index, sim_bucket_tensor in enumerate(loader):
@@ -42,7 +44,7 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
             save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, pic_width, folder_path,
                                    'test_images')
 
-    test_loss, test_psnr, test_ssim = cumu_loss / len(loader), cumu_psnr / len(loader), cumu_ssim / len(loader)
+    test_loss, test_psnr, test_ssim = cumu_loss / n_samples, cumu_psnr / n_samples, cumu_ssim / n_samples
 
    # try:
    #     pic_width = int(math.sqrt(img_dim))

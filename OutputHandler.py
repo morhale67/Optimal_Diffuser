@@ -259,7 +259,7 @@ def PSNR(image1, image2, m, n):
     return psnr
 
 
-def calc_psnr_batch(output, y_label, pic_width):
+def calc_cumu_psnr_batch(output, y_label, pic_width):
     dev = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
     batch_psnr = 0
@@ -277,7 +277,7 @@ def SSIM(orig_image, rec_image):
     return ssim_value
 
 
-def calc_ssim_batch(output, y_label, pic_width):
+def calc_cumu_ssim_batch(output, y_label, pic_width):
     dev = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
     batch_ssim = 0

@@ -23,6 +23,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
     cumu_loss, cumu_psnr, cumu_ssim = 0, 0, 0
     network.train()
     n_batchs = len(loader.batch_sampler)
+    n_samples = n_batchs * batch_size
     pic_width = int(math.sqrt(img_dim))
 
     for batch_index, sim_bucket_tensor in enumerate(loader):
@@ -79,7 +80,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
             save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)),
                                    folder_path, 'train_images')
 
-    train_loss, train_psnr, train_ssim = cumu_loss / len(loader), cumu_psnr / len(loader), cumu_ssim / len(loader)
+    train_loss, train_psnr, train_ssim = cumu_loss / n_samples, cumu_psnr / n_samples, cumu_ssim / n_samples
 
     try:
         wandb.log({'train_loss': train_loss})
