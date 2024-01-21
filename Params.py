@@ -10,7 +10,7 @@ def get_run_parameters():
          'learn_vec_lr': True,
          'pic_width': 32,
          'n_samples': 100,
-         'cr': 5,
+         'cr': 20,
          'batch_size': 2,
          'lr': 0.1,
          'epochs': 3,
