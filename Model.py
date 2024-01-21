@@ -101,21 +101,22 @@ class Diff4a(nn.Module):
 class Diff4(nn.Module):
     def __init__(self, z_dim, img_dim, n_masks):
         super().__init__()
+        self.s_output = n_masks * img_dim
         self.model = nn.Sequential(
-            nn.Linear(z_dim, 128),
-            nn.BatchNorm1d(128),
+            nn.Linear(z_dim, self.s_output // 8),
+            nn.BatchNorm1d(self.s_output // 8),
             nn.ReLU(),
 
-            nn.Linear(128, 256),
-            nn.BatchNorm1d(256),
+            nn.Linear(self.s_output // 8, self.s_output // 4),
+            nn.BatchNorm1d(self.s_output // 4),
             nn.ReLU(),
 
-            nn.Linear(256, 512),
-            nn.BatchNorm1d(512),
+            nn.Linear(self.s_output // 4, self.s_output // 2),
+            nn.BatchNorm1d(self.s_output // 2),
             nn.ReLU(),
 
-            nn.Linear(512, n_masks * img_dim // 2),
-            nn.BatchNorm1d(n_masks * img_dim // 2),
+            nn.Linear(self.s_output // 2, self.s_output),
+            nn.BatchNorm1d(self.s_output),
             nn.Sigmoid()
         )
 
