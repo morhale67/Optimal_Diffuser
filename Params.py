@@ -15,7 +15,7 @@ def get_run_parameters():
          'lr': 0.1,
          'epochs': 3,
          'optimizer': 'adam',
-         'weight_decay': 1e-5, 
+         'weight_decay': 1e-4, 
          # 'big_diffuser': False,
          # 'ac_stride': 7,
          'num_workers': 4,
