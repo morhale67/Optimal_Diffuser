@@ -5,12 +5,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import cv2
+from skimage import img_as_float
 from skimage.metrics import structural_similarity as ssim
 from torchvision import transforms
 import pickle
 import re
 from Lasso import sparse_encode
 from LogFunctions import print_and_log_message
+
 from testers import create_diffuser
 
 
@@ -267,8 +269,10 @@ def calc_psnr_batch(output, y_label, pic_width):
 
 
 def SSIM(orig_image, rec_image):
-    ''' assum it np array'''
-    ssim_value = ssim(orig_image, rec_image, data_range=1)
+    """ images in format np array """
+    orig_image_normalized = img_as_float(orig_image)
+    rec_image_normalized = img_as_float(rec_image)
+    ssim_value = ssim(orig_image_normalized, rec_image_normalized, data_range=1)
     # ssim_value = ssim(orig_image_np, rec_image_np, data_range=rec_image_np.max()-rec_image_np.min())
     return ssim_value
 
