@@ -35,11 +35,10 @@ def train_local(params, log_path, folder_path):
             lr = get_lr(epoch, params['lr_vec'], params['cum_epochs'])
             optimizer = build_optimizer(network, params['optimizer'], lr, params['weight_decay'])
         start_epoch = time.time()
-        train_loss_epoch, train_psnr_epoch, train_ssim_epoch = train_epoch(epoch, network, train_loader, optimizer, params['batch_size'],
-                                                         params['z_dim'],
-                                                         params['img_dim'], params['n_masks'], device, log_path,
-                                                         folder_path,
-                                                         save_img=True)
+        train_loss_epoch, train_psnr_epoch, train_ssim_epoch = train_epoch(epoch, network, train_loader, optimizer,
+                                                         params['batch_size'], params['z_dim'], params['img_dim'],
+                                                         params['n_masks'], device, log_path, folder_path,
+                                                         params['epsRL1'], save_img=True)
         print_training_messages(epoch, train_loss_epoch, lr, start_epoch, log_path)
         test_loss_epoch, test_psnr_epoch, test_ssim_epoch = test_net(epoch, network, test_loader, device, log_path, folder_path,
                                                     params['batch_size'],

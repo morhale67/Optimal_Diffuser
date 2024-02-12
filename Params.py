@@ -3,12 +3,12 @@ import math
 
 def get_run_parameters():
     p = {'data_medical': 'data_DSI/GCP_data',
-         'data_name': 'stl-10',
+         'data_name': 'simple_cifar',
          'model_name': 'Masks4',
          'lr_vec': [0.1, 0.01, 0.001],
          'epochs_vec': [5, 30, 5],
          'learn_vec_lr': True,
-         'pic_width': 16,
+         'pic_width': 32,
          'n_samples': 100,
          'cr': 5,
          'batch_size': 2,
