@@ -7,7 +7,7 @@ from testers import experiment_berg_params
 from testers import plot_rec_image
 
 
-def breg_rec(diffuser_batch, bucket_batch, batch_size, TV=False):
+def breg_rec(diffuser_batch, bucket_batch, batch_size, beta=1):
     if diffuser_batch.dim() == 3:
         img_dim = diffuser_batch.shape[2]  # diffuser in shape (batch_size, n_masks, img_dim)
     else:
@@ -26,7 +26,7 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size, TV=False):
             diffuser = diffuser_batch
 
         rec = sparse_encode(bucket_batch[rec_ind], diffuser, maxiter=maxiter, niter_inner=niter_inner, alpha=alpha,
-                            algorithm='split-bregman', TV=TV)
+                            algorithm='split-bregman', beta=beta)
         # plot_rec_image(rec, maxiter, niter_inner, alpha)
         recs_container = recs_container.clone()
         recs_container[rec_ind] = rec

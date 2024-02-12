@@ -71,7 +71,7 @@ def sparse_encode(x, weight, alpha=1.0, z0=None, algorithm='ista', init=None,
 
 
 def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5,
-                  tol=1e-10, tau=1., TV=False, beta=2.0, verbose=False):
+                  tol=1e-10, tau=1., beta=1.0, verbose=False):
     """Split Bregman for L1-regularized least squares.
 
     Parameters
@@ -94,8 +94,6 @@ def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5
         Tolerance on change in parameter x
     tau : float, optional
         Scaling factor in the Bregman update (must be close to 1)
-    TV : bool, optional
-        Whether to apply TV regularization
     beta : float, optional
         TV regularization strength
     verbose : bool, optional
@@ -142,7 +140,7 @@ def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5
             Aty_i = Aty.add(d - b, alpha=lambd)
             x = torch.mm(AtA_inv, Aty_i)
 
-            if TV:
+            if beta != 0:
                 d = tv_regularization(x, beta, lambd)
             else:
                 # Shrinkage
