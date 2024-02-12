@@ -129,7 +129,6 @@ def try_diff_resize(img_width, img_length, img_path, results_dir, algorithms='al
     return resized_img
 
 
-
 def try_diff_denoising(noisy_img, results_dir, algorithms='all'):
     if algorithms == 'all':
         algorithms = ['gaussian', 'bilateral', 'TV', 'wavelet', 'BM3D']

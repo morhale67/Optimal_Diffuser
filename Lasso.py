@@ -71,13 +71,13 @@ def sparse_encode(x, weight, alpha=1.0, z0=None, algorithm='ista', init=None,
 
 
 def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5,
-                  tol=1e-10, tau=1., verbose=False):
+                  tol=1e-10, tau=1., TV=False, beta=1.0, verbose=False):
     """Split Bregman for L1-regularized least squares.
 
     Parameters
     ----------
     A : torch.Tensor
-        Linear transformation marix. Shape [n_features, n_components]
+        Linear transformation matrix. Shape [n_features, n_components]
     y : torch.Tensor
         Reconstruction targets. Shape [n_samples, n_features]
     x0 : torch.Tensor, optional
@@ -94,6 +94,12 @@ def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5
         Tolerance on change in parameter x
     tau : float, optional
         Scaling factor in the Bregman update (must be close to 1)
+    TV : bool, optional
+        Whether to apply TV regularization
+    beta : float, optional
+        TV regularization strength
+    verbose : bool, optional
+        Whether to print iteration information
 
     Returns
     -------
@@ -136,8 +142,11 @@ def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5
             Aty_i = Aty.add(d - b, alpha=lambd)
             x = torch.mm(AtA_inv, Aty_i)
 
-            # Shrinkage
-            d = F.softshrink(x + b, 1 / lambd)
+            if TV:
+                d = tv_regularization(x, beta, lambd)
+            else:
+                # Shrinkage
+                d = F.softshrink(x + b, 1 / lambd)
 
         # Bregman update
         b.add_(x - d, alpha=tau)
@@ -146,9 +155,48 @@ def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5
         update = torch.norm(x - xold)
 
         if verbose:
-            cost = 0.5 * (torch.mm(A,x) - y).square().sum() + alpha * x.abs().sum()
+            cost = 0.5 * (torch.mm(A, x) - y).square().sum() + alpha * x.abs().sum()
             print('iter %3d - cost: %0.4f' % (itn, cost))
 
     x = x.T.contiguous()
 
     return x, itn
+
+
+
+def tv_regularization(x, beta, lambd):
+    """Apply Total Variation (TV) regularization."""
+    # Reshape x back to a 2D image
+    x_2d = x.reshape(32, 32)
+
+    # Compute gradients along x and y axes
+    grad_x = F.conv2d(x_2d.unsqueeze(0).unsqueeze(0), torch.Tensor([[[[1, -1]]]]), padding=(0, 1))
+    grad_y = F.conv2d(x_2d.unsqueeze(0).unsqueeze(0), torch.Tensor([[[[1], [-1]]]]), padding=(1, 0))  # Adjusted padding
+
+    # Crop the output tensors to match the size of the input image
+    grad_x = grad_x[:, :, :, :-1]  # Remove the last column
+    grad_y = grad_y[:, :, :-1, :]  # Remove the last row
+
+    # Compute magnitude of gradients
+    grad = torch.sqrt(grad_x ** 2 + grad_y ** 2)
+
+    # Apply soft shrinkage to gradients
+    v = F.softshrink(grad, beta / lambd)
+
+    # Compute divergence
+    div_v_x = F.conv2d(v, torch.Tensor([[[[1], [-1]]]]), padding=(1, 0))
+    div_v_y = F.conv2d(v, torch.Tensor([[[[1, -1]]]]), padding=(0, 1))
+
+    # Crop the output tensors to match the size of the input image
+    div_v_y = div_v_y[:, :, :, :-1]  # Remove the last column
+    div_v_x = div_v_x[:, :, :-1, :]  # Remove the last row
+
+    div_v = div_v_x + div_v_y
+
+    # Add divergence to original image
+    x_2d_reg = x_2d + div_v.squeeze()
+
+    # Reshape back to 1D array
+    x_reg = x_2d_reg.view(1024, 1)
+
+    return x_reg

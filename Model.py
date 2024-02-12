@@ -1,3 +1,4 @@
+import pylops
 import torch
 from torch import nn
 import math
@@ -25,7 +26,7 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size):
             diffuser = diffuser_batch
 
         rec = sparse_encode(bucket_batch[rec_ind], diffuser, maxiter=maxiter, niter_inner=niter_inner, alpha=alpha,
-                            algorithm='split-bregman')
+                            algorithm='split-bregman', TV=True)
         # plot_rec_image(rec, maxiter, niter_inner, alpha)
         recs_container = recs_container.clone()
         recs_container[rec_ind] = rec
