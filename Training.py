@@ -18,7 +18,7 @@ from OutputHandler import save_orig_img, save_outputs, calc_cumu_ssim_batch, sav
 
 
 def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n_masks, device, log_path, folder_path,
-                ac_stride=5, save_img=False, big_diffuser=False):
+                TV_flag, save_img=False, big_diffuser=False):
     cumu_loss, cumu_psnr, cumu_ssim = 0, 0, 0
     network.train()
     n_batchs = len(loader.batch_sampler)
@@ -52,7 +52,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
 
         # buckets_same = compare_buckets(sim_bucket[0], diffuser[0], sim_object[0])
 
-        reconstruct_imgs_batch = breg_rec(diffuser, sim_bucket, batch_size).to(device)
+        reconstruct_imgs_batch = breg_rec(diffuser, sim_bucket, batch_size, TV=TV_flag).to(device)
         sim_object = torch.squeeze(sim_object)
         criterion = nn.MSELoss()
         loss = criterion(reconstruct_imgs_batch, sim_object)
