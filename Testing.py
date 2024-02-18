@@ -8,8 +8,8 @@ from OutputHandler import save_orig_img, save_outputs, calc_cumu_ssim_batch, sav
 import numpy as np
 
 
-def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_dim, img_dim, cr, epochs,
-             TV_beta, save_img=False):
+def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_dim, img_dim, cr,
+             TV_beta, wb_flag, save_img=False):
     model.eval()
     model.to(device)
     cumu_loss, cumu_psnr, cumu_ssim = 0, 0, 0
@@ -36,26 +36,24 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         criterion = nn.MSELoss()
         loss = criterion(reconstruct_imgs_batch, sim_object)
         cumu_loss += loss.item()
-        cumu_psnr += calc_cumu_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
-        cumu_ssim += calc_cumu_ssim_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        torch.cuda.empty_cache()  # Before starting a new forward/backward pass
+        batch_psnr = calc_cumu_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        batch_ssim = calc_cumu_ssim_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        cumu_psnr += batch_psnr
+        cumu_ssim += batch_ssim
+        print_and_log_message(f"Epoch number {epoch}, batch number {batch_index}/{n_batchs}:"
+                              f"       batch loss {loss.item()}", log_path)
+        if wb_flag:
+            wandb.log({"test_loss_batch": loss.item(), "test_psnr_batch": batch_psnr / batch_size,
+                       "test_ssim_batch": batch_ssim / batch_size, "test_batch_index": batch_index})
         if save_img:
-            save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, pic_width, folder_path,
-                                   'test_images')
+            save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)),
+                                   folder_path, 'test_images', wb_flag)
+
 
     test_loss, test_psnr, test_ssim = cumu_loss / n_samples, cumu_psnr / n_samples, cumu_ssim / n_samples
 
-   # try:
-   #     pic_width = int(math.sqrt(img_dim))
-   #     image_reconstructions = [wandb.Image(i.reshape(pic_width, pic_width)) for i in reconstruct_imgs_batch]
-   #     sim_object_images = [wandb.Image(i.reshape(pic_width, pic_width)) for i in sim_object]
-   #     wandb.log({'sim_diffuser': [wandb.Image(i) for i in sim_diffuser_reshaped]})
-   #     wandb.log({'image reconstructions': image_reconstructions})
-   #     wandb.log({'test original images': sim_object_images})
-   #     wandb.log({'Test_loss': test_loss})
-   #
-   #     print(f"epoch [{epoch} / {epochs}] \ "
-   #           f"genValLoss: {test_loss:.4f}")
-   # except:
-   #     print_and_log_message('Test Loss: {:.6f}\n'.format(test_loss), log_path)
+    if wb_flag:
+        wandb.log({"epoch": epoch, 'test_loss': test_loss})
 
     return test_loss, test_psnr, test_ssim

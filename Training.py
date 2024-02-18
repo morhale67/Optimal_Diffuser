@@ -18,7 +18,7 @@ from OutputHandler import save_orig_img, save_outputs, calc_cumu_ssim_batch, sav
 
 
 def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n_masks, device, log_path, folder_path,
-                TV_beta, save_img=False, big_diffuser=False):
+                TV_beta, wb_flag, save_img=False, big_diffuser=False):
     cumu_loss, cumu_psnr, cumu_ssim = 0, 0, 0
     network.train()
     n_batchs = len(loader.batch_sampler)
@@ -64,27 +64,27 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         #        print('Optimizer step')
         cumu_loss += loss.item()
         torch.cuda.empty_cache()  # Before starting a new forward/backward pass
-        cumu_psnr += calc_cumu_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
-        cumu_ssim += calc_cumu_ssim_batch(reconstruct_imgs_batch, sim_object, pic_width)
-
-        try:
-            wandb.log({"batch loss": loss.item()})
-            print(f"batch loss {batch_index}/{n_batchs}: {loss.item()}, epoch {epoch}")
-        except:
-            print_and_log_message(
-                f"Epoch number {epoch}, batch number {batch_index}/{n_batchs}:       batch loss {loss.item()}",
-                log_path)
-
+        batch_psnr = calc_cumu_psnr_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        batch_ssim = calc_cumu_ssim_batch(reconstruct_imgs_batch, sim_object, pic_width)
+        cumu_psnr += batch_psnr
+        cumu_ssim += batch_ssim
+        print_and_log_message(f"Epoch number {epoch}, batch number {batch_index}/{n_batchs}:"
+                              f"       batch loss {loss.item()}", log_path)
+        if wb_flag:
+            wandb.log({"loss_batch": loss.item(), "psnr_batch": batch_psnr/batch_size,
+                       "ssim_batch": batch_ssim/batch_size, "batch_index": batch_index})
         if save_img:
             save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)),
-                                   folder_path, 'train_images')
+                                   folder_path, 'train_images', wb_flag)
 
     train_loss, train_psnr, train_ssim = cumu_loss / n_samples, cumu_psnr / n_samples, cumu_ssim / n_samples
+    if wb_flag:
+        wandb.log({"epoch": epoch, 'train_loss': train_loss})
 
-    try:
-        wandb.log({'train_loss': train_loss})
-    except Exception as e:
-        pass
+
+
+
+
 
     #        try:
     #           num_images = reconstruct_imgs_batch.shape[0]  # most of the time = batch_size

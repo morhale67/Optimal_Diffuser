@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import cv2
+import wandb
 from skimage import img_as_float
 from skimage.metrics import structural_similarity as ssim
 from torchvision import transforms
@@ -70,13 +71,11 @@ def save_outputs(epoch, output, y_label, pic_width, folder_path, name_sub_folder
             break
 
 
-def save_numerical_figure(graphs, y_label, title, filename='loss_figure.png', folder_path='.'):
+def save_numerical_figure(graphs, y_label, title, filename, folder_path, wb_flag):
     ''''
     g1 and g2 are train and test values
     g3 are the reference (random patterns)
     '''
-
-
     # Set custom font and size for the entire plot
     plt.rcParams['font.family'] = 'serif'
     plt.rcParams['font.size'] = 16
@@ -85,13 +84,6 @@ def save_numerical_figure(graphs, y_label, title, filename='loss_figure.png', fo
     for i, (gi, gi_label) in enumerate(graphs):
         color = plt.cm.get_cmap('tab10')(i)
         plt.plot(gi, label=gi_label, color=color)
-
-
-    # # Calculate the minimal test loss and its corresponding epoch
-    # min_g2 = min(g2)
-    # min_g2_epoch = g2.index(min_g2) + 1  # Adding 1 to convert from 0-based index to epoch number
-    # subtitle = f'Min {g2_label}: {min_g2:.3f} (Epoch {min_g2_epoch})'
-    # plt.title(f'{title}\n{subtitle}', fontsize=22, fontname='Times New Roman')
 
     # Add labels and title
     plt.xlabel('Epoch', fontsize=22, fontname='Arial')
@@ -105,7 +97,10 @@ def save_numerical_figure(graphs, y_label, title, filename='loss_figure.png', fo
     # Save the figure to the specified filename
     full_file_path = os.path.join(folder_path, filename)
     plt.savefig(full_file_path)
+    plt.close()
     # plt.show()
+    if wb_flag:
+        wandb.log({filename: wandb.Image(filename)})
 
 
 def save_orig_img(loader, folder_path, name_sub_folder):
@@ -121,7 +116,7 @@ def save_orig_img(loader, folder_path, name_sub_folder):
     torch.save(all_images_tensor, orig_img_path)
 
 
-def save_randomize_outputs(epoch, batch_index, output, y_label, pic_width, folder_path, name_sub_folder):
+def save_randomize_outputs(epoch, batch_index, output, y_label, pic_width, folder_path, name_sub_folder, wb_flag):
     in_out_images = zip(output.cpu().view(-1, pic_width, pic_width), y_label.view(-1, pic_width, pic_width))
     for i, (out_image, orig_image) in enumerate(in_out_images):
         image_number = get_original_image_number(orig_image, folder_path, name_sub_folder, epoch, batch_index)
@@ -130,9 +125,14 @@ def save_randomize_outputs(epoch, batch_index, output, y_label, pic_width, folde
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
             if epoch == 0:
-                plt.imsave(output_dir + f'/{image_number}_orig.jpg', orig_image.cpu().detach().numpy())
-            plt.imsave(output_dir + f'/epoch_{epoch}_{image_number}_out.jpg', out_image.detach().numpy())
-
+                orig_file_name = os.path.join(output_dir, f'{image_number}_orig.jpg')
+                plt.imsave(orig_file_name, orig_image.cpu().detach().numpy())
+                if wb_flag:
+                    wandb.log({orig_file_name: orig_file_name})
+            rec_file_name = output_dir + f'/epoch_{epoch}_{image_number}_out.jpg'
+            plt.imsave(rec_file_name, out_image.detach().numpy())
+            if wb_flag:
+                wandb.log({rec_file_name: wandb.Image(rec_file_name)})
 
 def get_original_image_number(orig_img, folder_path, name_sub_folder, epoch, batch_index):
     orig_img_path = folder_path + '/' + name_sub_folder + '/orig_imgs_tensors.pt'
@@ -193,7 +193,7 @@ def subplot_epochs_reconstruction(run_folder_path, data_set, image_folder):
     # plt.show()
 
 
-def sb_reconstraction_for_all_images(run_folder_path, cr):
+def sb_reconstraction_for_all_images(run_folder_path, cr, wb_flag):
     data_set = 'train_images'
     folder_path = os.path.join(run_folder_path, data_set)
     # Get a list of subfolders starting with "image_"
@@ -208,11 +208,11 @@ def sb_reconstraction_for_all_images(run_folder_path, cr):
     folder_path = os.path.join(run_folder_path, data_set)
     images_folders = [subfolder for subfolder in os.listdir(folder_path) if subfolder.startswith("image_")]
     for image_folder in images_folders:
-        rec_bregman_for_image(cr, image_folder, data_set, run_folder_path)
+        rec_bregman_for_image(cr, image_folder, data_set, run_folder_path, wb_flag)
         # subplot_epochs_reconstruction(run_folder_path, data_set, image_folder)
 
 
-def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path):
+def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path, wb_flag):
 
     images_path = os.path.join(run_folder_path, data_set, image_folder)
     org_img_name = [img for img in os.listdir(images_path) if f'_orig' in img]
@@ -240,12 +240,10 @@ def rec_bregman_for_image(cr, image_folder, data_set, run_folder_path):
 
     rec = sparse_encode(sim_bucket, sim_diffuser, maxiter=1, niter_inner=1, alpha=1,
                         algorithm='split-bregman')
-
-    plt.imsave(os.path.join(save_folder, f"Bregman_rec_{image_folder}.png"), rec.numpy().reshape(pic_width, pic_width))
-    # plt.imshow(rec.reshape(pic_width, pic_width))
-    # plt.title(f"reconstruction by random patterns cr={cr}")
-    # plt.savefig(os.path.join(save_folder, f"Bregman_rec_{data_set}_{image_folder}_cr_{cr}.png"))
-    # plt.show()
+    file_name = f"Bregman_rec_{image_folder}.png"
+    plt.imsave(os.path.join(save_folder, file_name), rec.numpy().reshape(pic_width, pic_width))
+    if wb_flag:
+        wandb.log({file_name: wandb.Image(os.path.join(save_folder, file_name))})
 
 
 def PSNR(image1, image2, m, n):
@@ -288,7 +286,7 @@ def calc_cumu_ssim_batch(output, y_label, pic_width):
     return batch_ssim
 
 
-def save_all_run_numerical_outputs(numerical_outputs, folder_path):
+def save_all_run_numerical_outputs(numerical_outputs, folder_path, wb_flag):
     file_path = os.path.join(folder_path, 'numerical_outputs.pkl')
     with open(file_path, 'wb') as file:
         pickle.dump(numerical_outputs, file)
@@ -305,9 +303,17 @@ def save_all_run_numerical_outputs(numerical_outputs, folder_path):
     SSIM_graphs = [[numerical_outputs['train_ssim'], 'Train SSIM'], [numerical_outputs['test_ssim'], 'Test SSIM'],
                    [rand_diff_ssim, 'Random Diffuser SSIM']]
 
-    save_numerical_figure(Loss_graphs, "Loss", "Loss", filename='loss_figure.png', folder_path=folder_path)
-    save_numerical_figure(PSNR_graphs, "PSNR [dB]", "PSNR", filename='PSNR_figure.png', folder_path=folder_path)
-    save_numerical_figure(SSIM_graphs, "SSIM", "SSIM", filename='SSIM_figure.png', folder_path=folder_path)
+    save_numerical_figure(Loss_graphs, "Loss", "Loss", 'loss_figure.png', folder_path, wb_flag)
+    save_numerical_figure(PSNR_graphs, "PSNR [dB]", "PSNR", 'PSNR_figure.png', folder_path, wb_flag)
+    save_numerical_figure(SSIM_graphs, "SSIM", "SSIM", 'SSIM_figure.png', folder_path, wb_flag)
+
+    if wb_flag:
+        # Save numerical outputs as parameters in Weights & Biases
+        for key, value in numerical_outputs.items():
+            wandb.log({key: value})
+
+
+
 
 
 def image_results_subplot(run_folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10], imgs_to_plot=range(20)):
