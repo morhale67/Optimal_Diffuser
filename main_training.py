@@ -144,7 +144,7 @@ def split_bregman_on_random_for_run(folder_path, params):
         np_orig_image = np.array(orig_image.view(-1, 1))
         sim_diffuser = np.random.normal(0.5, 0.5, [params['n_masks'], params['img_dim']])
         sim_bucket = np.matmul(sim_diffuser, np_orig_image).transpose((1, 0))
-        rec_image = sparse_encode(torch.from_numpy(sim_bucket), torch.from_numpy(sim_diffuser), maxiter=1, niter_inner=1, alpha=1, algorithm='split-bregman')
+        rec_image = sparse_encode(torch.from_numpy(sim_bucket), torch.from_numpy(sim_diffuser), maxiter=1, niter_inner=1, alpha=1, algorithm='split-bregman', beta=params['TV_beta'])
 
         pic_width = params['pic_width']
         loss = mean_squared_error(rec_image.flatten(), orig_image.flatten())

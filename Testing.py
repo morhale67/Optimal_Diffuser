@@ -9,7 +9,7 @@ import numpy as np
 
 
 def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_dim, img_dim, cr, epochs,
-             TV_flag, save_img=False):
+             TV_beta, save_img=False):
     model.eval()
     model.to(device)
     cumu_loss, cumu_psnr, cumu_ssim = 0, 0, 0
@@ -29,7 +29,7 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         sim_object = sim_object.transpose(1, 2)
         sim_bucket = torch.matmul(sim_diffuser_reshaped, sim_object)
         sim_bucket = torch.transpose(sim_bucket, 1, 2)
-        reconstruct_imgs_batch = breg_rec(sim_diffuser_reshaped, sim_bucket, batch_size, TV=TV_flag)
+        reconstruct_imgs_batch = breg_rec(sim_diffuser_reshaped, sim_bucket, batch_size, beta=TV_beta)
 
         reconstruct_imgs_batch = reconstruct_imgs_batch.to(device)
         sim_object = torch.squeeze(sim_object)
