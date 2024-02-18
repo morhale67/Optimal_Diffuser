@@ -46,7 +46,7 @@ def print_and_log_message(message, log_path):
 
     if isinstance(message, str):
         logger.warning(message)
-        print(message)
+        # print(message)
     else:
         logger.exception(message)
 

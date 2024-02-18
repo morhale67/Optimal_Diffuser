@@ -1,6 +1,8 @@
 import torch
 import warnings
 import torch.nn.functional as F
+import numpy as np
+
 
 _init_defaults = {
     'ista': 'zero',
@@ -141,9 +143,8 @@ def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5
             x = torch.mm(AtA_inv, Aty_i)
 
             if beta != 0:
-                d = tv_regularization(x, beta, lambd)
+                d = tv_regularization(x + b, beta, lambd)
             else:
-                # Shrinkage
                 d = F.softshrink(x + b, 1 / lambd)
 
         # Bregman update
@@ -161,11 +162,12 @@ def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5
     return x, itn
 
 
-
 def tv_regularization(x, beta, lambd):
     """Apply Total Variation (TV) regularization."""
+    img_dim = len(x)
+    pic_size = int(np.sqrt(img_dim))
     # Reshape x back to a 2D image
-    x_2d = x.reshape(32, 32)
+    x_2d = x.reshape(pic_size, pic_size)
 
     # Compute gradients along x and y axes
     grad_x = F.conv2d(x_2d.unsqueeze(0).unsqueeze(0), torch.Tensor([[[[1, -1]]]]), padding=(0, 1))
@@ -177,24 +179,7 @@ def tv_regularization(x, beta, lambd):
 
     # Compute magnitude of gradients
     grad = torch.sqrt(grad_x ** 2 + grad_y ** 2)
+    reg_x = x_2d + beta * grad
 
-    # Apply soft shrinkage to gradients
-    v = F.softshrink(grad, beta / lambd)
-
-    # Compute divergence
-    div_v_x = F.conv2d(v, torch.Tensor([[[[1], [-1]]]]), padding=(1, 0))
-    div_v_y = F.conv2d(v, torch.Tensor([[[[1, -1]]]]), padding=(0, 1))
-
-    # Crop the output tensors to match the size of the input image
-    div_v_y = div_v_y[:, :, :, :-1]  # Remove the last column
-    div_v_x = div_v_x[:, :, :-1, :]  # Remove the last row
-
-    div_v = div_v_x + div_v_y
-
-    # Add divergence to original image
-    x_2d_reg = x_2d + div_v.squeeze()
-
-    # Reshape back to 1D array
-    x_reg = x_2d_reg.view(1024, 1)
-
-    return x_reg
+    d = F.softshrink(reg_x.view(img_dim, -1), 1 / lambd)
+    return d
