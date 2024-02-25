@@ -18,9 +18,10 @@ from testers import create_diffuser
 
 
 def deal_exist_folder(folder_path):
-    decision = input(
-        f"The folder '{folder_path}' already exists. Do you want to (D)elete it or create a new (V)ersion?"
-        f" (D/V): ").lower()
+    # decision = input(
+    #     f"The folder '{folder_path}' already exists. Do you want to (D)elete it or create a new (V)ersion?"
+    #     f" (D/V): ").lower()
+    decision = 'd'
     if decision == 'd':
         # Delete the existing folder
         shutil.rmtree(folder_path)
@@ -37,7 +38,7 @@ def deal_exist_folder(folder_path):
 
 
 def make_folder(p):
-    folder_name = f"{p['model_name']}_TV_beta_{p['TV_beta']}_{p['data_name']}_bs_{p['batch_size']}_cr_{p['cr']}_nsamples{p['n_samples']}_picw_{p['pic_width']}_epochs_{p['epochs']}_wd_{p['weight_decay']}"
+    folder_name = f"{p['model_name']}_TV_beta_{p['TV_beta']}_bs_{p['batch_size']}_cr_{p['cr']}_picw_{p['pic_width']}_wd_{p['weight_decay']}_z_{p['z_dim']}"
     if not p['learn_vec_lr']:
         folder_name = folder_name + f"_lr_{p['lr']}"
 
@@ -95,12 +96,12 @@ def save_numerical_figure(graphs, y_label, title, filename, folder_path, wb_flag
     plt.xticks(np.arange(0, len(graphs[0][0]) + 1, step=5), fontsize=16)
 
     # Save the figure to the specified filename
-    full_file_path = os.path.join(folder_path, filename)
+    full_file_path = folder_path + '/' + filename
     plt.savefig(full_file_path)
     plt.close()
     # plt.show()
     if wb_flag:
-        wandb.log({filename: wandb.Image(filename)})
+        wandb.log({full_file_path: wandb.Image(full_file_path)})
 
 
 def save_orig_img(loader, folder_path, name_sub_folder):
@@ -125,14 +126,15 @@ def save_randomize_outputs(epoch, batch_index, output, y_label, pic_width, folde
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
             if epoch == 0:
-                orig_file_name = os.path.join(output_dir, f'{image_number}_orig.jpg')
+                orig_file_name = output_dir + f'/{image_number}_orig.jpg'
                 plt.imsave(orig_file_name, orig_image.cpu().detach().numpy())
                 if wb_flag:
-                    wandb.log({orig_file_name: orig_file_name})
+                    wandb.log({orig_file_name: wandb.Image(orig_file_name)})
             rec_file_name = output_dir + f'/epoch_{epoch}_{image_number}_out.jpg'
             plt.imsave(rec_file_name, out_image.detach().numpy())
             if wb_flag:
                 wandb.log({rec_file_name: wandb.Image(rec_file_name)})
+
 
 def get_original_image_number(orig_img, folder_path, name_sub_folder, epoch, batch_index):
     orig_img_path = folder_path + '/' + name_sub_folder + '/orig_imgs_tensors.pt'

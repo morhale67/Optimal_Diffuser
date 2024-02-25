@@ -71,15 +71,15 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
         print_and_log_message(f"Epoch number {epoch}, batch number {batch_index}/{n_batchs}:"
                               f"       batch loss {loss.item()}", log_path)
         if wb_flag:
-            wandb.log({"loss_batch": loss.item(), "psnr_batch": batch_psnr/batch_size,
-                       "ssim_batch": batch_ssim/batch_size, "batch_index": batch_index})
+            wandb.log({"Loss Batch": loss.item(), "PSNR Batch": batch_psnr/batch_size,
+                       "SSIM Batch": batch_ssim/batch_size})
         if save_img:
             save_randomize_outputs(epoch, batch_index, reconstruct_imgs_batch, sim_object, int(math.sqrt(img_dim)),
                                    folder_path, 'train_images', wb_flag)
 
     train_loss, train_psnr, train_ssim = cumu_loss / n_samples, cumu_psnr / n_samples, cumu_ssim / n_samples
     if wb_flag:
-        wandb.log({"epoch": epoch, 'train_loss': train_loss})
+        wandb.log({"Epoch": epoch, 'Train Loss': train_loss, 'Train PSNR': train_psnr, 'Train SSIM': train_ssim})
 
 
 

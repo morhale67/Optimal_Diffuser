@@ -7,17 +7,15 @@ from OutputHandler import make_folder
 from Params import load_config_parameters
 
 
-
-def main():
-    wb_flag = True
+def main(wb_flag=True):
     p = get_run_parameters()
     if wb_flag:
-        p = load_config_parameters(p)
+        wandb.init()
+        # p = load_config_parameters(p)
     folder_path = make_folder(p)
     log_path = print_run_info_to_log(p, folder_path)
     print_and_log_message(f'learning rate: {p["lr"]}', log_path)
     train(p, log_path, folder_path, wb_flag)
-
 
 wandb.login(key='8aec627a04644fcae0f7f72d71bb7c0baa593ac6')
 
@@ -35,7 +33,7 @@ sweep_configuration = {
             "values": [28, 32]
         },
         "z_dim": {
-            "values": [32, 64, 128]
+            "values": [32, 128, 256]
         },
         "weight_decay": {
             "values": [1e-7, 5e-7, 10e-7]
@@ -49,5 +47,5 @@ sweep_configuration = {
     }
 }
 sweep_id = wandb.sweep(sweep=sweep_configuration, project="Optimal Diffuser")
-wandb.agent(sweep_id, function=main, count=20)
+wandb.agent(sweep_id, function=main, count=4)
 

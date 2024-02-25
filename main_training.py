@@ -50,7 +50,7 @@ def train(params, log_path, folder_path, wb_flag):
     numerical_outputs['rand_diff_loss'], numerical_outputs['rand_diff_psnr'], numerical_outputs['rand_diff_ssim'] = \
         split_bregman_on_random_for_run(folder_path, params)
     save_all_run_numerical_outputs(numerical_outputs, folder_path, wb_flag)
-    sb_reconstraction_for_all_images(folder_path, params['cr'], wb_flag)
+    # sb_reconstraction_for_all_images(folder_path, params['cr'], wb_flag)
     print_and_log_message('Run Finished Successfully', log_path)
     #image_results_subplot(folder_path, data_set='train_images', epochs_to_show=[0, 1, 2, 5, 10, params['epochs']])
     #image_results_subplot(folder_path, data_set='test_images', epochs_to_show=[0, 1, 2, 5, 10, params['epochs']])
@@ -143,7 +143,8 @@ def split_bregman_on_random_for_run(folder_path, params):
         np_orig_image = np.array(orig_image.view(-1, 1))
         sim_diffuser = np.random.normal(0.5, 0.5, [params['n_masks'], params['img_dim']])
         sim_bucket = np.matmul(sim_diffuser, np_orig_image).transpose((1, 0))
-        rec_image = sparse_encode(torch.from_numpy(sim_bucket), torch.from_numpy(sim_diffuser), maxiter=1, niter_inner=1, alpha=1, algorithm='split-bregman', beta=params['TV_beta'])
+        rec_image = sparse_encode(torch.from_numpy(sim_bucket).float(), torch.from_numpy(sim_diffuser).float(), maxiter=1,
+                                  niter_inner=1, alpha=1, algorithm='split-bregman', beta=params['TV_beta'])
 
         pic_width = params['pic_width']
         loss = mean_squared_error(rec_image.flatten(), orig_image.flatten())
