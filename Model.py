@@ -78,7 +78,6 @@ class Gen_with_p_sb(nn.Module):
         niter_inner = torch.round(torch.sigmoid(params_x[:, 1].unsqueeze(1)) * 20)  # Scale to desired range
         alpha = torch.sigmoid(params_x[:, 2].unsqueeze(1))
         total_variation_rate = torch.sigmoid(params_x[:, 3].unsqueeze(1))
-
         return {
             'diffuser': diffuser_x,
             'maxiter': maxiter,
