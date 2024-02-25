@@ -34,6 +34,60 @@ def breg_rec(diffuser_batch, bucket_batch, batch_size, beta=1):
     return recs_container
 
 
+class Gen_with_p_sb(nn.Module):
+    def __init__(self, z_dim, img_dim, n_masks):
+        super().__init__()
+
+        self.linear1 = nn.Linear(z_dim, 128)
+        self.bn1 = nn.BatchNorm1d(128)
+        self.relu1 = nn.ReLU()
+
+        self.linear2 = nn.Linear(128, 256)
+        self.bn2 = nn.BatchNorm1d(256)
+        self.relu2 = nn.ReLU()
+
+        self.linear3 = nn.Linear(256, n_masks * img_dim)
+        self.bn3 = nn.BatchNorm1d(n_masks * img_dim)
+        self.sigmoid = nn.Sigmoid()
+
+        self.linear2_params = nn.Linear(128, 64)
+        self.relu2_params = nn.ReLU()
+
+        self.linear_params = nn.Linear(64, 4)  # 4 parameters: maxiter, niter_inner, alpha, total_variation_rate
+
+    def forward(self, x):
+        x = self.linear1(x)
+        x = self.bn1(x)
+        x = self.relu1(x)
+        x = self.linear2(x)
+        x = self.bn2(x)
+        x = self.relu2(x)
+
+
+        diffuser_x = self.linear3(x)
+        diffuser_x = self.bn3(diffuser_x)
+        diffuser_x = self.sigmoid(diffuser_x)
+
+        # Compute path for parameters
+        params_x = self.linear2_params(x)
+        params_x = self.relu2_params(params_x)
+        params_x = self.linear_params(params_x)
+
+        # Extracting individual parameters
+        maxiter = torch.round(torch.sigmoid(params_x[:, 0].unsqueeze(1)) * 100)  # Scale to desired range
+        niter_inner = torch.round(torch.sigmoid(params_x[:, 1].unsqueeze(1)) * 20)  # Scale to desired range
+        alpha = torch.sigmoid(params_x[:, 2].unsqueeze(1))
+        total_variation_rate = torch.sigmoid(params_x[:, 3].unsqueeze(1))
+
+        return {
+            'diffuser': diffuser_x,
+            'maxiter': maxiter,
+            'niter_inner': niter_inner,
+            'alpha': alpha,
+            'total_variation_rate': total_variation_rate
+        }
+
+
 class Gen(nn.Module):
     def __init__(self, z_dim, img_dim, n_masks):
         super().__init__()
