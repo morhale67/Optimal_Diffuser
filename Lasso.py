@@ -109,6 +109,12 @@ def split_bregman(A, y, x0=None, alpha=1.0, lambd=1.0, maxiter=20, niter_inner=5
         Iteration number of outer loop upon termination
 
     """
+    if output_net in globals():
+        maxiter = output_net['maxiter']
+        niter_inner = output_net['niter_inner']
+        alpha = output_net['alpha']
+        beta = output_net['total_variation_rate']
+
     assert y.dim() == 2
     assert A.dim() == 2
     assert y.shape[1] == A.shape[0]

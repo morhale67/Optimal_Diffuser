@@ -40,8 +40,8 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
             diffuser = make_masks_from_big_diff(diffuser, ac_stride)
         else:
             noise = torch.randn(int(batch_size), int(z_dim), requires_grad=True).to(device)
-            diffuser = network(noise)
-            # print(f'bs {batch_size} n_masks {n_masks}  img_dim {img_dim}')
+            output_net = network(noise)
+            diffuser = output_net['diffuser_x']            # print(f'bs {batch_size} n_masks {n_masks}  img_dim {img_dim}')
             diffuser = diffuser.reshape(batch_size, n_masks, img_dim)
 
         # check_diff(diffuser, sim_object, folder_path='temp/Gan/new')
@@ -52,7 +52,7 @@ def train_epoch(epoch, network, loader, optimizer, batch_size, z_dim, img_dim, n
 
         # buckets_same = compare_buckets(sim_bucket[0], diffuser[0], sim_object[0])
 
-        reconstruct_imgs_batch = breg_rec(diffuser, sim_bucket, batch_size, beta=TV_beta).to(device)
+        reconstruct_imgs_batch = breg_rec(diffuser, sim_bucket, batch_size, output_net).to(device)
         sim_object = torch.squeeze(sim_object)
         criterion = nn.MSELoss()
         loss = criterion(reconstruct_imgs_batch, sim_object)

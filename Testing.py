@@ -21,15 +21,15 @@ def test_net(epoch, model, loader, device, log_path, folder_path, batch_size, z_
         sim_object, _ = sim_bucket_tensor
         sim_object.to(device)
         noise = torch.randn(batch_size, z_dim, requires_grad=True).to(device)
-        sim_diffuser = model(noise)
-
+        output_net = model(noise)
+        sim_diffuser = output_net['diffuser_x']
         sim_diffuser_reshaped = sim_diffuser.reshape(batch_size, math.floor(img_dim / cr), img_dim)
 
         sim_object = sim_object.view(-1, 1, img_dim).to(device)
         sim_object = sim_object.transpose(1, 2)
         sim_bucket = torch.matmul(sim_diffuser_reshaped, sim_object)
         sim_bucket = torch.transpose(sim_bucket, 1, 2)
-        reconstruct_imgs_batch = breg_rec(sim_diffuser_reshaped, sim_bucket, batch_size, beta=TV_beta)
+        reconstruct_imgs_batch = breg_rec(sim_diffuser_reshaped, sim_bucket, batch_size, output_net)
 
         reconstruct_imgs_batch = reconstruct_imgs_batch.to(device)
         sim_object = torch.squeeze(sim_object)
