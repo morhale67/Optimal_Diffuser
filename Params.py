@@ -10,7 +10,7 @@ def get_run_parameters():
          'lr_vec': [0.1, 0.01, 0.001],
          'epochs_vec': [5, 30, 5],
          'learn_vec_lr': True,
-         'pic_width': 8,
+         'pic_width': 28,
          'n_samples': 100,
          'cr': 5,
          'batch_size': 2,
@@ -27,7 +27,6 @@ def get_run_parameters():
     if p['learn_vec_lr']:
         p['epochs'] = sum(p['epochs_vec'])
         p['cum_epochs'] = [sum(p['epochs_vec'][:i + 1]) for i in range(len(p['epochs_vec']))]
-
     return p
 
 
